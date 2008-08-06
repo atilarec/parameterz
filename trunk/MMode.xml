@@ -11,6 +11,14 @@
     <Content type="html">
         <![CDATA[
 <style type="text/css">
+.zTable
+{
+border-collapse: collapse;
+}
+.zTable tr:hover
+{
+background-color:#f2f2f2;
+}
 .zTable th, td
 {
 font-size: 13px;
