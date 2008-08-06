@@ -5,6 +5,14 @@
     <Content type="html">
 
         <style type="text/css">
+            .zTable
+            {
+            border-collapse: collapse;
+            }
+            .zTable tr:hover
+            {
+            background-color: #F2F2F2;
+            }
             .zTable th, td
             {
             font-size: 13px;
