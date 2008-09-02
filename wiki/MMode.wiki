@@ -1,4 +1,4 @@
-#About the M-Mode Z-Score Gadget and its development
+About the M-Mode Z-Score Gadget and its development
 
 = Introduction =
 The gadget presently consists of of both html and javascript as an xml gadget.
