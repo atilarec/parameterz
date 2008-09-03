@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+    <ModulePrefs title="Tricuspid Valve Offset"
+    title_url="http://fortuitousconcatenation.blogspot.com"
+    author="Dan Dyar"
+    author_email="dan.dyar@gmail.com"/>
+    <Content type="html">
+        <![CDATA[
+<style type= "text/css">
+.calculator{
+min-height: 6em;
+background: silver;
+font-size: 13px;
+padding: 2em 1em;
+}
+#Offset{
+margin-top:1em;
+}
+</style>
+<script type="text/javascript" language="javascript">
+//Calculates the offset of the TV from the MV,
+//based on the constant "8mm per meter squared"
+//citation: Circulation. 2007;115:277-285
+
+function CalculateOffset()
+{
+var bsa = document.getElementById("Text1").value
+
+if (isFinite(bsa)) //checks to see if value entered in textbox is a legit NUMBER
+{
+var offset = 8*bsa
+var strAnswer = "Allowable tricuspid displacement: "
+strAnswer= strAnswer+offset
+strAnswer= strAnswer+" mm."
+document.getElementById("Offset").innerHTML= strAnswer
+}
+else //the input was not numeric
+{
+document.getElementById("Offset").innerHTML="please enter the BSA in meters squared"
+}
+}
+
+</script>
+<div class="calculator">
+Enter the BSA:
+<input id="Text1" type="text" /> <input id="Button1" type="button"
+value="Calculate" onclick="CalculateOffset()"/>
+<div id="Offset">
+</div></div>
+
+
+]]>
+    </Content>
+</Module>
