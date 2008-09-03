@@ -1,9 +1,9 @@
 About the M-Mode Z-Score Gadget and its development
 
-= Introduction =
+== Introduction ==
 The gadget presently consists of of both html and javascript as an xml gadget.
 
 
-= Details =
+== Details ==
 
-It might be interesting to see if the js can be referred to as an external file (linking to its download here) which might make it more performant, and easier to maintain.
+It might be interesting to see if the js can be referred to as an external file (linking to its download here) ~~which might make it more performant~~, and easier to maintain.
