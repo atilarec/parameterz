@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+    <ModulePrefs title="Great Ormond Street Ebstein Index Calculator"
+    title_url="http://fortuitousconcatenation.blogspot.com"
+    author="Dan Dyar"
+    author_email="dan.dyar@gmail.com"
+    height="250"/>
+    <Content type="html">
+        <![CDATA[
+<style type= "text/css">
+.myGadget{
+background: silver;
+font-size: 13px;
+padding: 2em 1em;
+}
+table {font-size: 13px;}
+.label {text-align:right;}
+</style>
+
+<script type="text/javascript" language="javascript">
+//calculates the RA/LV ratio and Great Ormond grade
+//citation: Circulation. 2007;115:277-285
+function calculatetvscore()
+{
+//first calculate the ratio, after ensuring the input is legit, non-zero
+if (IsNotZero(document.getElementById("txtRT").value)&& IsNotZero(document.getElementById("txtLT").value) )
+{
+//we have valid input
+var ratio =calculateratio()
+ratio = ratio.toFixed(2)
+var grade = determinegrade(ratio)
+// and write to results
+document.getElementById("Ratio").innerHTML=ratio
+document.getElementById("Grade").innerHTML=grade
+}
+else //the inputs are not legit; alert the user
+{
+alert("please enter non-zero numbers and re-calculate")
+}
+
+}
+function IsNotZero(input)
+{
+var isnumber=false
+if (isFinite(input) && input>0)//input should be a real, positive number
+{
+isnumber=true
+}
+return isnumber
+}
+
+function calculateratio()
+{
+var numerator = document.getElementById("txtRT").value
+var denominator = document.getElementById("txtLT").value
+var ratio = numerator/denominator
+return ratio
+}
+
+function determinegrade(ratio)
+{
+if (ratio<.5){return 1}
+else if (ratio >=.5 && ratio <=.99){return 2}
+else if (ratio >=1 && ratio<=1.49) {return 3}
+else {return 4}
+}
+
+</script>
+
+<div class="myGadget">
+<table>
+<tr>
+<td class="label">
+Combined Area of Right Atrium and Atrialized RV (cm2):</td>
+<td>
+<input id="txtRT" type="text" /></td>
+</tr>
+<tr>
+<td class="label">
+Combined Area of Functional RV and Left Heart (cm2):</td>
+<td>
+<input id="txtLT" type="text" /></td>
+</tr>
+<tr>
+<td>
+&nbsp;</td>
+<td>
+<input id="Button1" type="button" value="Calculate" onclick="calculatetvscore()"/></td>
+</tr>
+<tr>
+<td class="label">
+Ratio: </td>
+<td id="Ratio"></td>
+</tr>
+<tr>
+<td class="label">
+Grade: </td>
+<td id="Grade"></td>
+</tr>
+</table>
+
+</div>
+
+
+]]>
+    </Content>
+</Module>
+
