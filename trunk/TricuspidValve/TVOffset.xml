@@ -8,7 +8,7 @@
     <Content type="html">
         <![CDATA[
 <style type= "text/css">
-.calculator{
+.myGadget{
 min-height: 6em;
 background: silver;
 font-size: 13px;
@@ -42,7 +42,7 @@ document.getElementById("Offset").innerHTML="please enter the BSA in meters squa
 }
 
 </script>
-<div class="calculator">
+<div class="myGadget">
 Enter the BSA:
 <input id="Text1" type="text" /> <input id="Button1" type="button"
 value="Calculate" onclick="CalculateOffset()"/>
