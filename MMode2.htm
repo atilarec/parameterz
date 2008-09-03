@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>M-Mode Z-Score Calculator | dan.Dyar</title>
+    <link href="http://dan.dyar.googlepages.com/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="mmode.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <div id="mainbody">
+        <div id="wrapper">
+          <div id="header">M-Mode</div>
+          <div id="greybar">&nbsp;</div>
+          <div id="page-description">Z-Score Calculator</div>
+          <div id="content">
+<table class="zTable">
+    <tr>
+        <td class="label">
+            <label for="txtHT">Height (cm):</label></td>
+        <td>
+            <input id="txtHT" type="text" onchange="thinkAboutIt()" /></td>
+    </tr>
+    <tr>
+		<td class="label">
+            <label for="txtWT">Weight (kg):</label></td>
+        <td>
+			<input id="txtWT" type="text" onchange="Calculate()" /></td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="cmbBSA">BSA formula:</label></td>
+        <td>
+            <select id="cmbBSA" onchange="Calculate()">
+                <option value="Boyd">Boyd</option>
+                <option value="DuBois" selected="selected">DuBois</option>
+                <option value="Gehan">Gehan & George</option>
+                <option value="Haycock">Haycock</option>
+                <option value="Mosteller">Mosteller</option>
+                <option value="Dreyer">Weight ONLY</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;</td>
+        <td id="BSA">
+        </td>
+    </tr>    
+    <tr>
+        <td id="info" colspan="2">
+            &nbsp;</td>
+    </tr>    
+    </table>
+    <table class="zTable">
+    <tr>
+    <th>Location</th>
+    <th>Measured</th>
+    <th>Mean</th>
+    <th>Range</th>
+    <th>Z-Score</th>
+    </tr>    
+    <tr>
+        <td class="label">
+            <label for="txtRVDD">RVDD (mm):</label></td>
+        <td>
+            <input id="txtRVDD" type="text" onchange="Calculate()"/>
+        </td>
+        <td id="RVDDMean" class="results">
+        </td>
+        <td id="RVDDRange" class="results">
+        </td>
+        <td id="RVDDZ" class="results">
+        </td>
+    </tr>
+    <tr class="alternate">
+        <td class="label">
+            <label for="txtIVS">IVSd (mm):</label></td>
+        <td>
+            <input id="txtIVS" type="text" onchange="Calculate()"/>
+        </td>
+        <td id="IVSMean" class="results">
+        </td>
+        <td id="IVSRange" class="results">
+        </td>
+        <td id="IVSZ" class="results">
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="txtLVEDD">LVEDD (mm):</label></td>
+        <td>
+            <input id="txtLVEDD" type="text" onchange="Calculate()"/>
+        </td>
+        <td id="LVEDDMean" class="results">
+        </td>
+        <td id="LVEDDRange" class="results">
+        </td>
+        <td id="LVEDDZ" class="results">
+        </td>
+    </tr>
+    <tr class="alternate">
+        <td class="label">
+            <label for="txtLVESD">LVESD (mm):</label></td>
+        <td>
+            <input id="txtLVESD" type="text" onchange="Calculate()"/>
+        </td>
+        <td id="LVESDMean" class="results">
+        </td>
+        <td id="LVESDRange" class="results">
+        </td>
+        <td id="LVESDZ" class="results">
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="txtLVPW">LVPWd (mm):</label></td>
+        <td>
+            <input id="txtLVPW" type="text" onchange="Calculate()"/>
+        </td>
+        <td id="LVPWMean" class="results">
+        </td>
+        <td id="LVPWRange" class="results">
+        </td>
+        <td id="LVPWZ" class="results">
+        </td>
+    </tr>
+    <tr class="alternate">
+        <td class="label">
+            <label for="txtLAD">LAd (mm):</label></td>
+        <td>
+            <input id="txtLAD" type="text" onchange="Calculate()"/>
+        </td>
+        <td id="LADMean" class="results">
+        </td>
+        <td id="LADRange" class="results">
+        </td>
+        <td id="LADZ" class="results">
+        </td>    </tr>
+    <tr>
+        <td>
+            &nbsp;</td>
+        <td>
+            <input id="Button1" class="button" type="button" value="Update" onclick="Calculate()"/>
+        </td>
+    </tr>
+</table>
+          
+&nbsp;<div id="reference"><p><span class="title">Normal values of M mode echocardiographic measurements of more than 2000 healthy infants and children in central Europe.</span>
+            <span class="authors">C Kampmann, C Wiethoff, A Wenzel, G Stolz, M Betancor, C Wippermann, R Huth, P Habermehl, M Knuf, T Emschermann, and H Stopfkuchen</span>
+            <span class="journal">Heart. 2000 June; 83(6): 667–672. </span> [<a 
+                      href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&amp;pubmedid=10814626">link</a>]</p>
+          </div>
+          </div>
+          <div id="footer"></div>
+          <div id="credits">copy left | dan dyar, 2008</div>    
+        </div>
+    </div>
+
+</body>
+</html>
