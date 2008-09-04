@@ -13,58 +13,53 @@
 <style type="text/css">
 .myGadget 
 {
-margin: 1em 0em;
+margin: 1em 0.5em;
 }
-#ZScores
+table
 {
-font-family: tahoma, arial, helvetica, sans-serif;
+font-family: Tahoma, Arial, Helvetica, sans-serif;
 font-size: 13px;
 border-collapse: collapse;
 }
-#ZScores input 
+input 
 {
 width:6em;
 }
-#ZScores .results
-{
-text-align: center;
-}
-#ZScores .label
+.label
 {
 text-align: right;
-padding-right: 0.5em;
 }
-#ZScores .button
+.button
 {
-
+width: 98%;
 }
-#ZScores td.borderline
+td.borderline
 {
 background-color: #FFBE5C;
 text-align: center;
 }
-#ZScores td.mild
+td.mild
 {
 background-color: #FFA929;
 text-align: center;
 }
-#ZScores td.moderate
+td.moderate
 {
 background-color: #FF4D4D;
 text-align: center;
 }
-#ZScores td.severe
+td.severe
 {
 background-color: #FF3333;
 font-weight: bold;
 text-align: center;
 }
-#ZScores td.normal
+td.normal
 {
 background-color: #B8D3FF;
 text-align: center;
 }
-#ZScores tr:hover
+tr:hover
 {
 background-color: #F2F2F2;
 }
@@ -219,7 +214,7 @@ return 0.007184 * Math.pow(ht,0.725) * Math.pow(wt,0.425);
 }
 </script>
 <div class="myGadget">
-<table id="ZScores">
+<table>
 <tr>
 <td class="label">
 <label for="txtHT">Height (cm):</label></td>
@@ -256,16 +251,21 @@ return 0.007184 * Math.pow(ht,0.725) * Math.pow(wt,0.425);
 &nbsp;</td>
 </tr>
 <tr>
-<td class="results">
-Site</td>
-<td class="results">
-Measured (cm)</td>
-<td class="results">
-Mean</td>
-<td class="results">
-Range</td>
-<td class="results">
-Z-Score</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<table>
+<tr>
+<th>
+Site</th>
+<th>
+Measured (cm)</th>
+<th>
+Mean</th>
+<th>
+Range</th>
+<th>
+Z-Score</th>
 </tr>
 <tr>
 <td class="label">
