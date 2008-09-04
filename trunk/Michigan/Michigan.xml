@@ -17,6 +17,10 @@
 font-size: 13px;
 border-collapse: collapse;
 }
+#ZScores input 
+{
+width:6em;
+}
 #ZScores .results
 {
 text-align: center;
