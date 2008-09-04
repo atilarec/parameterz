@@ -14,12 +14,12 @@
 .myGadget 
 {
 margin: 1em 0em;
-font-family: tahoma,arial, helvetica, sans-serif;
+font-family: tahoma, arial, helvetica, sans-serif;
 font-size: 13px;
 }
 #ZScores
 {
-font-family: tahoma,arial, helvetica, sans-serif;
+font-family: tahoma, arial, helvetica, sans-serif;
 font-size: 13px;
 border-collapse: collapse;
 }
