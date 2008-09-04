@@ -11,7 +11,12 @@
     <Content type="html">
         <![CDATA[
 <style type="text/css">
-.myGadget {margin: 1em 0em;}
+.myGadget 
+{
+margin: 1em 0em;}
+font-family: arial, helvetica, sans-serif;
+font-size: 13px;
+}
 #ZScores
 {
 font-family: arial, helvetica, sans-serif;
