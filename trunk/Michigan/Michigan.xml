@@ -5,7 +5,7 @@
     title_url="http://fortuitousconcatenation.blogspot.com"
     description="Calculates pediatric echo z-scores of 21 commonly measured sites"
     height="1000"
-    width="500"
+    width="600"
     author="Dan Dyar"
     author_email="dan.dyar@gmail.com"/>
     <Content type="html">
@@ -23,7 +23,7 @@ border-collapse: collapse;
 }
 input 
 {
-width:6em;
+width:8em;
 }
 .label
 {
