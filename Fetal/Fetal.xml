@@ -4,7 +4,7 @@
     <ModulePrefs title="Fetal Cardiac Z-Scores"
     title_url="http://fortuitousconcatenation.blogspot.com"
     description="Calculates fetal echo z-scores of commonly measured sites"
-    height="1000"
+    height="600"
     width="500"
     author="Dan Dyar"
     author_email="dan.dyar@gmail.com"/>
