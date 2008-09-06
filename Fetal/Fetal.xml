@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+    <ModulePrefs title="Fetal Cardiac Z-Scores"
+    title_url="http://fortuitousconcatenation.blogspot.com"
+    description="Calculates fetal echo z-scores of commonly measured sites"
+    height="1000"
+    width="500"
+    author="Dan Dyar"
+    author_email="dan.dyar@gmail.com"/>
+    <Content type="html">
+        <![CDATA[
+<style type="text/css">
+.myGadget
+{
+margin: 1em 0.5em;
+}
+table
+{
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 13px;
+border-collapse: collapse;
+}
+input
+{
+width:8em;
+}
+.label
+{
+text-align: right;
+padding-right:0.2em;
+}
+.button
+{
+width: 98%;
+}
+td.borderline
+{
+background-color: #FFBE5C;
+text-align: center;
+}
+td.mild
+{
+background-color: #FFA929;
+text-align: center;
+}
+td.moderate
+{
+background-color: #FF4D4D;
+text-align: center;
+}
+td.severe
+{
+background-color: #FF3333;
+font-weight: bold;
+text-align: center;
+}
+td.normal
+{
+background-color: #B8D3FF;
+text-align: center;
+}
+tr:hover
+{
+background-color: #F2F2F2;
+}
+</style>
+<script language="javascript" type="text/javascript">
+    var Intercept = new Array(-5.019,-5.114,-4.886,-5.025,-4.766,-4.084,-4.455,-4.292,-3.566,-3.231,-8.133,-7.430,-5.365,-5.140,-5.307,-5.390,-4.440,-2.822,-3.359,-2.489);
+    var Slope = new Array(1.263,1.352,1.261,1.347,1.395,1.173,1.363,1.298,1.277,1.193,2.625,2.432,1.360,1.201,1.230,1.231,1.013,1.224,1.396,1.109);
+    var MSE = new Array(0.1282,0.1208,0.1330,0.1570,0.1394,0.1315,0.1442,0.1560,0.1658,0.1376,0.2957,0.2564,0.1216,0.1893,0.1802,0.1966,0.1913,0.164,0.176,0.182);
+    //^^ these are the fetal values ^^
+    
+    function CalculateZScores()
+    {
+    var EGA=parseFloat(document.getElementById("txtEGA").value);
+
+    //iterate through the measurements... 
+    if (!isNaN(document.getElementById("txtMV").value)&&document.getElementById("txtMV").value!=""){
+        Doit2TheZ("MV",5,EGA,parseFloat(document.getElementById("txtMV").value));
+        }
+    if (!isNaN(document.getElementById("txtLV1").value)&&document.getElementById("txtLV1").value!=""){
+        Doit2TheZ("LV1",7,EGA,parseFloat(document.getElementById("txtLV1").value));
+        }
+    if (!isNaN(document.getElementById("txtLV2").value)&&document.getElementById("txtLV2").value!=""){
+        Doit2TheZ("LV2",9,EGA,parseFloat(document.getElementById("txtLV2").value));
+        }
+    if (!isNaN(document.getElementById("txtAOV").value)&&document.getElementById("txtAOV").value!=""){
+        Doit2TheZ("AOV",0,EGA,parseFloat(document.getElementById("txtAOV").value));
+        }
+    if (!isNaN(document.getElementById("txtAAO").value)&&document.getElementById("txtAAO").value!=""){
+        Doit2TheZ("AAO",2,EGA,parseFloat(document.getElementById("txtAAO").value));
+        }
+    if (!isNaN(document.getElementById("txtDAO").value)&&document.getElementById("txtDAO").value!=""){
+        Doit2TheZ("DAO",12,EGA,parseFloat(document.getElementById("txtDAO").value));
+        }
+    if (!isNaN(document.getElementById("txtTV").value)&&document.getElementById("txtTV").value!=""){
+        Doit2TheZ("TV",4,EGA,parseFloat(document.getElementById("txtTV").value));
+        }
+    if (!isNaN(document.getElementById("txtRV1").value)&&document.getElementById("txtRV1").value!=""){
+        Doit2TheZ("RV1",6,EGA,parseFloat(document.getElementById("txtRV1").value));
+        }
+    if (!isNaN(document.getElementById("txtRV2").value)&&document.getElementById("txtRV2").value!=""){
+        Doit2TheZ("RV2",8,EGA,parseFloat(document.getElementById("txtRV2").value));
+        }
+    if (!isNaN(document.getElementById("txtPV").value)&&document.getElementById("txtPV").value!=""){
+        Doit2TheZ("PV",1,EGA,parseFloat(document.getElementById("txtPV").value));
+        }
+    if (!isNaN(document.getElementById("txtMPA").value)&&document.getElementById("txtMPA").value!=""){
+        Doit2TheZ("MPA",3,EGA,parseFloat(document.getElementById("txtMPA").value));
+        }
+    if (!isNaN(document.getElementById("txtRPA").value)&&document.getElementById("txtRPA").value!=""){
+        Doit2TheZ("RPA",14,EGA,parseFloat(document.getElementById("txtRPA").value));
+        } 
+    if (!isNaN(document.getElementById("txtLPA").value)&&document.getElementById("txtLPA").value!=""){
+        Doit2TheZ("LPA",15,EGA,parseFloat(document.getElementById("txtLPA").value));
+        }                        
+    if (!isNaN(document.getElementById("txtIsthmus3").value)&&document.getElementById("txtIsthmus3").value!=""){
+        Doit2TheZ("Isthmus3",17,EGA,parseFloat(document.getElementById("txtIsthmus3").value));
+        }                        
+    if (!isNaN(document.getElementById("txtDuct3").value)&&document.getElementById("txtDuct3").value!=""){
+        Doit2TheZ("Duct3",18,EGA,parseFloat(document.getElementById("txtDuct3").value));
+        }       
+    if (!isNaN(document.getElementById("txtIsthmus").value)&&document.getElementById("txtIsthmus").value!=""){
+        Doit2TheZ("Isthmus",19,EGA,parseFloat(document.getElementById("txtIsthmus").value));
+        }       
+       
+    }//end main function
+    
+    function Doit2TheZ(site,index,EGA,score){
+    var strMean = site+"Mean";
+    var strRange = site+"Range";
+    var strZ = site+"Z";
+    var mean;
+    var stdDev;
+    var lower;
+    var upper;
+    var zScore;
+    
+    //doit2 the mean
+    EGA = Math.log(EGA);
+    mean = Slope[index]*EGA + Intercept[index];
+    document.getElementById([strMean]).innerHTML= Math.exp(mean).toFixed(2);
+    //doit2 the SD/Range
+    stdDev=MSE[index];
+    lower=Math.exp(mean-1.65*stdDev); 
+    upper=Math.exp(mean+1.65*stdDev);
+    document.getElementById([strRange]).innerHTML = lower.toFixed(2)+" - "+upper.toFixed(2);
+    //doit2 the ZScore
+    score=Math.log(score);
+    zScore=(score-mean)/stdDev; 
+    document.getElementById([strZ]).innerHTML = zScore.toFixed(2);
+    document.getElementById([strZ]).className=[ZscoreFlag(zScore)];
+    
+    }//end doit2it function
+    
+    function ZscoreFlag(zScore){
+        if (zScore >=1.65 && zScore<1.96||zScore>-1.96&&zScore<=-1.67){
+        return "borderline";
+        }
+        else if (zScore>=1.96&& zScore<3||zScore>-3&&zScore<=-1.96){
+        return "mild";
+        }
+        else if (zScore>=3&& zScore<4||zScore>-4&&zScore<=-3){
+        return "moderate";
+        }
+        else if (zScore>=4||zScore<=-4){
+        return "severe";
+        }
+        return "normal";
+    }//end zscore flag function
+    
+</script>
+<div class="myGadget">
+<table summary="Fetal Echo Z-Scores">
+<tr>
+<td class="label"><label for="txtEGA">EGA (weeks):</label></td>
+
+<td><input id="txtEGA" type="text" title="decimal equivalents: +1d=.1; +2d=.3; +3d=.4; +4d=.6; +5d=.7; +6d=.9" onchange="CalculateZScores()" /></td>
+
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<th>Site</th>
+
+<th>Measured</th>
+
+<th>Mean</th>
+
+<th>Range</th>
+
+<th>Z-Score</th>
+</tr>
+
+<tr>
+<th colspan="2">Left Heart (cm)</th>
+</tr>
+
+<tr>
+<td class="label"><label for="txtMV">Mitral Valve:</label></td>
+
+<td><input id="txtMV" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="MVMean" class="results">&nbsp;</td>
+
+<td id="MVRange" class="results">&nbsp;</td>
+
+<td id="MVZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLV1">LV Minor:</label></td>
+
+<td><input id="txtLV1" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="LV1Mean" class="results">&nbsp;</td>
+
+<td id="LV1Range" class="results">&nbsp;</td>
+
+<td id="LV1Z" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLV2">LV Major:</label></td>
+
+<td><input id="txtLV2" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="LV2Mean" class="results">&nbsp;</td>
+
+<td id="LV2Range" class="results">&nbsp;</td>
+
+<td id="LV2Z" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtAOV">Aortic Valve:</label></td>
+
+<td><input id="txtAOV" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="AOVMean" class="results">&nbsp;</td>
+
+<td id="AOVRange" class="results">&nbsp;</td>
+
+<td id="AOVZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtAAO">AAO:</label></td>
+
+<td><input id="txtAAO" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="AAOMean" class="results">&nbsp;</td>
+
+<td id="AAORange" class="results">&nbsp;</td>
+
+<td id="AAOZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtDAO">DAO:</label></td>
+
+<td><input id="txtDAO" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="DAOMean" class="results">&nbsp;</td>
+
+<td id="DAORange" class="results">&nbsp;</td>
+
+<td id="DAOZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<th colspan="2">Right Heart (cm)</th>
+</tr>
+
+<tr>
+<td class="label"><label for="txtTV">Tricuspid Valve:</label></td>
+
+<td><input id="txtTV" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="TVMean" class="results">&nbsp;</td>
+
+<td id="TVRange" class="results">&nbsp;</td>
+
+<td id="TVZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRV1">RV Minor:</label></td>
+
+<td><input id="txtRV1" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="RV1Mean" class="results">&nbsp;</td>
+
+<td id="RV1Range" class="results">&nbsp;</td>
+
+<td id="RV1Z" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRV2">RV Major</label> :</td>
+
+<td><input id="txtRV2" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="RV2Mean" class="results">&nbsp;</td>
+
+<td id="RV2Range" class="results">&nbsp;</td>
+
+<td id="RV2Z" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtPV">Pulmonary Valve:</label></td>
+
+<td><input id="txtPV" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="PVMean" class="results">&nbsp;</td>
+
+<td id="PVRange" class="results">&nbsp;</td>
+
+<td id="PVZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtMPA">MPA:</label></td>
+
+<td><input id="txtMPA" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="MPAMean" class="results">&nbsp;</td>
+
+<td id="MPARange" class="results">&nbsp;</td>
+
+<td id="MPAZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRPA">RPA:</label></td>
+
+<td><input id="txtRPA" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="RPAMean" class="results">&nbsp;</td>
+
+<td id="RPARange" class="results">&nbsp;</td>
+
+<td id="RPAZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLPA">LPA:</label></td>
+
+<td><input id="txtLPA" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="LPAMean" class="results">&nbsp;</td>
+
+<td id="LPARange" class="results">&nbsp;</td>
+
+<td id="LPAZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<th colspan="2">Isthmus &amp; Duct (mm)</th>
+</tr>
+
+<tr>
+<td class="label"><label for="txtIsthmus3">Isthmus, 3VV (mm):</label></td>
+
+<td><input id="txtIsthmus3" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="Isthmus3Mean" class="results">&nbsp;</td>
+
+<td id="Isthmus3Range" class="results">&nbsp;</td>
+
+<td id="Isthmus3Z" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtDuct3">Duct, 3VV (mm):</label></td>
+
+<td><input id="txtDuct3" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="Duct3Mean" class="results">&nbsp;</td>
+
+<td id="Duct3Range" class="results">&nbsp;</td>
+
+<td id="Duct3Z" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtIsthmus">Isthmus, Sagittal (mm):</label></td>
+
+<td><input id="txtIsthmus" type="text" onchange="CalculateZScores()" /></td>
+
+<td id="IsthmusMean" class="results">&nbsp;</td>
+
+<td id="IsthmusRange" class="results">&nbsp;</td>
+
+<td id="IsthmusZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td><input id="btnCalculateZ" type="button" value="Calculate !" onclick=
+"CalculateZScores()" class="button" /></td>
+</tr>
+</table>
+</div>
+
+
+]]>
+    </Content>
+</Module>
+
+
