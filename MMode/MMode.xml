@@ -4,7 +4,7 @@
     <ModulePrefs title="M-Mode Z-Score Calculator"
     title_url="http://fortuitousconcatenation.blogspot.com"
     description="Calculates z-scores of common pediatric M-mode measurements"
-    height="500"
+    height="400"
     width="450"
     author="Dan Dyar"
     author_email="dan.dyar@gmail.com"/>
