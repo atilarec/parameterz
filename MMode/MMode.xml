@@ -404,8 +404,6 @@ return "normal"
 <td id="info" colspan="2">
 &nbsp;</td>
 </tr>
-</table>
-<table class="zTable">
 <tr>
 <th>Location</th>
 <th>Measured</th>
