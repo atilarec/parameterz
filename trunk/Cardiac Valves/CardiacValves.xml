@@ -4,7 +4,7 @@
     <ModulePrefs title="Cardiac Valve Z-Scores"
     title_url="http://fortuitousconcatenation.blogspot.com"
     description="Calculates z-scores of the mitral, tricuspid, aortic, and pulmonary valves"
-    height="600"
+    height="400"
     width="500"
     author="Dan Dyar"
     author_email="dan.dyar@gmail.com"/>
