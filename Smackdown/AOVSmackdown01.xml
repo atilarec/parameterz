@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+    <ModulePrefs title="Aortic Valve Z-Score Smackdown"
+    title_url="http://fortuitousconcatenation.blogspot.com"
+    description="Compares aortic valve z-scores"
+    height="400"
+    width="500"
+    author="Dan Dyar"
+    author_email="dan.dyar@gmail.com"/>
+    <Content type="html">
+        <![CDATA[
+<style type="text/css">
+.myGadget
+{
+margin: 1em 0.5em;
+}
+table
+{
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 13px;
+border-collapse: collapse;
+}
+input
+{
+width:8em;
+}
+.label
+{
+text-align: right;
+padding-right:0.2em;
+}
+.button
+{
+width: 98%;
+}
+td.borderline
+{
+background-color: #FFBE5C;
+text-align: center;
+}
+td.mild
+{
+background-color: #FFA929;
+text-align: center;
+}
+td.moderate
+{
+background-color: #FF4D4D;
+text-align: center;
+}
+td.severe
+{
+background-color: #FF3333;
+font-weight: bold;
+text-align: center;
+}
+td.normal
+{
+background-color: #B8D3FF;
+text-align: center;
+}
+tr:hover
+{
+background-color: #F2F2F2;
+}
+</style>
+<script type="text/javascript" language="javascript">
+function CalcZScores() {
+    var bsa = document.getElementById("txtBSA").value; 
+    var ava = document.getElementById("txtAVA").value;
+
+    GetBostonValues(bsa, ava);
+    GetCincinnatiValues(bsa, ava);
+    GetMichiganValues(bsa, ava);
+    GetWessexValues(bsa, ava);
+
+}
+
+function GetWessexValues(bsa, ava) {
+    var mean = 0.5183 + 0.5347*Math.log(bsa);
+    document.getElementById("tdWessMean").innerHTML = Math.exp(mean).toFixed(2);
+    var lnava = Math.log(ava);
+    var rms = 0.06726;
+    var zscore = (lnava-mean)/rms;
+    document.getElementById("tdWessZ").innerHTML = zscore.toFixed(1);
+    document.getElementById("tdWessZ").className=[ZscoreFlag(zscore)];
+    var upper = mean + (1.96*rms);
+    var lower = mean - (1.96*rms);
+    var range = Math.exp(lower).toFixed(2) + " - " + Math.exp(upper).toFixed(2);
+    document.getElementById("tdWessRange").innerHTML=range;
+
+}//end Wessex fx
+function GetMichiganValues(bsa, ava) {
+
+    var mean = -0.874+(2.708*bsa)+(-1.848*Math.pow(bsa,2))+(0.452*Math.pow(bsa,3));
+    document.getElementById("tdMichMean").innerHTML= Math.exp(mean).toFixed(2);
+    var lnava = Math.log(ava);
+    var mse = 0.010;
+    var zscore = (lnava-mean)/Math.sqrt(mse);
+    document.getElementById("tdMichZ").innerHTML = zscore.toFixed(1);
+    document.getElementById("tdMichZ").className=[ZscoreFlag(zscore)];    
+    var upper = mean + (1.96*Math.sqrt(mse));
+    var lower = mean - (1.96*Math.sqrt(mse));
+    var range = Math.exp(lower).toFixed(2) + " - " + Math.exp(upper).toFixed(2);
+    document.getElementById("tdMichRange").innerHTML=range;
+
+    
+}//end Michigan fx
+
+function GetBostonValues(bsa,ava) {
+
+    var mean = 1.55*(Math.pow(bsa,0.5));
+    document.getElementById("tdBostonMean").innerHTML=mean.toFixed(2);
+    var stddev = (0.06 + 0.083 * bsa);
+    //calculate the upper & lower limits
+    var upper = mean + (1.96*stddev);
+    var lower = mean - (1.96*stddev);
+    var range = lower.toFixed(2) + " - " + upper.toFixed(2);
+    document.getElementById("tdBostonRange").innerHTML=range;
+    //calculate z-score
+    var zscore = (ava-mean)/stddev;
+    document.getElementById("tdBostonZ").innerHTML=zscore.toFixed(1);
+    document.getElementById("tdBostonZ").className=[ZscoreFlag(zscore)];
+}
+
+function GetCincinnatiValues(bsa, ava) {
+    var lnbsa = Math.log(bsa);
+    var lnava = Math.log(ava);
+    var rms = 0.141;
+    var lnmean = 0.472+0.492*lnbsa;
+    var mean = Math.exp(lnmean);
+    document.getElementById("tdCinciMean").innerHTML=mean.toFixed(2);
+    //calculate upper&lower values
+    var lnupper = lnmean+1.96*rms;
+    var lnlower = lnmean-1.96*rms;
+    var upper = Math.exp(lnupper).toFixed(2);
+    var lower = Math.exp(lnlower).toFixed(2);
+    var range = lower + " - " + upper;
+    document.getElementById("tdCinciRange").innerHTML=range;
+    //calculate z-score
+    var zscore = (lnava-lnmean)/rms;
+    document.getElementById("tdCinciZ").innerHTML=zscore.toFixed(1);
+    document.getElementById("tdCinciZ").className=[ZscoreFlag(zscore)];
+}
+
+function ZscoreFlag(zScore) {
+    if (zScore >=1.67 && zScore<1.96||zScore>-1.96&&zScore<=-1.67){
+    return "borderline";
+    }
+    else if (zScore>=1.96&& zScore<3||zScore>-3&&zScore<=-1.96){
+    return "mild";
+    }
+    else if (zScore>=3&& zScore<4||zScore>-4&&zScore<=-3){
+    return "moderate";
+    }
+    else if (zScore>=4||zScore<=-4){
+    return "severe";
+    }
+    return "normal";
+}//end zscore flag function
+</script>
+<div class="myGadget">
+<table class="zTable" summary=
+"demonstrates a comparison of different z score calculations of the aortic valve">
+<tbody>
+<tr>
+<td class="label">BSA (m<sup>2</sup>):</td>
+
+<td><input id="txtBSA" /></td>
+
+<td>&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label">Aortic Annulus (cm):</td>
+
+<td><input id="txtAVA" /></td>
+
+<td>&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td><input class="calc_button" id="calc_zscores" onclick="CalcZScores()" type="button"
+value="update" /></td>
+
+<td>&nbsp;</td>
+
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<th colspan="4">Results</th>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td>Mean</td>
+
+<td>Range</td>
+
+<td>Z-Score</td>
+</tr>
+
+<tr>
+<td class="label"><a title="PubMed link" href=
+"http://www.ncbi.nlm.nih.gov/pubmed/16682313" target="_blank">Boston</a>:</td>
+
+<td id="tdBostonMean">&nbsp;</td>
+
+<td id="tdBostonRange">&nbsp;</td>
+
+<td id="tdBostonZ">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><a title="PubMed link" href=
+"http://www.ncbi.nlm.nih.gov/pubmed/16374684" target="_blank">Cincinnati</a>:</td>
+
+<td id="tdCinciMean">&nbsp;</td>
+
+<td id="tdCinciRange">&nbsp;</td>
+
+<td id="tdCinciZ">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><a title="PubMed link" href=
+"http://www.ncbi.nlm.nih.gov/pubmed/18406572" target="_blank">Michigan</a>:</td>
+
+<td id="tdMichMean">&nbsp;</td>
+
+<td id="tdMichRange">&nbsp;</td>
+
+<td id="tdMichZ">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><a title="PubMed link" href=
+"http://www.ncbi.nlm.nih.gov/pubmed/10476831" target="_blank">Wessex</a>:</td>
+
+<td id="tdWessMean">&nbsp;</td>
+
+<td id="tdWessRange">&nbsp;</td>
+
+<td id="tdWessZ">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+]]>
+    </Content>
+</Module>
+
+
