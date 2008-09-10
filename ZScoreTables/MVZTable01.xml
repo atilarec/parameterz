@@ -135,7 +135,7 @@ case "girls":
     //calculate the mean
     BSA = Math.log(BSA);
     mean = 0.408 * BSA + 0.733;
-    document.getElementById("MVMean").innerHTML= Math.exp(mean).toFixed(2);
+    document.getElementById("MVMean").innerHTML= (10 * Math.exp(mean)).toFixed(2) + "mm";
     DoIt2TheTable(mean, 0.18) //0.18 is the published RMSE for girls MV
     break;
 case "boys":
