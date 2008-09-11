@@ -142,7 +142,7 @@ case "boys":
     //calculate the mean
     BSA = Math.log(BSA);
     mean = 0.391 * BSA + 0.817;
-    document.getElementById("MVMean").innerHTML= (10 * Math.exp(mean)).toFixed(2) + "mm";
+    document.getElementById("Mean").innerHTML= (10 * Math.exp(mean)).toFixed(2) + "mm";
     DoIt2TheTable(mean, 0.171) // the published RMSE for boys TV
     break;
 }//end switch

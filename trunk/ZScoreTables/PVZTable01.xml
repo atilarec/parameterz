@@ -142,7 +142,7 @@ case "boys":
     //calculate the mean
     BSA = Math.log(BSA);
     mean = 0.498 * BSA + 0.618;
-    document.getElementById("MVMean").innerHTML= (10 * Math.exp(mean)).toFixed(2) + "mm";
+    document.getElementById("Mean").innerHTML= (10 * Math.exp(mean)).toFixed(2) + "mm";
     DoIt2TheTable(mean, 0.152) // the published RMSE for boys AOV
     break;
 }//end switch
