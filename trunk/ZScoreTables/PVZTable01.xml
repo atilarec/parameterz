@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <Module>
-    <ModulePrefs title="pulmonary Valve Z-Score Table"
+    <ModulePrefs title="Pulmonary Valve Z-Score Table"
     title_url="http://fortuitousconcatenation.blogspot.com"
     description="Calculates z-scores of the pulmonary valve"
     height="950"
