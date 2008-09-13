@@ -379,12 +379,22 @@ h2.date-header {
 }
 /* --- customisations for ParameterZ --- */
 /* --- definition list links ---*/
+
+dd, dt {
+margin-top: -1em;
+}
 dt a:link, dt a:hover, dt a:visited {
 font-size:120%;
 color: blue;
+display: block;
+padding-left: 5px;
+padding-top: 5px;
+padding-bottom: 5px;
 }
 dt a:hover {
-text-decoration:underline;
+text-decoration: none;
+color: red;
+background-color:silver;
 }
 /* --- hide the 'no posts' message --- */
 .status-msg-wrap {
@@ -473,7 +483,7 @@ display:none;
 
       <div id='main-wrapper'>
         <b:section class='main' id='main' showaddelement='no'>
-<b:widget id='Text1' locked='false' title='Welcome/Intro' type='Text'>
+<b:widget id='Text1' locked='false' title='' type='Text'>
 <b:includable id='main'>
   <!-- next added to suppress element -->
   <b:if cond='data:blog.url == data:blog.homepageUrl'>
