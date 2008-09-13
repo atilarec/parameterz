@@ -624,7 +624,7 @@ display:none;
         <b:if cond='data:post.labels'>
           <data:postLabelsLabel/>
           <b:loop values='data:post.labels' var='label'>
-            <a expr:href='data:label.url' rel='tag'><data:label.name/></a><b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
+            <data:label.name/><b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
           </b:loop>
         </b:if>
       </span>
