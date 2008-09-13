@@ -4,7 +4,8 @@
   <head>
     <b:include data='blog' name='all-head-content'/>
     <title><data:blog.pageTitle/></title>
-    <b:skin><![CDATA[/*
+    <b:skin>
+    <![CDATA[/*
 -----------------------------------------------
 Blogger Template Style
 Name:     Minima
@@ -375,6 +376,15 @@ h2.date-header {
   text-transform:uppercase;
   letter-spacing:.1em;
   text-align: center;
+}
+/* --- customisations for ParameterZ --- */
+/* --- definition list links ---*/
+dt a:link, dt a:hover, dt a:visited {
+font-size:120%;
+color: blue;
+}
+dt a:hover {
+text-decoration:underline;
 }
 /* --- hide the 'no posts' message --- */
 .status-msg-wrap {
