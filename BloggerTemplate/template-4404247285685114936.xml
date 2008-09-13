@@ -575,18 +575,12 @@ display:none;
 
     <div class='post-footer'>
     <div class='post-footer-line post-footer-line-1'>
-      <span class='post-author vcard'>
-        <b:if cond='data:top.showAuthor'>
-          <data:top.authorLabel/>
-          <span class='fn'><data:post.author/></span>
-        </b:if>
-      </span>
 
       <span class='post-timestamp'>
         <b:if cond='data:top.showTimestamp'>
           <data:top.timestampLabel/>
         <b:if cond='data:post.url'>
-          <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'><abbr class='published' expr:title='data:post.timestampISO8601'><data:post.timestamp/></abbr></a>
+          <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'><abbr class='published' expr:title='data:post.timestampISO8601'>Permanent Link</abbr></a>
         </b:if>
         </b:if>
       </span>
