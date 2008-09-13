@@ -392,8 +392,8 @@ padding-top: 5px;
 padding-bottom: 5px;
 }
 dt a:hover {
-text-decoration: none;
-color: red;
+text-decoration: underline;
+color: #fff;
 background-color:silver;
 }
 /* --- hide the 'no posts' message --- */
