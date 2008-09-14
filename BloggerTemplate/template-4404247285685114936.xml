@@ -379,6 +379,11 @@ h2.date-header {
   text-align: center;
 }
 /* --- customisations for ParameterZ --- */
+/* --- MENU --- */
+#HTML1 ul li a
+{
+display: block;
+}
 /* --- intro page definition list links ---*/
 .intro h1
 {
