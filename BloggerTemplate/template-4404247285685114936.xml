@@ -412,6 +412,18 @@ text-align: center;
 padding-top: 2em;
 padding-bottom: 2em;
 }
+/* --- imported comments styles --- */
+.NormalComment {
+margin-top: 1em;
+margin-left: 0.5em;
+padding: 5px;
+border-left:solid thin gray;
+}
+.AuthorComment {
+margin-top: 1em;
+padding: 5px;
+border-left:solid thin blue;
+}
 ]]></b:skin>
   </head>
 
