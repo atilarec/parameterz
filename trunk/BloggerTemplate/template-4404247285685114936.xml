@@ -379,20 +379,26 @@ h2.date-header {
   text-align: center;
 }
 /* --- customisations for ParameterZ --- */
-/* --- definition list links ---*/
-
-dd {
+/* --- intro page definition list links ---*/
+.intro h1
+{
+font-size: 150%;
+}
+.intro dd {
 margin-top: -.5em;
 }
-dt a:link, dt a:hover, dt a:visited {
+.intro dt a, intro dt a:link, intro.dt a:visited
+{
 font-size:120%;
 color: blue;
+text-decoration: none;
 display: block;
 padding-left: 5px;
 padding-top: 5px;
 padding-bottom: 5px;
 }
-dt a:hover {
+.intro dt a:hover
+{
 text-decoration: underline;
 color: #fff;
 background-color:silver;
