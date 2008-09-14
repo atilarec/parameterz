@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+    <ModulePrefs title="Cardiac Valve Z-Scores"
+    title_url="http://fortuitousconcatenation.blogspot.com"
+    description="Calculates z-scores of the mitral, tricuspid, aortic, and pulmonary valves"
+    height="600"
+    width="500"
+    author="Dan Dyar"
+    author_email="dan.dyar@gmail.com"/>
+    <Content type="html">
+        <![CDATA[
+<style type="text/css">
+.myGadget
+{
+margin: 1em 0.5em;
+}
+table
+{
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 13px;
+border-collapse: collapse;
+}
+input
+{
+width:8em;
+}
+.label
+{
+text-align: right;
+padding-right:0.2em;
+}
+.button
+{
+width: 98%;
+}
+td.borderline
+{
+background-color: #FFBE5C;
+text-align: center;
+}
+td.mild
+{
+background-color: #FFA929;
+text-align: center;
+}
+td.moderate
+{
+background-color: #FF4D4D;
+text-align: center;
+}
+td.severe
+{
+background-color: #FF3333;
+font-weight: bold;
+text-align: center;
+}
+td.normal
+{
+background-color: #B8D3FF;
+text-align: center;
+}
+tr:hover
+{
+background-color: #F2F2F2;
+}
+</style>
+<script language="javascript" type="text/javascript">
+var Intercept = new Array(1.084, 1.823, 1.943, 2.795, 0.6367, 0.6067, 0.1396, 0.2024, 0.9445, 0.9651, 1.893, 3.141, 0.5183, 0.7224, 0.5417);
+var Slope = new Array(0.4945, 0.4962, 0.6185, 0.9566, 0.5028, 0.4941, 0.5495, 0.6039, 0.5022, 0.4658, 0.4936, 1.020, 0.5347, 0.5082, 0.5490);
+var MSE = new Array(0.08121, 0.1086, 0.1009, 0.1753, 0.1143, 0.1430, 0.1294, 0.1446, 0.09403, 0.09167, 0.09847, 0.1806, 0.06726, 0.07284, 0.08656);
+var BSA = 0
+
+function thinkAboutIt() {
+//runs this check first before calculating everything
+var wt = document.getElementById("txtWT").value;
+if (isNaN(wt) || wt == "") {
+return;
+}
+else Calculate();
+}// end thinkAboutIt function
+
+function Calculate() {
+// get the ht and weight
+    var ht=parseFloat(document.getElementById("txtHT").value);
+var wt=parseFloat(document.getElementById("txtWT").value);
+// calculate the BSA
+var BSAMethod=document.getElementById("cmbBSA").value;
+BSA = CalcBSA(ht,wt,BSAMethod);
+// write the BSA
+document.getElementById("BSA").innerHTML=BSA.toFixed(2)+" m<sup>2</sup>";
+
+//only run it further if BSA exists i.e., dinking with ht and wt...
+if (isNaN(BSA)) return;
+//iterate through the measurements:
+if (!isNaN(document.getElementById("txtTV").value) && document.getElementById("txtTV").value!="") {
+    Doit2TheZ("TV", 0, BSA, parseFloat(document.getElementById("txtTV").value))
+    }
+if (!isNaN(document.getElementById("txtRVin").value) && document.getElementById("txtRVin").value!="") {
+    Doit2TheZ("RVin", 1, BSA, parseFloat(document.getElementById("txtRVin").value))
+    }
+if (!isNaN(document.getElementById("txtRVout").value) && document.getElementById("txtRVout").value!="") {
+    Doit2TheZ("RVout", 2, BSA, parseFloat(document.getElementById("txtRVout").value))
+    }
+if (!isNaN(document.getElementById("txtRVarea").value) && document.getElementById("txtRVarea").value!="") {
+    Doit2TheZ("RVarea", 3, BSA, parseFloat(document.getElementById("txtRVarea").value))
+    }
+if (!isNaN(document.getElementById("txtPV").value) && document.getElementById("txtPV").value!="") {
+    Doit2TheZ("PV", 4, BSA, parseFloat(document.getElementById("txtPV").value))
+    }
+if (!isNaN(document.getElementById("txtMPA").value) && document.getElementById("txtMPA").value!="") {
+    Doit2TheZ("MPA", 5, BSA, parseFloat(document.getElementById("txtMPA").value))
+    }
+if (!isNaN(document.getElementById("txtRPA").value) && document.getElementById("txtRPA").value!="") {
+    Doit2TheZ("RPA", 6, BSA, parseFloat(document.getElementById("txtRPA").value))
+    }
+if (!isNaN(document.getElementById("txtLPA").value) && document.getElementById("txtLPA").value!="") {
+    Doit2TheZ("LPA", 7, BSA, parseFloat(document.getElementById("txtLPA").value))
+    }
+if (!isNaN(document.getElementById("txtMVAP").value) && document.getElementById("txtMVAP").value!="") {
+    Doit2TheZ("MVAP", 8, BSA, parseFloat(document.getElementById("txtMVAP").value))
+    }
+if (!isNaN(document.getElementById("txtMVLat").value) && document.getElementById("txtMVLat").value!="") {
+    Doit2TheZ("MVLat", 9, BSA, parseFloat(document.getElementById("txtMVLat").value))
+    }
+if (!isNaN(document.getElementById("txtLVin").value) && document.getElementById("txtLVin").value!="") {
+    Doit2TheZ("LVin", 10, BSA, parseFloat(document.getElementById("txtLVin").value))
+    }
+if (!isNaN(document.getElementById("txtLVarea").value) && document.getElementById("txtLVarea").value!="") {
+    Doit2TheZ("LVarea", 11, BSA, parseFloat(document.getElementById("txtLVarea").value))
+    }
+if (!isNaN(document.getElementById("txtAOV").value) && document.getElementById("txtAOV").value!="") {
+    Doit2TheZ("AOV", 12, BSA, parseFloat(document.getElementById("txtAOV").value))
+    }
+if (!isNaN(document.getElementById("txtSinuses").value) && document.getElementById("txtSinuses").value!=""){
+    Doit2TheZ("Sinuses", 13, BSA, parseFloat(document.getElementById("txtSinuses").value))
+    }
+if (!isNaN(document.getElementById("txtSTJ").value) && document.getElementById("txtSTJ").value!=""){
+    Doit2TheZ("STJ", 14, BSA, parseFloat(document.getElementById("txtSTJ").value))
+    }
+  
+}// end main function
+
+function CalcBSA(ht,wt,BSAMethod){
+switch(BSAMethod)
+{
+case "DuBois":
+return 0.007184 * Math.pow(ht,0.725) * Math.pow(wt,0.425);
+case "Haycock":
+return 0.024265 * Math.pow(ht,0.3964) * Math.pow(wt,0.5378);
+case "Gehan":
+return 0.0235 * Math.pow(ht, 0.42246) * Math.pow(wt, 0.51456);
+case "Mosteller":
+return Math.sqrt((ht * wt) / 3600);
+case "Boyd":
+wt = wt * 1000
+var exponent = 0.7285 - 0.0188 * (Math.LOG10E*Math.log(wt))//necessary to get the Log base 10 of (wt)
+return 0.0003207 * Math.pow(ht, 0.3) * Math.pow(wt, exponent)
+case "Dreyer":
+return 0.1*Math.pow(wt,(2/3));
+}//end switch
+
+}// end BSA function
+
+
+function Doit2TheZ(site,index,BSA,score){
+var strMean = site+"Mean";
+var strRange = site+"Range";
+var strZ = site+"Z";
+var mean;
+var stdDev;
+var lower;
+var upper;
+var zScore;
+
+//doit2 the mean
+BSA = Math.log(BSA);
+mean = Slope[index] * BSA + Intercept[index];
+document.getElementById([strMean]).innerHTML = Math.exp(mean).toFixed(2);
+//doit2 the SD/Range
+stdDev = MSE[index];
+lower = Math.exp(mean - 1.65 * stdDev); 
+upper = Math.exp(mean + 1.65 * stdDev);
+document.getElementById([strRange]).innerHTML = lower.toFixed(2) + " - " + upper.toFixed(2);
+//doit2 the ZScore
+score = Math.log(score);
+zScore = (score-mean)/stdDev; 
+document.getElementById([strZ]).innerHTML = zScore.toFixed(2);
+document.getElementById([strZ]).className = [ZscoreFlag(zScore)];
+
+}//end doit2it function
+
+function ZscoreFlag(zScore){
+    if (zScore >= 1.65 && zScore < 1.96 || zScore > -1.96 && zScore <= -1.67) {
+    return "borderline";
+    }
+    else if (zScore >= 1.96 && zScore < 3 || zScore > -3 && zScore <= -1.96) {
+    return "mild";
+    }
+    else if (zScore >= 3 && zScore < 4 || zScore > -4 && zScore <= -3) {
+    return "moderate";
+    }
+    else if (zScore >= 4 || zScore <= -4) {
+    return "severe";
+    }
+    return "normal";
+}//end zscore flag function
+</script>
+<div class="myGadget">
+<table class="zTable" summary="cardiac structures z-score calculator">
+<tr>
+<td class="label"><label for="txtHT">Height (cm):</label></td>
+
+<td><input id="txtHT" type="text" onchange="thinkAboutIt()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtWT">Weight (kg):</label></td>
+
+<td><input id="txtWT" type="text" onchange="Calculate()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="cmbBSA">BSA formula:</label></td>
+
+<td><select id="cmbBSA" onchange="Calculate()">
+<option value="Boyd" selected="selected">
+Boyd
+</option>
+
+<option value="DuBois">
+DuBois
+</option>
+
+<option value="Gehan">
+Gehan &amp; George
+</option>
+
+<option value="Haycock">
+Haycock
+</option>
+
+<option value="Mosteller">
+Mosteller
+</option>
+
+<option value="Dreyer">
+Weight ONLY
+</option>
+</select></td>
+
+<td id="BSA" colspan="3"></td>
+</tr>
+
+<tr>
+<td id="info" colspan="2">&nbsp;</td>
+</tr>
+
+<tr>
+<th>Location</th>
+
+<th>Measured</th>
+
+<th>Mean</th>
+
+<th>Range</th>
+
+<th>Z-Score</th>
+</tr>
+
+<tr>
+<td class="label"><label for="txtTV">Tricuspid Valve (cm):</label></td>
+
+<td><input id="txtTV" type="text" onchange="Calculate()" /></td>
+
+<td id="TVMean" class="results"></td>
+
+<td id="TVRange" class="results"></td>
+
+<td id="TVZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRVin">RV Inflow (cm):</label></td>
+
+<td><input id="txtRVin" type="text" onchange="Calculate()" /></td>
+
+<td id="RVinMean" class="results"></td>
+
+<td id="RVinRange" class="results"></td>
+
+<td id="RVinZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRVout">RV Outflow (cm):</label></td>
+
+<td><input id="txtRVout" type="text" onchange="Calculate()" /></td>
+
+<td id="RVoutMean" class="results"></td>
+
+<td id="RVoutRange" class="results"></td>
+
+<td id="RVoutZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRVarea">RV Area (cm<sup>2</sup>):</label></td>
+
+<td><input id="txtRVarea" type="text" onchange="Calculate()" /></td>
+
+<td id="RVareaMean" class="results"></td>
+
+<td id="RVareaRange" class="results"></td>
+
+<td id="RVareaZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtPV">Pulmonary Valve (cm):</label></td>
+
+<td><input id="txtPV" type="text" onchange="Calculate()" /></td>
+
+<td id="PVMean" class="results"></td>
+
+<td id="PVRange" class="results"></td>
+
+<td id="PVZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtMPA">MPA (cm):</label></td>
+
+<td><input id="txtMPA" type="text" onchange="Calculate()" /></td>
+
+<td id="MPAMean" class="results">&nbsp;</td>
+
+<td id="MPARange" class="results">&nbsp;</td>
+
+<td id="MPAZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRPA">RPA (cm):</label></td>
+
+<td><input id="txtRPA" type="text" onchange="Calculate()" /></td>
+
+<td id="RPAMean" class="results">&nbsp;</td>
+
+<td id="RPARange" class="results">&nbsp;</td>
+
+<td id="RPAZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLPA">LPA (cm):</label></td>
+
+<td><input id="txtLPA" type="text" onchange="Calculate()" /></td>
+
+<td id="LPAMean" class="results">&nbsp;</td>
+
+<td id="LPARange" class="results">&nbsp;</td>
+
+<td id="LPAZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtMVAP">Mitral Valve (A-P) (cm):</label></td>
+
+<td><input id="txtMVAP" type="text" onchange="Calculate()" /></td>
+
+<td id="MVAPMean" class="results"></td>
+
+<td id="MVAPRange" class="results"></td>
+
+<td id="MVAPZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtMVLat">Mitral Valve (Lat) (cm):</label></td>
+
+<td><input id="txtMVLat" type="text" onchange="Calculate()" /></td>
+
+<td id="MVLatMean" class="results"></td>
+
+<td id="MVLatRange" class="results"></td>
+
+<td id="MVLatZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLVin">LV Inflow (cm):</label></td>
+
+<td><input id="txtLVin" type="text" onchange="Calculate()" /></td>
+
+<td id="LVinMean" class="results"></td>
+
+<td id="LVinRange" class="results"></td>
+
+<td id="LVinZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLVarea">LV Area (cm<sup>2</sup>):</label></td>
+
+<td><input id="txtLVarea" type="text" onchange="Calculate()" /></td>
+
+<td id="LVareaMean" class="results"></td>
+
+<td id="LVareaRange" class="results"></td>
+
+<td id="LVareaZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtAOV">Aortic Valve (cm):</label></td>
+
+<td><input id="txtAOV" type="text" onchange="Calculate()" /></td>
+
+<td id="AOVMean" class="results"></td>
+
+<td id="AOVRange" class="results"></td>
+
+<td id="AOVZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtSinuses">Sinuses (cm):</label></td>
+
+<td><input id="txtSinuses" type="text" onchange="Calculate()" /></td>
+
+<td id="SinusesMean" class="results">&nbsp;</td>
+
+<td id="SinusesRange" class="results">&nbsp;</td>
+
+<td id="SinusesZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtSTJ">ST Junction (cm):</label></td>
+
+<td><input id="txtSTJ" type="text" onchange="Calculate()" /></td>
+
+<td id="STJMean" class="results">&nbsp;</td>
+
+<td id="STJRange" class="results">&nbsp;</td>
+
+<td id="STJZ" class="results">&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td><input id="Button1" class="button" type="button" value="Update" onclick=
+"Calculate()" /></td>
+</tr>
+</table>
+</div>
+
+]]>
+    </Content>
+</Module>
+
+
