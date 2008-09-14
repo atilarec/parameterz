@@ -385,6 +385,10 @@ h2.date-header {
 display: block;
 }
 /* --- intro page definition list links ---*/
+.disclaimer
+{
+font-style: italic
+}
 .intro h1
 {
 font-size: 150%;
