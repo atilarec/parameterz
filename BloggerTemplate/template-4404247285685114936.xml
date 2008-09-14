@@ -5,7 +5,8 @@
     <b:include data='blog' name='all-head-content'/>
     <title><data:blog.pageTitle/></title>
     <b:skin>
-    <![CDATA[/*
+    <![CDATA[
+    /*
 -----------------------------------------------
 Blogger Template Style
 Name:     Minima
@@ -380,8 +381,8 @@ h2.date-header {
 /* --- customisations for ParameterZ --- */
 /* --- definition list links ---*/
 
-dd, dt {
-margin-top: -1em;
+dd {
+margin-top: -.5em;
 }
 dt a:link, dt a:hover, dt a:visited {
 font-size:120%;
@@ -404,6 +405,13 @@ display:none !important;
 a.ig_lgbluelink {
 display:none;
 }
+div.adverts {
+margin-right: auto;
+margin-left: auto;
+text-align: center;
+padding-top: 2em;
+padding-bottom: 2em;
+}
 ]]></b:skin>
   </head>
 
@@ -418,7 +426,7 @@ display:none;
 
     <div id='header-wrapper'>
       <b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
-<b:widget id='Header1' locked='true' title='ParameterZ (Header)' type='Header'>
+<b:widget id='Header1' locked='true' title='Parameter: Z (Header)' type='Header'>
 <b:includable id='main'>
 
   <b:if cond='data:useImage'>
@@ -500,50 +508,6 @@ display:none;
 </b:includable>
 </b:widget>
 <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
-<b:includable id='main' var='top'>
-  <!-- posts -->
-  <div class='blog-posts hfeed'>
-
-    <b:include data='top' name='status-message'/>
-
-    <data:adStart/>
-    <b:loop values='data:posts' var='post'>
-      <b:if cond='data:post.dateHeader'>
-        <h2 class='date-header'><data:post.dateHeader/></h2>
-      </b:if>
-      <b:include data='post' name='post'/>
-      <b:if cond='data:blog.pageType == &quot;item&quot;'>
-        <b:include data='post' name='comments'/>
-      </b:if>
-      <b:if cond='data:post.includeAd'>
-        <data:adEnd/>
-        <data:adCode/>
-        <data:adStart/>
-      </b:if>
-    </b:loop>
-    <data:adEnd/>
-  </div>
-
-  <!-- navigation -->
-  <b:include name='nextprev'/>
-
-  <!-- feed links -->
-  <b:include name='feedLinks'/>
-  
-  <b:if cond='data:top.showStars'>
-    <script src='http://www.google.com/jsapi' type='text/javascript'/>
-    <script type='text/javascript'>
-      google.load(&quot;annotations&quot;, &quot;1&quot;, {&quot;locale&quot;: &quot;<data:top.languageCode/>&quot;});
-      function initialize() {
-        google.annotations.setApplicationId(<data:top.blogspotReviews/>);
-        google.annotations.createAll();
-        google.annotations.fetch();
-      }
-      google.setOnLoadCallback(initialize);
-    </script>
-  </b:if>
-
-</b:includable>
 <b:includable id='nextprev'>
   <div class='blog-pager' id='blog-pager'>
     <b:if cond='data:blog.homepageUrl != data:blog.url'>
@@ -556,6 +520,32 @@ display:none;
 
   </div>
   <div class='clear'/>
+</b:includable>
+<b:includable id='backlinks' var='post'>
+  <a name='links'/><h4><data:post.backlinksLabel/></h4>
+  <b:if cond='data:post.numBacklinks != 0'>
+    <dl class='comments-block' id='comments-block'>
+      <b:loop values='data:post.backlinks' var='backlink'>
+        <div class='collapsed-backlink backlink-control'>
+          <dt class='comment-title'>
+            <span class='backlink-toggle-zippy'>&#160;</span>
+            <a expr:href='data:backlink.url' rel='nofollow'><data:backlink.title/></a>
+            <b:include data='backlink' name='backlinkDeleteIcon'/>
+          </dt>
+          <dd class='comment-body collapseable'>
+            <data:backlink.snippet/>
+          </dd>
+          <dd class='comment-footer collapseable'>
+            <span class='comment-author'><data:post.authorLabel/> <data:backlink.author/></span>
+            <span class='comment-timestamp'><data:post.timestampLabel/> <data:backlink.timestamp/></span>
+          </dd>
+        </div>
+      </b:loop>
+    </dl>
+  </b:if>
+  <p class='comment-footer'>
+    <a class='comment-link' expr:href='data:post.createLinkUrl' expr:id='data:widget.instanceId + &quot;_backlinks-create-link&quot;' target='_blank'><data:post.createLinkLabel/></a>
+  </p>
 </b:includable>
 <b:includable id='post' var='post'>
   <div class='post hentry uncustomized-post-template'>
@@ -654,6 +644,73 @@ display:none;
     </div>
   </div>
 </b:includable>
+<b:includable id='commentDeleteIcon' var='comment'>
+  <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+    <a expr:href='data:comment.deleteUrl' expr:title='data:top.deleteCommentMsg'>
+      <img src='http://www.blogger.com/img/icon_delete13.gif'/>
+    </a>
+  </span>
+</b:includable>
+<b:includable id='feedLinks'>
+  <b:if cond='data:blog.pageType != &quot;item&quot;'> <!-- Blog feed links -->
+    <b:if cond='data:feedLinks'>
+      <div class='blog-feeds'>
+        <b:include data='feedLinks' name='feedLinksBody'/>
+      </div>
+    </b:if>
+
+    <b:else/> <!--Post feed links -->
+    <div class='post-feeds'>
+      <b:loop values='data:posts' var='post'>
+        <b:if cond='data:post.allowComments'>
+          <b:if cond='data:post.feedLinks'>
+            <b:include data='post.feedLinks' name='feedLinksBody'/>
+          </b:if>
+        </b:if>
+      </b:loop>
+    </div>
+  </b:if>
+</b:includable>
+<b:includable id='status-message'>
+  <b:if cond='data:navMessage'>
+  <div class='status-msg-wrap'>
+    <div class='status-msg-body'>
+      <data:navMessage/>
+    </div>
+    <div class='status-msg-border'>
+      <div class='status-msg-bg'>
+        <div class='status-msg-hidden'><data:navMessage/></div>
+      </div>
+    </div>
+  </div>
+  <div style='clear: both;'/>
+  </b:if>
+</b:includable>
+<b:includable id='comment-form' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <h4 id='comment-post-message'><data:postCommentMsg/></h4>
+    <p><data:blogCommentMessage/></p>
+    <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' style='display: none'/>
+    <iframe allowtransparency='true' class='blogger-iframe-colorize' frameborder='0' height='275' id='comment-editor' scrolling='auto' src='' width='100%'/>
+    <data:post.iframeColorizer/>
+  </div>
+</b:includable>
+<b:includable id='backlinkDeleteIcon' var='backlink'>
+  <span expr:class='&quot;item-control &quot; + data:backlink.adminClass'>
+    <a expr:href='data:backlink.deleteUrl' expr:title='data:top.deleteBacklinkMsg'>
+      <img src='http://www.blogger.com/img/icon_delete13.gif'/>
+    </a>
+  </span>
+</b:includable>
+<b:includable id='feedLinksBody' var='links'>
+  <div class='feed-links'>
+  <data:feedLinksMsg/>
+  <b:loop values='data:links' var='f'>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+  </b:loop>
+  </div>
+</b:includable>
 <b:includable id='postQuickEdit' var='post'>
   <b:if cond='data:post.editUrl'>
     <span expr:class='&quot;item-control &quot; + data:post.adminClass'>
@@ -662,20 +719,6 @@ display:none;
       </a>
     </span>
   </b:if>
-</b:includable>
-<b:includable id='commentDeleteIcon' var='comment'>
-  <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
-    <a expr:href='data:comment.deleteUrl' expr:title='data:top.deleteCommentMsg'>
-      <img src='http://www.blogger.com/img/icon_delete13.gif'/>
-    </a>
-  </span>
-</b:includable>
-<b:includable id='backlinkDeleteIcon' var='backlink'>
-  <span expr:class='&quot;item-control &quot; + data:backlink.adminClass'>
-    <a expr:href='data:backlink.deleteUrl' expr:title='data:top.deleteBacklinkMsg'>
-      <img src='http://www.blogger.com/img/icon_delete13.gif'/>
-    </a>
-  </span>
 </b:includable>
 <b:includable id='comments' var='post'>
   <div class='comments' id='comments'>
@@ -774,84 +817,49 @@ display:none;
     </div>
   </div>
 </b:includable>
-<b:includable id='comment-form' var='post'>
-  <div class='comment-form'>
-    <a name='comment-form'/>
-    <h4 id='comment-post-message'><data:postCommentMsg/></h4>
-    <p><data:blogCommentMessage/></p>
-    <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src' style='display: none'/>
-    <iframe allowtransparency='true' class='blogger-iframe-colorize' frameborder='0' height='275' id='comment-editor' scrolling='auto' src='' width='100%'/>
-    <data:post.iframeColorizer/>
-  </div>
-</b:includable>
-<b:includable id='backlinks' var='post'>
-  <a name='links'/><h4><data:post.backlinksLabel/></h4>
-  <b:if cond='data:post.numBacklinks != 0'>
-    <dl class='comments-block' id='comments-block'>
-      <b:loop values='data:post.backlinks' var='backlink'>
-        <div class='collapsed-backlink backlink-control'>
-          <dt class='comment-title'>
-            <span class='backlink-toggle-zippy'>&#160;</span>
-            <a expr:href='data:backlink.url' rel='nofollow'><data:backlink.title/></a>
-            <b:include data='backlink' name='backlinkDeleteIcon'/>
-          </dt>
-          <dd class='comment-body collapseable'>
-            <data:backlink.snippet/>
-          </dd>
-          <dd class='comment-footer collapseable'>
-            <span class='comment-author'><data:post.authorLabel/> <data:backlink.author/></span>
-            <span class='comment-timestamp'><data:post.timestampLabel/> <data:backlink.timestamp/></span>
-          </dd>
-        </div>
-      </b:loop>
-    </dl>
-  </b:if>
-  <p class='comment-footer'>
-    <a class='comment-link' expr:href='data:post.createLinkUrl' expr:id='data:widget.instanceId + &quot;_backlinks-create-link&quot;' target='_blank'><data:post.createLinkLabel/></a>
-  </p>
-</b:includable>
-<b:includable id='feedLinks'>
-  <b:if cond='data:blog.pageType != &quot;item&quot;'> <!-- Blog feed links -->
-    <b:if cond='data:feedLinks'>
-      <div class='blog-feeds'>
-        <b:include data='feedLinks' name='feedLinksBody'/>
-      </div>
-    </b:if>
+<b:includable id='main' var='top'>
+  <!-- posts -->
+  <div class='blog-posts hfeed'>
 
-    <b:else/> <!--Post feed links -->
-    <div class='post-feeds'>
-      <b:loop values='data:posts' var='post'>
-        <b:if cond='data:post.allowComments'>
-          <b:if cond='data:post.feedLinks'>
-            <b:include data='post.feedLinks' name='feedLinksBody'/>
-          </b:if>
-        </b:if>
-      </b:loop>
-    </div>
-  </b:if>
-</b:includable>
-<b:includable id='feedLinksBody' var='links'>
-  <div class='feed-links'>
-  <data:feedLinksMsg/>
-  <b:loop values='data:links' var='f'>
-     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
-  </b:loop>
+    <b:include data='top' name='status-message'/>
+
+    <data:adStart/>
+    <b:loop values='data:posts' var='post'>
+      <b:if cond='data:post.dateHeader'>
+        <h2 class='date-header'><data:post.dateHeader/></h2>
+      </b:if>
+      <b:include data='post' name='post'/>
+      <b:if cond='data:blog.pageType == &quot;item&quot;'>
+        <b:include data='post' name='comments'/>
+      </b:if>
+      <b:if cond='data:post.includeAd'>
+        <data:adEnd/>
+        <data:adCode/>
+        <data:adStart/>
+      </b:if>
+    </b:loop>
+    <data:adEnd/>
   </div>
-</b:includable>
-<b:includable id='status-message'>
-  <b:if cond='data:navMessage'>
-  <div class='status-msg-wrap'>
-    <div class='status-msg-body'>
-      <data:navMessage/>
-    </div>
-    <div class='status-msg-border'>
-      <div class='status-msg-bg'>
-        <div class='status-msg-hidden'><data:navMessage/></div>
-      </div>
-    </div>
-  </div>
-  <div style='clear: both;'/>
+
+  <!-- navigation -->
+  <b:include name='nextprev'/>
+
+  <!-- feed links -->
+  <b:include name='feedLinks'/>
+  
+  <b:if cond='data:top.showStars'>
+    <script src='http://www.google.com/jsapi' type='text/javascript'/>
+    <script type='text/javascript'>
+      google.load(&quot;annotations&quot;, &quot;1&quot;, {&quot;locale&quot;: &quot;<data:top.languageCode/>&quot;});
+      function initialize() {
+        google.annotations.setApplicationId(<data:top.blogspotReviews/>);
+        google.annotations.createAll();
+        google.annotations.fetch();
+      }
+      google.setOnLoadCallback(initialize);
+    </script>
   </b:if>
+
 </b:includable>
 </b:widget>
 </b:section>
@@ -860,6 +868,19 @@ display:none;
       <div id='sidebar-wrapper'>
         <b:section class='sidebar' id='sidebar' preferred='yes'>
 <b:widget id='HTML1' locked='false' title='Menu' type='HTML'>
+<b:includable id='main'>
+  <!-- only display title if it's non-empty -->
+  <b:if cond='data:title != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+
+  <b:include name='quickedit'/>
+</b:includable>
+</b:widget>
+<b:widget id='HTML2' locked='false' title='' type='HTML'>
 <b:includable id='main'>
   <!-- only display title if it's non-empty -->
   <b:if cond='data:title != &quot;&quot;'>
