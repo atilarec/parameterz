@@ -384,6 +384,10 @@ h2.date-header {
 {
 display: block;
 }
+#HTML1 ul li a:hover
+{
+background-color: #F2F2F2;
+}
 /* --- intro page definition list links ---*/
 .disclaimer
 {
@@ -399,7 +403,6 @@ margin-top: -.5em;
 .intro dt a, intro dt a:link, intro.dt a:visited
 {
 font-size:120%;
-color: blue;
 text-decoration: none;
 display: block;
 padding-left: 5px;
@@ -409,8 +412,7 @@ padding-bottom: 5px;
 .intro dt a:hover
 {
 text-decoration: underline;
-color: #fff;
-background-color:silver;
+background-color: #F2F2F2;
 }
 /* --- hide the 'no posts' message --- */
 .status-msg-wrap {
