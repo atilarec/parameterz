@@ -64,9 +64,12 @@ tr:hover
 {
 background-color: #F2F2F2;
 }
+td.results
+{
+text-align: center;
+}
 </style>
 <script type="text/javascript" language="javascript">
-
 function calculateLVM(form) {
 //set up variables/arrays data from published table
 var lambdaArray = new Array(0.261254,0.258986,0.254448,0.249902,0.245348,0.240786,0.236218,0.231648,0.227075,0.222501,0.217927,0.213354,0.208779,0.204195,0.199591,0.194952,0.190264,0.185513,0.180684,0.175771,0.170774,0.165698,0.160549,0.155323,0.150019,0.144644,0.139212,0.133727,0.128199,0.122631,0.117026,0.111387,0.105722,0.100036,0.0943,0.0886,0.0829,0.0772,0.0714,0.0656,0.0599,0.0541,0.0483,0.0425,0.0366,0.030784,0.0249,0.019077,0.0132,0.00732,0.00141,-0.00451,-0.0104,-0.01641,-0.0224,-0.0284,-0.0345,-0.0405,-0.0467,-0.0529,-0.0591,-0.0654,-0.0718,-0.0783,-0.08483,-0.09147,-0.09822,-0.10506,-0.11203,-0.11911,-0.12633,-0.13368,-0.14116,-0.14879,-0.15657,-0.16451,-0.17259,-0.18083,-0.18923,-0.19779,-0.20651,-0.21539,-0.22443,-0.23364,-0.24303,-0.25259,-0.26233,-0.27224,-0.28234,-0.29261,-0.30306,-0.31368,-0.32447,-0.33544,-0.34658,-0.35787,-0.36933,-0.38093,-0.39268,-0.40457,-0.41661,-0.42877,-0.44107,-0.4535,-0.46605,-0.47872,-0.49152,-0.50444,-0.51747,-0.53062,-0.54389,-0.55726,-0.57074,-0.58432,-0.59798,-0.61173,-0.62556,-0.63945,-0.6534,-0.66741,-0.68147,-0.69558,-0.70973,-0.72392,-0.73814,-0.7524,-0.76667,-0.78097,-0.79529,-0.80962,-0.82396,-0.83831,-0.85266,-0.86703,-0.8814,-0.89578,-0.91016,-0.92455,-0.93894,-0.95334,-0.96774,-0.98215,-0.99655,-1.01096,-1.02536);
@@ -76,29 +79,39 @@ var ht = parseFloat(form.height.value);
 var lvmass = parseFloat(form.LVMass.value);
 //make sure the height is within range
 if (ht<47||ht>191||isNaN(ht)) {
-document.getElementById("info").innerHTML="Height out of range!<br/>Height must be between 47.5 and 191 cm"
+    document.getElementById("info").innerHTML="Height out of range!<br/>Height must be between 47 and 191 cm";
 }
 //make sure there is something in the LVMass input
 else if (isNaN(lvmass)){
-document.getElementById("info").innerHTML="LV Mass is not a number..."
-}
+    document.getElementById("info").innerHTML="LV Mass is not a number...";
+} 
 
 else {
-//find the index ht
-var index=gimmieIndex(Math.round(ht));
-//lookup the L,M,S values from the array, using the index
-var lambda=lambdaArray[index];
-var mu=muArray[index];
-var sigma=sigmaArray[index];
-//plug'em in to the formula
-var zscore = (Math.pow((lvmass/mu),lambda)-1)/(lambda*sigma);
-//write the results
-document.getElementById("zscore").innerHTML=zscore.toFixed(2);
-document.getElementById("zscore").className=[ZscoreFlag(zscore)];
-//document.getElementById("info").innerHTML=ht+"("+index+"), "+lambda+", "+mu+", "+sigma;
+    //find the index ht
+    var index=gimmieIndex(Math.round(ht));
+    //lookup the L,M,S values from the array, using the index
+    var lambda=lambdaArray[index];
+    var mu=muArray[index];
+    var sigma=sigmaArray[index];
+    //plug'em in to the formula
+    var zscore = (Math.pow((lvmass/mu),lambda)-1)/(lambda*sigma);
+    //write the results
+    document.getElementById("zscore").innerHTML=zscore.toFixed(2);
+    document.getElementById("zscore").className=[ZscoreFlag(zscore)];
+    var lower = -1.65; //z-score for the 5th percentile
+    lower = lower*lambda*sigma;
+    lower = lower +1;
+    lower = Math.pow(lower,(1/lambda))*mu;
+    var upper = 1.65; //z-score for the 95th percentile
+    upper = upper*lambda*sigma;
+    upper = upper+1;
+    upper = Math.pow(upper,(1/lambda))*mu;
+    document.getElementById("range").innerHTML=lower.toFixed(2) + " - " + upper.toFixed(2);
+    document.getElementById("mean").innerHTML = mu.toFixed(2);
+    //document.getElementById("info").innerHTML="<br/>"+Math.round(ht)+"("+index+"), "+lambda+", "+mu+", "+sigma;
 }
 
-};//end calculateLVM function
+}//end calculateLVM function
 
 function gimmieIndex(ht){
 //this finds the matching height in the array, and passes it back to the referring fx
@@ -106,33 +119,34 @@ function gimmieIndex(ht){
 //I rounded DOWN the published first value of "47.5"- to "47"... this was
 //the only decimal fraction in the array; by rounding it down ALL the array values are integers
 //rounding it up would have resulted in conflicting data for the 48cm heights...
-var height = new Array(47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191);
+var height = new Array(47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191); 
 var index = 0;
 for (index=0;index<height.length;index++){
-if (ht == height[index]){
-return index //exact match
-}
-
-
+    if (ht === height[index]){ 
+        return index; //exact match
+    }
+        
+                
 }//end for loop
 
 }//end GimmieIndex function
 function ZscoreFlag(zScore){
-if (zScore >=1.65 && zScore<1.96||zScore>-1.96&&zScore<=-1.67){
-return "borderline";
+if (zScore >= 1.65 && zScore < 1.96 || zScore > -1.96 && zScore <= - 1.65) {
+    return "borderline";
 }
 else if (zScore>=1.96&& zScore<3||zScore>-3&&zScore<=-1.96){
-return "mild";
+    return "mild";
 }
 else if (zScore>=3&& zScore<4||zScore>-4&&zScore<=-3){
-return "moderate";
+    return "moderate";
 }
 else if (zScore>=4||zScore<=-4){
-return "severe";
+    return "severe";
 }
-else return "normal";
-};//end ZscoreFlag function
-
+else {
+    return "normal";
+}
+}//end ZscoreFlag function
 
 </script>
 <div class="myGadget">
@@ -140,32 +154,46 @@ else return "normal";
 
 <table id="ZScores" summary="LV Mass Z-Score Calculator">
 <tr>
-<td class="label">
-<label for="txtHeight">Height (cm): </label></td>
-<td>
-<input id="txtHeight" name="height" type="text" /></td>
+<td><label for="txtHeight" class="label">Height (cm):</label></td>
+
+<td><input id="txtHeight" name="height" type="text" /></td>
 </tr>
+
 <tr>
-<td class="label">
-<label for="txtLVMass">LV Mass (g): </label></td>
-<td>
-<input id="txtLVMass" name="LVMass" type="text" /></td>
+<td><label for="txtLVMass" class="label">LV Mass (g):</label></td>
+
+<td><input id="txtLVMass" name="LVMass" type="text" /></td>
 </tr>
+
 <tr>
-<td>
-&nbsp;</td>
-<td>
-<input id="btnCalcLVM" type="button" value="Update" onclick="calculateLVM(this.form)" /></td>
+<td>&nbsp;</td>
+
+<td><input id="btnCalcLVM" type="button" value="Update" onclick="calculateLVM(this.form)"
+class="button" /></td>
 </tr>
+
 <tr>
-<td class="label">
-Z-Score:</td>
-<td id="zscore">
-&nbsp;</td>
+<td class="label">Mean (g):</td>
+
+<td class="results" id="mean">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label">Range (g):</td>
+
+<td class="results" id="range">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="label">Z-Score:</td>
+
+<td id="zscore">&nbsp;</td>
 </tr>
 </table>
-<div id="info"></div>
 
+<div id="info">
+&nbsp;
+</div>
 </form>
 
 </div>
