@@ -9,7 +9,7 @@ var wt = document.getElementById("txtWT").value;
 if (isNaN(wt) || wt == "") {
 return;
 }
-else Calculate();
+else CalculateZScores();
 }// end thinkAboutIt function
 
 function CalculateZScores()
