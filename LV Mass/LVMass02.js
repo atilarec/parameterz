@@ -36,7 +36,7 @@ else {
     upper = Math.pow(upper,(1/lambda))*mu;
     document.getElementById("range").innerHTML=lower.toFixed(2) + " - " + upper.toFixed(2);
     document.getElementById("mean").innerHTML = mu.toFixed(2);
-    document.getElementById("info").innerHTML="<br/>"+Math.round(ht)+"("+index+"), "+lambda+", "+mu+", "+sigma;
+    document.getElementById("info").innerHTML="";
 }
 
 }//end calculateLVM function
