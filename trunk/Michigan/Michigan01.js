@@ -3,6 +3,14 @@ var Beta1 = new Array(1.85,1.272,1.751,2.859,2.833,1.849,1.907,2.708,2.537,2.643
 var Beta2 = new Array(-1.274,-0.762,-1.177,-2.119,-2.081,-1.188,-1.259,-1.841,-1.707,-1.797,-2.484,-1.627,-1.746,-1.411,-1.808,-1.807,-2.508,-1.954,-1.7,-1.596,-1.597)
 var Beta3 = new Array(0.335,0.208,0.318,0.552,0.538,0.313,0.33,0.452,0.42,0.442,0.712,0.368,0.445,0.371,0.436,0.424,0.66,0.466,0.425,0.387,0.429)
 var MSE = new Array(0.058,0.046,0.034,0.01,0.016,0.037,0.023,0.01,0.012,0.018,0.023,0.027,0.026,0.018,0.023,0.024,0.027,0.028,0.022,0.036,0.02)
+function thinkAboutIt() {
+//runs this check first before calculating everything
+var wt = document.getElementById("txtWT").value;
+if (isNaN(wt) || wt == "") {
+return;
+}
+else Calculate();
+}// end thinkAboutIt function
 
 function CalculateZScores()
 {
@@ -134,16 +142,25 @@ return "normal"
 }//end zscore flag function
 
 function CalcBSA(ht,wt,BSAMethod){
-
-if (BSAMethod=="Haycock")
+switch(BSAMethod)
 {
-return 0.024265 * Math.pow(ht,0.3964) * Math.pow(wt,0.5378);
-}
-else if (BSAMethod=="Dubois")
-{
+case "DuBois":
 return 0.007184 * Math.pow(ht,0.725) * Math.pow(wt,0.425);
-}
-}
+case "Haycock":
+return 0.024265 * Math.pow(ht,0.3964) * Math.pow(wt,0.5378);
+case "Gehan":
+return 0.0235 * Math.pow(ht, 0.42246) * Math.pow(wt, 0.51456);
+case "Mosteller":
+return Math.sqrt((ht * wt) / 3600);
+case "Boyd":
+wt = wt * 1000
+var exponent = 0.7285 - 0.0188 * (Math.LOG10E*Math.log(wt))//necessary to get the Log base 10 of (wt)
+return 0.0003207 * Math.pow(ht, 0.3) * Math.pow(wt, exponent)
+case "Dreyer":
+return 0.1*Math.pow(wt,(2/3));
+}//end switch
+
+}// end BSA function
 //Copyright (c) 2008: Dan Dyar
 
 //Permission is hereby granted, free of charge, to any person obtaining a copy
