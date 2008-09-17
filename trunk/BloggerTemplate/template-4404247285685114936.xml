@@ -440,6 +440,39 @@ td.results
 {
 text-align: center;
 }
+/*--- lookupTable styles ---*/
+.lookupTable td.borderline
+{
+background-color: #FFBE5C;
+text-align: center;
+}
+.lookupTable td.mild
+{
+background-color: #FFA929;
+text-align: center;
+}
+.lookupTable td.moderate
+{
+background-color: #FF4D4D;
+text-align: center;
+}
+.lookupTable td.severe
+{
+background-color: #FF3333;
+text-align: center;
+font-weight: normal;
+}
+.lookupTable td.normal
+{
+    background-color: #009900;
+    text-align: center;
+    font-weight: bold;
+}
+.lookupTable tr:hover
+{
+    color: #FFFFFF;
+    background-color: #666666;
+}
 /* --- MENU --- */
 #HTML1 ul li a
 {
