@@ -223,25 +223,24 @@ function ResetZscoreCSS() {
 </tr>
 
 <tr>
-<td class="label"><label for="mean">Mean (g):</label></td>
+<th>Mean (g)</th>
+<th>Range (g)</th>
+<th>Z-Score</th>
+</tr>
+
+<tr>
 <td><input id="mean" type="text" class="results" readonly="readonly" /></td>
-</tr>
-
-<tr>
-<td class="label"><label for="range">Range (g):</label></td>
 <td><input id="range" type="text" class="results" readonly="readonly" /></td>
-</tr>
-
-<tr>
-<td class="label"><label for="zscore">Z-Score:</label></td>
 <td><input id="zscore" type="text" class="results" readonly="readonly" /></td>
 </tr>
+
 </table>
 
 <div id="info">
 &nbsp;
 </div>
 </form>
+
 
 </div>
 ]]>
