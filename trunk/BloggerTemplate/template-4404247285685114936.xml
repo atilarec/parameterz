@@ -238,7 +238,10 @@ h2.date-header {
   border:1px solid $bordercolor;
   }
 .post blockquote {
-  margin:1em 20px;
+  margin: 1em 0em;
+  padding: 1em;
+  border-left: 5px solid silver;
+  font-style: italic;
   }
 .post blockquote p {
   margin:.75em 0;
