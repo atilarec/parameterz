@@ -69,6 +69,13 @@ body {
   font-size: /**/small;
   text-align: center;
   }
+/* -------------- hide the NAVBAR ! ------------- */
+#navbar-iframe {
+  height: 0px;
+  visibility: hidden;
+  display: none;
+  }
+
 a:link {
   color:$linkcolor;
   text-decoration:none;
