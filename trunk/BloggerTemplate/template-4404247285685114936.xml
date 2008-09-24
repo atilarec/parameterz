@@ -75,6 +75,11 @@ body {
   visibility: hidden;
   display: none;
   }
+/* -------------- hide feed links -------------- */
+
+  div.feed-links {
+  display: none;
+}
 
 a:link {
   color:$linkcolor;
