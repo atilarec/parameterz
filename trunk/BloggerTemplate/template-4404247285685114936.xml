@@ -4,8 +4,8 @@
   <head>
     <b:include data='blog' name='all-head-content'/>
     <title><data:blog.pageTitle/></title>
-    <b:skin>
-    <![CDATA[
+    <b:skin><![CDATA[
+    
     /*
 -----------------------------------------------
 Blogger Template Style
@@ -774,23 +774,7 @@ border-left:solid thin blue;
         </b:if>
       </span>
   
-      <span class='reaction-buttons'>
-        <b:if cond='data:top.showReactions'>
-          <table border='0' cellpadding='0' width='100%'><tr>
-            <td valign='center'><span class='reactions-label'>
-              <data:top.reactionsLabel/></span>
-              &#160;</td>
-            <td><iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' name='reactions' scrolling='no'/></td>
-           </tr></table>
-        </b:if>
-      </span>
-
-      <span class='star-ratings'>
-        <b:if cond='data:top.showStars'>
-           <div expr:g:background-color='data:backgroundColor' expr:g:text-color='data:textColor' expr:g:url='data:post.absoluteUrl' g:height='42' g:type='RatingPanel' g:width='280'/>
-        </b:if>
-      </span>
-
+      
       <span class='post-comment-link'>
         <b:if cond='data:blog.pageType != &quot;item&quot;'>
           <b:if cond='data:post.allowComments'>
