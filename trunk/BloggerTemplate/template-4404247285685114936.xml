@@ -60,7 +60,7 @@ Updated by: Blogger Team
 */
 
 /* Use this with templates/template-twocol.html */
-
+@media all { /* displayed section */ 
 body {
   background:$bgcolor;
   margin:0;
@@ -607,6 +607,8 @@ margin-top: 1em;
 padding: 5px;
 border-left:solid thin blue;
 }
+} /* displayed section */ 
+ 
 @media print {  /* for printing */
 #navbar {
 display: none;
