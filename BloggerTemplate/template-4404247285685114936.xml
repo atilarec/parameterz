@@ -4,7 +4,8 @@
   <head>
     <b:include data='blog' name='all-head-content'/>
     <title><data:blog.pageTitle/></title>
-    <b:skin><![CDATA[
+    <b:skin>
+    <![CDATA[
     
     /*
 -----------------------------------------------
@@ -606,6 +607,28 @@ margin-top: 1em;
 padding: 5px;
 border-left:solid thin blue;
 }
+@media print {  /* for printing */
+#navbar {
+display: none;
+}
+#sidebar {
+display: none;
+}
+#header-wrapper {
+display: none;
+}
+#MyComments {
+display: none;
+}
+#comments.comments {
+display: none;
+} 
+input {
+border-style: none;
+border: 0;
+outline: none;
+}
+} /* for printing */ 
 ]]></b:skin>
   </head>
 
