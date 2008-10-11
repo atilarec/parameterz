@@ -588,6 +588,9 @@ display:none !important;
 a.ig_lgbluelink {
 display:none;
 }
+div.IndexSummary {
+display: none !important;
+}
 div.adverts {
 margin-right: auto;
 margin-left: auto;
