@@ -4,8 +4,8 @@
   <head>
     <b:include data='blog' name='all-head-content'/>
     <title><data:blog.pageTitle/></title>
-    <b:skin>
-    <![CDATA[
+    <b:skin><![CDATA[
+    
     
     /*
  * Blogger Template Style
@@ -13,6 +13,7 @@
  * Sand Dollar
  * by Jason Sutter
  * Updated by Blogger Team
+ * and by Dan Dyar (10/22/2008)
  */
 
 /* Variable definitions
@@ -519,7 +520,7 @@ text-align: center;
   <div id='outer-wrapper'><div id='wrap2'>
     <div id='header-wrapper'>
       <b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
-<b:widget id='Header1' locked='true' title='A Template Concatenation (Header)' type='Header'>
+<b:widget id='Header1' locked='true' title='A Fortuitous Concatenation (Header)' type='Header'>
 <b:includable id='title'>
   <b:if cond='data:blog.url == data:blog.homepageUrl'>
     <data:title/>
@@ -531,6 +532,46 @@ text-align: center;
   <div class='description-wrapper'>
     <data:description/>
   </div>
+</b:includable>
+<b:includable id='main'>
+
+  <b:if cond='data:useImage'>
+    <b:if cond='data:imagePlacement == &quot;REPLACE&quot;'>
+      <!--Show just the image, no text-->
+      <div id='header-inner'>
+        <a expr:href='data:blog.homepageUrl' style='display: block'>
+          <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_headerimg&quot;' expr:src='data:sourceUrl' expr:width='data:width' style='display: block'/>
+        </a>
+      </div>
+    <b:else/>
+      <!--
+      Show image as background to text. You can't really calculate the width
+      reliably in JS because margins are not taken into account by any of
+      clientWidth, offsetWidth or scrollWidth, so we don't force a minimum
+      width if the user is using shrink to fit.
+      This results in a margin-width's worth of pixels being cropped. If the
+      user is not using shrink to fit then we expand the header.
+      -->
+      <div expr:style='&quot;background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                      + &quot;background-position: &quot;                      + data:backgroundPositionStyleStr + &quot;; &quot;                      + data:widthStyleStr                      + &quot;min-height: &quot; + data:height + &quot;px;&quot;                      + &quot;_height: &quot; + data:height + &quot;px;&quot;                      + &quot;background-repeat: no-repeat; &quot;' id='header-inner'>
+        <div class='titlewrapper' style='background: transparent'>
+          <h1 class='title' style='background: transparent; border-width: 0px'>
+            <b:include name='title'/>
+          </h1>
+        </div>
+        <b:include name='description'/>
+      </div>
+    </b:if>
+  <b:else/>
+    <!--No header image -->
+    <div id='header-inner'>
+      <div class='titlewrapper'>
+        <h1 class='title'>
+          <b:include name='title'/>
+        </h1>
+      </div>
+      <b:include name='description'/>
+    </div>
+  </b:if>
 </b:includable>
 </b:widget>
 </b:section>
@@ -1193,6 +1234,13 @@ text-align: center;
   </div>
   </div>
   <b:include name='quickedit'/>
+  </div>
+</b:includable>
+</b:widget>
+<b:widget id='AdSense1' locked='false' title='' type='AdSense'>
+<b:includable id='main'>
+  <div class='widget-content'>
+    <data:adCode/>
   </div>
 </b:includable>
 </b:widget>
