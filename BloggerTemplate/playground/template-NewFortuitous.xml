@@ -373,6 +373,15 @@ strike {
 .widget-content { 
   margin-top: 0.5em;
 }
+/* ---------- Footer ---------- */
+.footer {
+  font-size:80%;
+  text-align:center;
+  padding-top:2em;
+}
+.footer a img {
+  margin-bottom:-1em;
+}
 /* ---------- Misc. ---------- */
 div.license {
   font-size:70%;
@@ -1084,7 +1093,15 @@ text-align: center;
                                             google.setOnLoadCallback(initialize);
                                         </script>
                                     </b:if>
-
+                                    <div class='footer'>
+                                        <p>
+                                            <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" rel="license">
+                                                <img alt="Creative Commons License" style="border-width: 0pt;" src="http://creativecommons.org/images/public/somerights20.png" />
+                                            </a>
+                                            Except where otherwise <a href="http://creativecommons.org/policies#license">noted</a>, content on this site is
+                                            licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 License</a>
+                                        </p>
+                                    </div>
                                 </b:includable>
                             </b:widget>
                         </b:section>
