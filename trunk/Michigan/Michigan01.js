@@ -24,77 +24,77 @@ var BSA = CalcBSA(ht,wt,BSAMethod);
 //eyeballing the data, it looks like 2.0 m^2 is the largest,
 //so I will constrain the calculations to anything less than that...
 if (BSA>2){
-document.getElementById("BSA").innerHTML= "BSA out of range"
-document.getElementById("BSA").className="severe"
-return
+document.getElementById("BSA").innerHTML= "BSA out of range";
+document.getElementById("BSA").className="severe";
+return;
 }
 else{
 document.getElementById("BSA").innerHTML="BSA = "+ BSA.toFixed(2) +"m<sup>2</sup>";
-document.getElementById("BSA").className=""
+document.getElementById("BSA").className="";
 }
 //iterate through the measurements... there are 21 of them, so hold on
 if (!isNaN(document.getElementById("txtRVD").value)&&document.getElementById("txtRVD").value!=""){
-Doit2TheZ("RVD",0,BSA,parseFloat(document.getElementById("txtRVD").value))
+Doit2TheZ("RVD",0,BSA,parseFloat(document.getElementById("txtRVD").value));
 }
 if (!isNaN(document.getElementById("txtIVSd").value)&&document.getElementById("txtIVSd").value!=""){
-Doit2TheZ("IVSd",1,BSA,parseFloat(document.getElementById("txtIVSd").value))
+Doit2TheZ("IVSd",1,BSA,parseFloat(document.getElementById("txtIVSd").value));
 }
 if (!isNaN(document.getElementById("txtIVSs").value)&&document.getElementById("txtIVSs").value!=""){
-Doit2TheZ("IVSs",2,BSA,parseFloat(document.getElementById("txtIVSs").value))
+Doit2TheZ("IVSs",2,BSA,parseFloat(document.getElementById("txtIVSs").value));
 }
 if (!isNaN(document.getElementById("txtLVIDd").value)&&document.getElementById("txtLVIDd").value!=""){
-Doit2TheZ("LVIDd",3,BSA,parseFloat(document.getElementById("txtLVIDd").value))
+Doit2TheZ("LVIDd",3,BSA,parseFloat(document.getElementById("txtLVIDd").value));
 }
 if (!isNaN(document.getElementById("txtLVIDs").value)&&document.getElementById("txtLVIDs").value!=""){
-Doit2TheZ("LVIDs",4,BSA,parseFloat(document.getElementById("txtLVIDs").value))
+Doit2TheZ("LVIDs",4,BSA,parseFloat(document.getElementById("txtLVIDs").value));
 }
 if (!isNaN(document.getElementById("txtLVPWd").value)&&document.getElementById("txtLVPWd").value!=""){
-Doit2TheZ("LVPWd",5,BSA,parseFloat(document.getElementById("txtLVPWd").value))
+Doit2TheZ("LVPWd",5,BSA,parseFloat(document.getElementById("txtLVPWd").value));
 }
 if (!isNaN(document.getElementById("txtLVPWs").value)&&document.getElementById("txtLVPWs").value!=""){
-Doit2TheZ("LVPWs",6,BSA,parseFloat(document.getElementById("txtLVPWs").value))
+Doit2TheZ("LVPWs",6,BSA,parseFloat(document.getElementById("txtLVPWs").value));
 }
 if (!isNaN(document.getElementById("txtAVA").value)&&document.getElementById("txtAVA").value!=""){
-Doit2TheZ("AVA",7,BSA,parseFloat(document.getElementById("txtAVA").value))
+Doit2TheZ("AVA",7,BSA,parseFloat(document.getElementById("txtAVA").value));
 }
 if (!isNaN(document.getElementById("txtSinuses").value)&&document.getElementById("txtSinuses").value!=""){
-Doit2TheZ("Sinuses",8,BSA,parseFloat(document.getElementById("txtSinuses").value))
+Doit2TheZ("Sinuses",8,BSA,parseFloat(document.getElementById("txtSinuses").value));
 }
 if (!isNaN(document.getElementById("txtSTJ").value)&&document.getElementById("txtSTJ").value!=""){
-Doit2TheZ("STJ",9,BSA,parseFloat(document.getElementById("txtSTJ").value))
+Doit2TheZ("STJ",9,BSA,parseFloat(document.getElementById("txtSTJ").value));
 }
 if (!isNaN(document.getElementById("txtTransv").value)&&document.getElementById("txtTransv").value!=""){
-Doit2TheZ("Transv",10,BSA,parseFloat(document.getElementById("txtTransv").value))
+Doit2TheZ("Transv",10,BSA,parseFloat(document.getElementById("txtTransv").value));
 }
 if (!isNaN(document.getElementById("txtIsthmus").value)&&document.getElementById("txtIsthmus").value!=""){
-Doit2TheZ("Isthmus",11,BSA,parseFloat(document.getElementById("txtIsthmus").value))
+Doit2TheZ("Isthmus",11,BSA,parseFloat(document.getElementById("txtIsthmus").value));
 }
 if (!isNaN(document.getElementById("txtDistalAO").value)&&document.getElementById("txtDistalAO").value!=""){
-Doit2TheZ("DistalAO",12,BSA,parseFloat(document.getElementById("txtDistalAO").value))
+Doit2TheZ("DistalAO",12,BSA,parseFloat(document.getElementById("txtDistalAO").value));
 }
 if (!isNaN(document.getElementById("txtAbdAO").value)&&document.getElementById("txtAbdAO").value!=""){
-Doit2TheZ("AbdAO",13,BSA,parseFloat(document.getElementById("txtAbdAO").value))
+Doit2TheZ("AbdAO",13,BSA,parseFloat(document.getElementById("txtAbdAO").value));
 }
 if (!isNaN(document.getElementById("txtPV").value)&&document.getElementById("txtPV").value!=""){
-Doit2TheZ("PV",14,BSA,parseFloat(document.getElementById("txtPV").value))
+Doit2TheZ("PV",14,BSA,parseFloat(document.getElementById("txtPV").value));
 }
 if (!isNaN(document.getElementById("txtMPA").value)&&document.getElementById("txtMPA").value!=""){
-Doit2TheZ("MPA",15,BSA,parseFloat(document.getElementById("txtMPA").value))
+Doit2TheZ("MPA",15,BSA,parseFloat(document.getElementById("txtMPA").value));
 }
 if (!isNaN(document.getElementById("txtRPA").value)&&document.getElementById("txtRPA").value!=""){
-Doit2TheZ("RPA",16,BSA,parseFloat(document.getElementById("txtRPA").value))
+Doit2TheZ("RPA",16,BSA,parseFloat(document.getElementById("txtRPA").value));
 }
 if (!isNaN(document.getElementById("txtLPA").value)&&document.getElementById("txtLPA").value!=""){
-Doit2TheZ("LPA",17,BSA,parseFloat(document.getElementById("txtLPA").value))
+Doit2TheZ("LPA",17,BSA,parseFloat(document.getElementById("txtLPA").value));
 }
 if (!isNaN(document.getElementById("txtMV").value)&&document.getElementById("txtMV").value!=""){
-Doit2TheZ("MV",18,BSA,parseFloat(document.getElementById("txtMV").value))
+Doit2TheZ("MV",18,BSA,parseFloat(document.getElementById("txtMV").value));
 }
 if (!isNaN(document.getElementById("txtTV").value)&&document.getElementById("txtTV").value!=""){
-Doit2TheZ("TV",19,BSA,parseFloat(document.getElementById("txtTV").value))
+Doit2TheZ("TV",19,BSA,parseFloat(document.getElementById("txtTV").value));
 }
 if (!isNaN(document.getElementById("txtLA").value)&&document.getElementById("txtLA").value!=""){
-Doit2TheZ("LA",20,BSA,parseFloat(document.getElementById("txtLA").value))
+Doit2TheZ("LA",20,BSA,parseFloat(document.getElementById("txtLA").value));
 }
 
 }//end main function
@@ -103,42 +103,47 @@ function Doit2TheZ(site,index,BSA,score){
 var strMean = site+"Mean";
 var strRange = site+"Range";
 var strZ = site+"Z";
-var mean
-var stdDev
-var lower
-var upper
-var zScore
+var strPercentile = site+"Percentile";
+var mean;
+var stdDev;
+var lower;
+var upper;
+var zScore;
+var percentile;
 
 //doit2 the mean
-mean = Intercept[index] + Beta1[index]*BSA+Beta2[index]*Math.pow(BSA,2)+Beta3[index]*Math.pow(BSA,3)
-document.getElementById([strMean]).innerHTML= Math.exp(mean).toFixed(2)
+mean = Intercept[index] + Beta1[index]*BSA+Beta2[index]*Math.pow(BSA,2)+Beta3[index]*Math.pow(BSA,3);
+document.getElementById([strMean]).innerHTML= Math.exp(mean).toFixed(2);
 //doit2 the SD/Range
-stdDev=Math.sqrt(MSE[index])
-lower=Math.exp(mean-2*stdDev)
-upper=Math.exp(mean+2*stdDev)
-document.getElementById([strRange]).innerHTML = lower.toFixed(2)+" - "+upper.toFixed(2)
+stdDev=Math.sqrt(MSE[index]);
+lower=Math.exp(mean - 1.65 * stdDev);
+upper=Math.exp(mean + 1.65 * stdDev);
+document.getElementById([strRange]).innerHTML = lower.toFixed(2)+" - "+upper.toFixed(2);
 //doit2 the ZScore
-score=Math.log(score)
-zScore=(score-mean)/stdDev
-document.getElementById([strZ]).innerHTML = zScore.toFixed(2)
-document.getElementById([strZ]).className=[ZscoreFlag(zScore)]
+score=Math.log(score);
+zScore=(score-mean)/stdDev;
+document.getElementById([strZ]).innerHTML = zScore.toFixed(2);
+document.getElementById([strZ]).className = [ZscoreFlag(zScore)];
+//doit2 the percentile
+document.getElementById([strPercentile]).innerHTML = calcPercentile(zScore);
+
 
 }//end doit2it function
 
-function ZscoreFlag(zScore){
-if (zScore >=1.67 && zScore<1.96||zScore>-1.96&&zScore<=-1.67){
-return "borderline"
+function ZscoreFlag(zScore) {
+if (zScore >= 1.67 && zScore < 1.96 || zScore > -1.96 && zScore <= -1.67) {
+return "borderline";
 }
-else if (zScore>=1.96&& zScore<3||zScore>-3&&zScore<=-1.96){
-return "mild"
+else if (zScore >= 1.96 && zScore < 3 || zScore > -3 && zScore <= -1.96) {
+return "mild";
 }
-else if (zScore>=3&& zScore<4||zScore>-4&&zScore<=-3){
-return "moderate"
+else if (zScore >= 3 && zScore < 4 || zScore > -4 && zScore <= -3) {
+return "moderate";
 }
-else if (zScore>=4||zScore<=-4){
-return "severe"
+else if (zScore >= 4 || zScore <= -4) {
+return "severe";
 }
-return "normal"
+return "normal";
 }//end zscore flag function
 
 function CalcBSA(ht,wt,BSAMethod){
@@ -161,6 +166,57 @@ return 0.1*Math.pow(wt,(2/3));
 }//end switch
 
 }// end BSA function
+//Percentiles function for z-scores (adapted by Dan Dyar)
+//The following JavaScript functions for calculating normal and
+//chi-square probabilities and critical values were adapted by
+//John Walker from C implementations
+//written by Gary Perlman of Wang Institute, Tyngsboro, MA
+//01879.  Both the original C code and this JavaScript edition
+//are in the public domain.
+
+function calcPercentile(z) {
+    var qz;
+    if (z === 0) {qz = 0.5;}
+    else if (z > -6 && z < 6) {
+        qz = poz(z);}
+    else {//the z score is beyond 6
+        return "*";}
+    return (qz * 100).toFixed(2);
+
+}//end Percentiles fx
+
+//poz ---  probability of normal z value
+function poz(z) {
+    var y, x, w;
+    var Z_MAX = 6;
+    if (z == 0.0) {
+        x = 0.0;
+    } else {
+        y = 0.5 * Math.abs(z);
+        if (y > (Z_MAX * 0.5)) {
+            x = 1.0;
+        } else if (y < 1.0) {
+            w = y * y;
+            x = ((((((((0.000124818987 * w
+                     - 0.001075204047) * w + 0.005198775019) * w
+                     - 0.019198292004) * w + 0.059054035642) * w
+                     - 0.151968751364) * w + 0.319152932694) * w
+                     - 0.531923007300) * w + 0.797884560593) * y * 2.0;
+        } else {
+            y -= 2.0;
+            x = (((((((((((((-0.000045255659 * y
+                           + 0.000152529290) * y - 0.000019538132) * y
+                           - 0.000676904986) * y + 0.001390604284) * y
+                           - 0.000794620820) * y - 0.002034254874) * y
+                           + 0.006549791214) * y - 0.010557625006) * y
+                           + 0.011630447319) * y - 0.009279453341) * y
+                           + 0.005353579108) * y - 0.002141268741) * y
+                           + 0.000535310849) * y + 0.999936657524;
+        }
+    }
+    return z > 0.0 ? ((x + 1.0) * 0.5) : ((1.0 - x) * 0.5);
+}// end poz
+
 //Copyright (c) 2008: Dan Dyar
 
 //Permission is hereby granted, free of charge, to any person obtaining a copy
