@@ -1,6 +1,6 @@
 #labels Featured
-#Demo wiki page with Gadget
-= Introduction =
+=Demo wiki page with Gadget=
+== Introduction ==
 
 Let's see:
 
