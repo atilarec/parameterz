@@ -1,4 +1,2 @@
-#labels Featured
-
 
 <wiki:gadget url="http://parameterz.googlecode.com/files/AORoot01.xml" border="0" height="400" width="450">
