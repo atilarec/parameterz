@@ -1,7 +1,4 @@
 #labels Featured
-=Demo wiki page with Gadget=
-== Introduction ==
 
-Let's see:
 
 <wiki:gadget url="http://parameterz.googlecode.com/files/AORoot01.xml" border="0" height="400" width="450">
