@@ -9,6 +9,7 @@
         <b:skin>
             <![CDATA[
             
+            
     
     
     
@@ -194,25 +195,25 @@ h1 {
   letter-spacing:-2px; 
 } 
 			
-h3.post-title { 
+h2.post-title { 
   color:$titlecolor;
   font:$titlefont;
   letter-spacing:-1px;
 }
 
-h3.post-title a { 
+h2.post-title a { 
   color: $titlecolor;
   text-decoration: none;
 }
 
-h3.post-title a:visited { 
+h2.post-title a:visited { 
   color: $titlecolor;
 }
-h3.post-title a:hover {
+h2.post-title a:hover {
   background-color: $bordercolor;
 }
  			
-h2.date-header  {
+h3.date-header  {
   margin: 0px;
   color:$datecolor;
   font: $dateHeaderFont;
@@ -264,7 +265,7 @@ h4 {
   padding-bottom:3em;
 }
 .post-body {
-  padding: 0em 3em;
+  padding: 0em 3em 1em 3em;
   line-height: 1.2em;
 }
 
@@ -391,7 +392,14 @@ div.license {
 div.hr {
   padding: 1em 5em;
 }
-/* ---------- Feed Buuton --------- */
+/* -------------- hide the NAVBAR ! ------------- */
+#navbar-iframe {
+  height: 0px;
+  visibility: hidden;
+  display: none;
+  }
+
+/* ---------- Feed Button --------- */
 .feed-button {
   text-align:center;
   padding: 10px 0;
@@ -555,6 +563,7 @@ td.results
 text-align: center;
 }
 
+        
         ]]>
         </b:skin>
     </head>
@@ -712,7 +721,7 @@ text-align: center;
                                     <div class='post hentry'>
                                         <a expr:name='data:post.id'/>
                                         <b:if cond='data:post.title'>
-                                            <h3 class='post-title entry-title'>
+                                            <h2 class='post-title entry-title'>
                                                 <b:if cond='data:post.link'>
                                                     <a expr:href='data:post.link'>
                                                         <data:post.title/>
@@ -726,7 +735,7 @@ text-align: center;
                                                         <data:post.title/>
                                                     </b:if>
                                                 </b:if>
-                                            </h3>
+                                            </h2>
                                         </b:if>
 
                                         <div class='post-header-line-1'/>
@@ -899,9 +908,9 @@ text-align: center;
                                         <data:adStart/>
                                         <b:loop values='data:posts' var='post'>
                                             <b:if cond='data:post.dateHeader'>
-                                                <h2 class='date-header'>
+                                                <h3 class='date-header'>
                                                     <data:post.dateHeader/>
-                                                </h2>
+                                                </h3>
                                             </b:if>
                                             <b:include data='post' name='post'/>
                                             <b:if cond='data:blog.pageType == &quot;item&quot;'>
