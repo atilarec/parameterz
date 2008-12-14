@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>CNMC Coronary Artery Z-Scores</title>
+<link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+<script src="CNMC_Coronaries.js" type="text/javascript">
+</script>
+</head>
+
+<body>
+<div class="cnmcCA">
+<div class="calculator">
+<form action="">
+<table id="CoronaryZScores" summary="coronary artery z-score calculator">
+<tr>
+<td class="label"><label for="txtHT">Height (cm):</label></td>
+
+<td><input id="txtHT" name="txtHT" type="text" tabindex="1" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtWT">Weight (kg):</label></td>
+
+<td><input id="txtWT" name="txtWT" type="text" tabindex="2" /></td>
+</tr>
+
+<tr>
+<td class="label">BSA:</td>
+
+<td><input id="BSA" name="BSA" readonly="readonly" type="text" class="results" /></td>
+</tr>
+
+<tr>
+<th>Site</th>
+
+<th>Measurement</th>
+
+<th>Mean</th>
+
+<th>Range</th>
+
+<th>Z-Score</th>
+
+<th>Percentile</th>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLMCA">LMCA (mm):</label></td>
+
+<td><input id="txtLMCA" name="txtLMCA" type="text" tabindex="3" /></td>
+
+<td><input class="results" readonly="readonly" id="LMCAMean" name="LMCAMean" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="LMCARange" name="LMCARange" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="LMCAZ" name="LMCAZ" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="LMCAPct" name="LMCAPct" type="text" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtLAD">LAD (mm):</label></td>
+
+<td><input id="txtLAD" name="txtLAD" type="text" tabindex="4" /></td>
+
+<td><input class="results" readonly="readonly" id="LADMean" name="LADMean" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="LADRange" name="LADRange" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="LADZ" name="LADZ" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="LADPct" name="LADPct" type="text" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtRCA">RCA (mm):</label></td>
+
+<td><input id="txtRCA" name="txtRCA" type="text" tabindex="5" /></td>
+
+<td><input class="results" readonly="readonly" id="RCAMean" name="RCAMean" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="RCARange" name="RCARange" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="RCAZ" name="RCAZ" type="text" /></td>
+
+<td><input class="results" readonly="readonly" id="RCAPct" name="RCAPct" type="text" /></td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td><input id="CalcCoronaries" type="button" value="Update" onclick="calcCNMC(this.form)" tabindex="6" /></td>
+
+<td><input id="Reset1" type="reset" value="reset" onclick="ResetZscoreCSS(this.form)" tabindex="7" /></td>
+</tr>
+</table>
+</form>
+</div>
+</div>
+</body>
+</html>
