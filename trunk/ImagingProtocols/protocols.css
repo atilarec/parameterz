@@ -1,0 +1,271 @@
+﻿/*
+Template name: Pink Sunset
+Template URI: http://templates.arcsin.se/pink-sunset-website-template/
+Release date: 2006-05-07
+Description: A clean pink two-column layout.
+Author: Viktor Persson
+Author URI: http://arcsin.se/
+
+This template is licensed under a Creative Commons Attribution 2.5 License:
+http://templates.arcsin.se/license/
+*/
+
+/* standard elements */
+* {
+	margin: 0;
+	padding: 0;
+}
+a
+{
+    color: #0066CC;
+    text-decoration: none;
+}
+body
+{
+    background: #FFF;
+    color: #333333;
+    font: normal 14px "Trebuchet MS" ,Arial;
+    margin: 20px 0;
+    text-align: center;
+}
+ul {
+	padding: 10px 0;
+}
+li {
+	list-style: none;
+	margin: 4px 0 4px 20px;
+}
+li span
+{
+    font-size: 0.9em;
+    color: #444;
+}
+
+/* misc */
+
+.clearer,.footer {
+	clear: both;
+}
+.content,.footer {
+	padding: 0 5px;
+}
+
+/* structure */
+.container {
+	background: #FFF;
+	margin: 0 auto;
+	text-align: left;
+	width: 450px;
+
+}
+
+/* header */
+.top {
+	height: 125px;
+}
+.header {
+	height: 100px;
+}
+.header h1
+{
+    line-height: 2.4em;
+    padding-left: 18px;
+    color: #808080;
+    font-size: 2.4em;
+}
+
+/* footer */
+.footer
+{
+    font-size: 80%;
+    text-align: center;
+    padding-top: 5em;
+}
+
+.footer a img {
+  margin-bottom:-2em;
+}
+/* content */
+.item {
+	padding: 10px;
+	text-align: justify;
+}
+.item h1
+{
+    font: normal 1.6em serif,Arial;
+    letter-spacing: 1px;
+    color: #999999;
+}
+.left {
+	float: left;
+	width: 400px;
+}
+/* references */
+.references
+{
+    margin-top: 2em;
+    border-width: thin;
+    border-color: #C0C0C0;
+    text-align: left;
+    line-height: 1.2em;
+    letter-spacing: normal;
+    border-top-style: solid;
+}
+.references dt
+{
+    margin-top: 2em;
+}
+.references dt a
+{
+    text-decoration: none;
+}
+.references dt a:hover
+{
+    background: #C0C0C0;
+    color: #333333;
+}
+
+/* menu */
+.menu {
+    margin-left: 18px;
+    float: left;
+}
+.menu a {
+	padding: 0 2px;
+	margin-right: 12px;
+	font-size: 1.2em;
+}
+.menu a:hover
+{
+    background: #C0C0C0;
+    color: #333333;
+}
+
+/* submenu */
+.right .submenu_end {
+}
+.right
+{
+    float: right;
+    width: 185px;
+    display: inline;
+    margin-bottom: -2em;
+}
+.right a:hover {
+	text-decoration: underline;
+}
+.right .quote
+{
+    font-size: 1.3em;
+    width: 287px;
+    font-style: italic;
+    color: #C0C0C0;
+}
+
+#protocol .view
+{
+    font-weight: bold;
+}
+/* treeview and other js-specific styles */
+
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: white;
+	margin-top: 4px;
+}
+
+.treeview .hitarea {
+	background: url(http://protocols.parameterz.com/treeview-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {
+	display: inline;
+	float:none;
+}
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+.treeview a
+{
+    text-decoration: none;
+}
+
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview .hover { color: red; cursor: pointer; }
+
+.treeview li { background: url(http://protocols.parameterz.com/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(http://protocols.parameterz.com/treeview-default.gif); }  
+.treeview li.lastCollapsable { background-position: 0 -111px }
+.treeview li.lastExpandable { background-position: -32px -67px }
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+
+.highlight
+{
+    background-color: #C0C0C0;
+}
+
+/***************************************
+   =cluetipClass: 'default' 
+-------------------------------------- */
+
+.cluetip-default
+{
+    background-color: #CCCCCC;
+}
+.cluetip-default #cluetip-outer {
+  position: relative;
+  margin: 0;
+  background-color: #d9d9c2;
+}
+.cluetip-default h3#cluetip-title
+{
+    margin: 0 0 5px;
+    padding: 8px 10px 4px;
+    font-size: 1.1em;
+    font-weight: normal;
+    background-color: #808080;
+    color: #fff;
+}
+.cluetip-default #cluetip-title a {
+  color: #d9d9c2;
+  font-size: 0.95em;
+}  
+.cluetip-default #cluetip-inner {
+  padding: 10px;
+}
+.cluetip-default div#cluetip-close { 
+  text-align: right;
+  margin: 0 5px 5px;
+  color: #900;
+}
+
+hr
+{
+width: 75%;
+margin-top: 2em;
+}
