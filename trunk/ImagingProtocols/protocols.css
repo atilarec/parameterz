@@ -166,6 +166,14 @@ li span
 {
     font-weight: bold;
 }
+
+/* adverts */
+.advert
+{
+    width: 470px;
+    text-align: center;
+    padding-top: 3em;
+}
 /* treeview and other js-specific styles */
 
 .treeview, .treeview ul { 
