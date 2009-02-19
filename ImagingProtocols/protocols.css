@@ -68,7 +68,6 @@ li span
 }
 .header h1
 {
-    line-height: 2.4em;
     padding-left: 18px;
     color: #808080;
     font-size: 2.4em;
@@ -251,6 +250,7 @@ li span
 .cluetip-default
 {
     background-color: #CCCCCC;
+    text-align: left;
 }
 .cluetip-default #cluetip-outer {
   position: relative;
