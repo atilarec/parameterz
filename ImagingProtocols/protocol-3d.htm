@@ -13,6 +13,8 @@
     <script src="http://protocols.parameterz.com/jquery.treeview.js" type="text/javascript"></script>
 
     <script src="http://protocols.parameterz.com/jquery.cluetip.js" type="text/javascript"></script>
+    
+    <script src="http://protocols.parameterz.com/jquery.superfish.js" type="text/javascript"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $(".treeview").treeview({
@@ -21,10 +23,13 @@
         
         $("#protocol a").cluetip({
             hoverClass: 'highlight',
-            local: true
+            local: true,
+            attribute: 'href'
             });
+        $('ul.sf-menu').superfish();
       });
       </script>
+
 </head>
 
 <body>
@@ -34,8 +39,23 @@
 	<div class="top">
 		<div class="header"><h1>3D Echo Protocol</h1></div>
 
-		<div class="menu">
-			<a href="index.htm" title="">Home</a><a href="http://fortuitousconcatenation.blogspot.com" title="A Fortuitous Concatenation of Shadows">Blog</a>
+		<div id="menu">
+<ul class="sf-menu">
+	<li><a href="index.htm">Home</a>
+<ul>
+        <li><a href="protocol-fortuitous.htm" title="Basic protocol for peds echo, brought to you by A Fortuitous Concatenation of Shadows">Basic Protocol</a> </li>
+        <li><a href="protocol-ase.htm" title="Basic digital echo protocol">ASE</a> </li>
+        <li><a href="protocol-wisconsin.htm" title="Digital peds echo protocol published by WCH">Wisconsin</a></li>
+        <li><a href="protocol-tch.htm" title="Example protocol of Texas Children's as demonstrated by the ICAEL">TCH/ICAEL</a></li>
+        <li><a href="protocol-mayo.htm" title="Digital echo protocol published by The Mayo Clinic">Mayo Clinic</a></li>
+        <li><a href="protocol-complex.htm" title="Basic protocol, modified such as to be suitable for evaluation of complex CHD">Complex CHD</a></li>
+
+    </ul>
+	</li>
+
+	<li><a href="http://fortuitousconcatenation.blogspot.com" title="A Fortuitous Concatenation of Shadows">Blog</a>
+	</li>
+</ul>
 		</div>
 	</div>
 
