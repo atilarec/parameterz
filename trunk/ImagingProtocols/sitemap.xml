@@ -48,4 +48,10 @@
         <lastmod>2009-02-15T03:32:46+00:00</lastmod>
         <changefreq>monthly</changefreq>
     </url>
+    <url>
+        <loc>http://protocols.parameterz.com/protocol-complex.htm</loc>
+        <priority>0.80</priority>
+        <lastmod>2009-02-18T19:32:46+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
 </urlset>
