@@ -158,12 +158,16 @@ div .intro
 .right a:hover {
 	text-decoration: underline;
 }
-.right .quote
+.quote
 {
     font-size: 1.3em;
-    width: 287px;
+    width: 280px;
     font-style: italic;
     color: #C0C0C0;
+    float: right;
+    text-align: left;
+    margin-right: -100px;
+    margin-top: 1.5em;
 }
 
 #protocol .view
@@ -389,12 +393,4 @@ a:active > .sf-sub-indicator,
 li:hover > a > .sf-sub-indicator,
 li.sfHover > a > .sf-sub-indicator {
 	background-position: -10px -100px; /* arrow hovers for modern browsers*/
-}
-.intro p.thanks
-{
-    float: right;
-}
-.intro .thanks
-{
-    float: right;
 }
