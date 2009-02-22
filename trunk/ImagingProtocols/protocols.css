@@ -91,6 +91,16 @@ div .intro
     margin-top: 2em;
     text-align: left;
 }
+.intro p
+{
+    padding-bottom: 1em;
+}
+.intro p.thanks
+{
+    float: right;
+    width: 50%;
+    margin-top: 1em;
+}
 
 .item {
 	padding: 10px;
@@ -143,6 +153,7 @@ div .intro
 {
     float: right;
     width: 185px;
+    text-align: left;
 }
 .right a:hover {
 	text-decoration: underline;
@@ -378,4 +389,12 @@ a:active > .sf-sub-indicator,
 li:hover > a > .sf-sub-indicator,
 li.sfHover > a > .sf-sub-indicator {
 	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+.intro p.thanks
+{
+    float: right;
+}
+.intro .thanks
+{
+    float: right;
 }
