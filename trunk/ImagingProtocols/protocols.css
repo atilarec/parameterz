@@ -85,6 +85,13 @@ li span
   margin-bottom:-2em;
 }
 /* content */
+div .intro
+{
+    padding: 10px;
+    margin-top: 2em;
+    text-align: left;
+}
+
 .item {
 	padding: 10px;
 	text-align: justify;
@@ -136,8 +143,6 @@ li span
 {
     float: right;
     width: 185px;
-    display: inline;
-    margin-bottom: -2em;
 }
 .right a:hover {
 	text-decoration: underline;
