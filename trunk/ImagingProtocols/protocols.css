@@ -61,10 +61,8 @@ li span
 
 /* header */
 .top {
-	height: 125px;
 }
 .header {
-	height: 100px;
 }
 .header h1
 {
@@ -147,17 +145,6 @@ div .intro
 
 
 /* submenu */
-.right .submenu_end {
-}
-.right
-{
-    float: right;
-    width: 185px;
-    text-align: left;
-}
-.right a:hover {
-	text-decoration: underline;
-}
 .quote
 {
     font-size: 1.3em;
@@ -167,7 +154,7 @@ div .intro
     float: right;
     text-align: left;
     margin-right: -100px;
-    margin-top: 1.5em;
+    margin-top: 0.5em;
 }
 
 #protocol .view
