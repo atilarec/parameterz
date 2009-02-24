@@ -53,9 +53,9 @@ li span
 /* structure */
 .container {
 	background: #FFF;
-	margin: 0 auto;
+	margin: 0 auto 0 auto;
 	text-align: left;
-	width: 450px;
+	width: 500px;
 
 }
 
@@ -148,12 +148,11 @@ div .intro
 .quote
 {
     font-size: 1.3em;
-    width: 280px;
+    width: 50%;
     font-style: italic;
     color: #C0C0C0;
     float: right;
     text-align: left;
-    margin-right: -100px;
     margin-top: 0.5em;
 }
 
