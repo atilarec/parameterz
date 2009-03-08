@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <title>Sortable Protocol Demo</title>
     <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/humanity/jquery-ui.css"
         rel="Stylesheet" />
     <style type="text/css">
@@ -8,6 +9,11 @@
         {
             position: absolute;
             left: -10000px;
+        }
+        body
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
         }
     </style>
     <link rel="stylesheet" href="jquery.treeview.css" />
@@ -29,7 +35,7 @@
 
 </head>
 <body>
-    <div id="tabs" class="ui-widget">
+    <div id="tabs">
         <ul>
             <li><a href="#parasternal">Parasternal</a></li>
             <li><a href="#apical">Apical</a></li>
@@ -38,18 +44,18 @@
         </ul>
         <div id="parasternal">
             <ul class="treeview">
-                <li>LAX
+                <li><span>LAX</span>
                     <ul>
                         <li>2D</li>
                         <li>Color</li>
-                        <li>RA/RV
+                        <li><span>RA/RV</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                                 <li>CW Doppler (TR)</li>
                             </ul>
                         </li>
-                        <li>RVOT
+                        <li><span>RVOT</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
@@ -57,11 +63,11 @@
                         </li>
                     </ul>
                 </li>
-                <li>SAX
+                <li><span>SAX</span>
                     <ul>
-                        <li>Base
+                        <li><span>Base</span>
                             <ul>
-                                <li>Outlet/MPA/Branches
+                                <li><span>Outlet/MPA/Branches</span>
                                     <ul>
                                         <li>2D</li>
                                         <li>Color</li>
@@ -70,19 +76,19 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>Inlet
+                        <li><span>Inlet</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>Mid
+                        <li><span>Mid</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>Apex
+                        <li><span>Apex</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
@@ -94,31 +100,31 @@
         </div>
         <div id="apical">
             <ul class="treeview">
-                <li>A4C
+                <li><span>4-Chamber</span>
                     <ul>
                         <li>2D</li>
-                        <li>Left AVV/component
+                        <li><span>Left AVV/component</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                                 <li>PW Doppler (Inflow)</li>
                             </ul>
                         </li>
-                        <li>Right AVV/component
+                        <li><span>Right AVV/component</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                                 <li>PW Doppler (Inflow)</li>
                             </ul>
                         </li>
-                        <li>Sub Aortic/Aorta
+                        <li><span>Aortic/Aorta</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                                 <li>PW Doppler</li>
                             </ul>
                         </li>
-                        <li>Sub Pulmonic/Pulmonary
+                        <li><span>Pulmonic/Pulmonary</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
@@ -135,14 +141,14 @@
                     <ul>
                         <li>2D</li>
                         <li>Color</li>
-                        <li>DAO
+                        <li><span>DAO</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                                 <li>PW Doppler (Celiac)</li>
                             </ul>
                         </li>
-                        <li>IVC
+                        <li><span>IVC</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
@@ -152,19 +158,19 @@
                 </li>
                 <li><span>Coronal</span>
                     <ul>
-                        <li>IAS
+                        <li><span>IAS</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>LVOT
+                        <li><span>LVOT</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>RVOT
+                        <li><span>RVOT</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
@@ -174,31 +180,31 @@
                 </li>
                 <li><span>Sagittal</span>
                     <ul>
-                        <li>BiCaval
+                        <li><span>BiCaval</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>IAS/PFO
+                        <li><span>IAS/PFO</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>RVOT
+                        <li><span>RVOT</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>MV
+                        <li><span>MV</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>LV
+                        <li><span>LV</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
@@ -210,21 +216,21 @@
         </div>
         <div id="suprasternal">
             <ul class="treeview">
-                <li>SAX
+                <li><span>SAX</span>
                     <ul>
-                        <li>AO/RPA
+                        <li><span>AO/RPA</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>Innominate Vein
+                        <li><span>Innominate Vein</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
                             </ul>
                         </li>
-                        <li>1st BCA
+                        <li><span>1st BCA</span>
                             <ul>
                                 <li>2D</li>
                                 <li>Color</li>
@@ -232,25 +238,25 @@
                         </li>
                     </ul>
                 </li>
-                <li>LAX
+                <li><span>LAX</span>
                     <ul>
-                        <li>Arch
+                        <li><span>Arch</span>
                             <ul>
-                                <li>AAO
+                                <li><span>AAO</span>
                                     <ul>
                                         <li>2D</li>
                                         <li>Color</li>
                                         <li>PW Doppler (AAO)</li>
                                     </ul>
                                 </li>
-                                <li>DAO
+                                <li><span>DAO</span>
                                     <ul>
                                         <li>2D</li>
                                         <li>Color</li>
                                         <li>PW Doppler (DAO)</li>
                                     </ul>
                                 </li>
-                                <li>LPA
+                                <li><span>LPA</span>
                                     <ul>
                                         <li>2D</li>
                                         <li>Color</li>
