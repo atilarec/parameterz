@@ -4,7 +4,7 @@
 	list-style: none;
 }
 
-.treeview ul {
+.treeview ulte;
 	margin-top: 4px;
 }
 
@@ -46,4 +46,3 @@
 .treeview li.lastExpandable { background-position: -32px -67px }
 
 .treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
-
