@@ -104,9 +104,8 @@ function graphLMCA() {
 
     //find the max values, used for proper scaling
     var lmcaMax = myEcho.lmca.max();
-    var lmcaMin = myEcho.lmca.min();
+    var lmcaMin = 0;
     lmcaMax = (lmcaMax * 1.2).toFixed(1);
-    lmcaMin = (lmcaMin * 0.5).toFixed(1);
     
     chartYScale = chartYScale + lmcaMin + "," + lmcaMax;
     chartYAxis = chartYAxis + "&chxr=0," + lmcaMin + "," + lmcaMax;
@@ -146,6 +145,9 @@ function graphLMCAZ() {
     var lmcaMax = myEcho.zscore.max();
     var lmcaMin = myEcho.zscore.min();
     lmcaMax = (lmcaMax * 1.2).toFixed(1);
+    if (lmcaMax < 2.0) { // forces the z score graph to have a minimum range of +/- 2
+        lmcaMax = 2.0
+    }  
     lmcaMin = -2;
 
     chartYScale = chartYScale + lmcaMin + "," + lmcaMax;
@@ -154,7 +156,7 @@ function graphLMCAZ() {
     //find the total y-range scale (0 is baseline, 1.0 is max y)
     var range = lmcaMax - lmcaMin;
     var unit = 1 / range;
-    var zeroPoint = 2 * unit;  //min is preset to be '-2'
+    var zeroPoint = (2 * unit);  //min is preset to be '-2', need to position the zero line 'up'
     var zeroPoint1 = zeroPoint.toFixed(2);
     var zeroPoint2 = zeroPoint + 0.01;
     zeroPoint2 = zeroPoint2.toFixed(2);
