@@ -41,7 +41,8 @@ for (i = 0; i <= 3; i++) {
     myEcho.zscore[i] = x;
 }  //end for loop
 
-graphIt();
+graphLMCA();
+graphLMCAZ();
 
 }//end calcZero
 
@@ -76,7 +77,7 @@ return 0.03040 + (0.01514 * bsa);
 }//end calcSD fx
 
 
-function graphIt() {
+function graphLMCA() {
     //uses the Google chart API
     var chartString = "";
     var chartURL = "http://chart.apis.google.com/chart";
@@ -90,7 +91,7 @@ function graphIt() {
     var chartYScale = "&chds=";
     var chartAxisStyle = "&chxs=0,FF0000";
 
-    //get the lmca and zscores to be charted from the myEcho object
+    //get the lmca values to be charted from the myEcho object
     var lmcaData = myEcho.lmca.join();
  
 
@@ -112,7 +113,57 @@ function graphIt() {
 
     //build the image src string
     chartString = chartURL + chartSize + chartType + chartData + chartYScale + chartYAxis + chartColor + chartAxisStyle;
-    document.images["zscoreGraph"].src = chartString;
+    document.images["lmcaGraph"].src = chartString;
              
 }//end main graphIt fx
+
+function graphLMCAZ() {
+    //uses the Google chart API
+    var chartString = "";
+    var chartURL = "http://chart.apis.google.com/chart";
+    var chartSize = "?chs=400x300";
+    var chartColor = "&chco=0000DD"
+    var chartType = "&cht=lc";
+    var chartData = "&chd=t:";
+    var chartLabel = "";
+    var chartXAxis = "";
+    var chartYAxis = "&chxt=y";
+    var chartYScale = "&chds=";
+    var chartAxisStyle = "&chxs=0,0000DD";
+
+    //get the lmca values to be charted from the myEcho object
+    var lmcaZData = myEcho.zscore.join();
+
+
+    //build the data portion of the string
+    //data pairs are separated by 'pipes' ( | )
+    //and the '-1' refers to the x data defaulting to 'space the data points evenly along the x-axis'
+    chartData = chartData + lmcaZData;
+
+
+
+    //find the max values, used for proper scaling
+    var lmcaMax = myEcho.zscore.max();
+    var lmcaMin = myEcho.zscore.min();
+    lmcaMax = (lmcaMax * 1.2).toFixed(1);
+    lmcaMin = -2;
+
+    chartYScale = chartYScale + lmcaMin + "," + lmcaMax;
+    chartYAxis = chartYAxis + "&chxr=0," + lmcaMin + "," + lmcaMax;
+
+    //find the total y-range scale (0 is baseline, 1.0 is max y)
+    var range = lmcaMax - lmcaMin;
+    var unit = 1 / range;
+    var zeroPoint = 2 * unit;  //min is preset to be '-2'
+    var zeroPoint1 = zeroPoint.toFixed(2);
+    var zeroPoint2 = zeroPoint + 0.01;
+    zeroPoint2 = zeroPoint2.toFixed(2);
+    //set the charting option to draw a zero line
+    var chartMarkers = "&chm=r,C0C0C0,0," + zeroPoint1 + "," + zeroPoint2;
+
+    //build the image src string
+    chartString = chartURL + chartSize + chartType + chartData + chartYScale + chartYAxis + chartColor + chartAxisStyle + chartMarkers;
+    document.images["zscoreGraph"].src = chartString;
+
+} //end main graph fx
 
