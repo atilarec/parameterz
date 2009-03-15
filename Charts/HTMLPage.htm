@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Untitled Page</title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+ 
+    <script src="scripts/CorArtChart.js" type="text/javascript"></script>
+</head>
+<body>
+<form id="ZScoreCharts" action="">
+
+
+<table>
+    <tr>
+        <th>
+            &nbsp;</th>
+        <th>
+            t<sub>0</sub></th>
+        <th>
+            t<sub>1</sub></th>
+        <th>
+            t<sub>2</sub></th>
+        <th>
+            t<sub>3</sub></th>
+    </tr>
+    <tr>
+        <td class="label">
+            Height(cm):</td>
+        <td>
+            <input name="ht0" type="text" /></td>
+        <td>
+            <input name="ht1" type="text" /></td>
+        <td>
+            <input name="ht2" type="text" /></td>
+        <td>
+            <input name="ht3" type="text" /></td>
+    </tr>
+    <tr>
+        <td class="label">
+            Weight(kg):</td>
+        <td>
+            <input name="wt0" type="text" /></td>
+        <td>
+            <input name="wt1" type="text" /></td>
+        <td>
+            <input name="wt2" type="text" /></td>
+        <td>
+            <input name="wt3" type="text" /></td>
+    </tr>
+    <tr>
+        <td class="label">
+            LMCA (mm):</td>
+        <td>
+            <input name="lmca0" type="text" /></td>
+        <td>
+            <input name="lmca1" type="text" /></td>
+        <td>
+            <input name="lmca2" type="text" /></td>
+        <td>
+            <input name="lmca3" type="text" /></td>
+    </tr>
+    <tr>
+        <td class="label">
+            BSA:</td>
+        <td>
+            <input name="bsa0" type="text" class="results" /></td>
+        <td>
+            <input name="bsa1" type="text" class="results" /></td>
+        <td>
+            <input name="bsa2" type="text" class="results" /></td>
+        <td>
+            <input name="bsa3" type="text" class="results" /></td>
+    </tr>
+    <tr>
+        <td class="label">
+            Z-Score:</td>
+        <td>
+            <input name="lmcaZ0" type="text" class="results" /></td>
+        <td>
+            <input name="lmcaZ1" type="text" class="results" /></td>
+        <td>
+            <input name="lmcaZ2" type="text" class="results" /></td>
+        <td>
+            <input name="lmcaZ3" type="text" class="results" /></td>
+    </tr>
+</table>
+<div>
+<input id="Button1" type="button" value="Graph It!" onclick="calcZero(this.form)" />
+<input id="Reset1" type="reset" value="reset" />  
+</div>
+
+</form>
+    <p>
+        <img name="zscoreGraph" alt="Coronary Artery Z-Score Time Series Graph" src="" />
+    </p>
+</body>
+</html>
