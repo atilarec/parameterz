@@ -82,3 +82,14 @@ div.info
     background-color: #FFCCCC;
     padding-left: 1em;
 }
+
+@media print {
+	body {
+		font-size: 10pt;
+		font-family: times new roman, times, serif;
+	}
+
+	.buttonControls {
+		display: none;
+	}
+}
