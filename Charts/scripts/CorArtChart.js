@@ -160,8 +160,14 @@ function graphLMCAZ() {
     var zeroPoint1 = zeroPoint.toFixed(2);
     var zeroPoint2 = zeroPoint + 0.01;
     zeroPoint2 = zeroPoint2.toFixed(2);
-    //set the charting option to draw a zero line
-    var chartMarkers = "&chm=r,C0C0C0,0," + zeroPoint1 + "," + zeroPoint2;
+
+    //find the +/- 1.65 range markers, i.e., the 'normal range'
+    var upper = zeroPoint + (1.65 * unit);
+    upper = upper.toFixed(2);
+    var lower = zeroPoint - (1.65 * unit);
+    lower = lower.toFixed(2);
+    //set the charting option to draw markers: zero baseline, range
+    var chartMarkers = "&chm=r,E5ECF9,0," + lower + "," + upper + "|r,C0C0C0,0," + zeroPoint1 + "," + zeroPoint2;
 
     //build the image src string
     chartString = chartURL + chartSize + chartType + chartData + chartYScale + chartYAxis + chartColor + chartAxisStyle + chartMarkers;
