@@ -67,13 +67,15 @@ border-style: none;
 border: 0;
 outline: none;
 }
-input.results
+td.results
 {
 border-style: none;
 outline: none;
 text-align: center;
 color: #000;
 background-color: #FFFFFF;
+width: 6em;
+
 }
 div.info
 {
