@@ -47,6 +47,9 @@ function calcZ(bsa, score) {
 } //end calcZ fx
 
 function GraphIt(index) {
+    //empty the arrays
+    myEcho.lmca.length = 0;
+    myEcho.zscore.length = 0;
     //loop to get the data
     for (i = 0; i <= index; i++) {
         myEcho.lmca[i] = parseFloat(document.getElementById("lmca" + i).value);
