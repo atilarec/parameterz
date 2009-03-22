@@ -8,10 +8,7 @@
     <!--[if IE]><script language="javascript" type="text/javascript" src="scripts/excanvas.pack.js"></script><![endif]-->
     <script language="javascript" type="text/javascript" src="scripts/jquery-1.3.2.min.js"></script>
     <script language="javascript" type="text/javascript" src="scripts/jquery.flot.js"></script>
-    <script src="scripts/calcsForLADChart.js" type="text/javascript"></script>
-
-
-    <script src="scripts/ladflotExample.js" type="text/javascript"></script>    
+    <script src="scripts/calcsForChart.js" type="text/javascript"></script>   
     <script type="text/javascript">
 
         $(function() {
@@ -19,47 +16,42 @@
 
             $('a#add').click(function() {
                 if (i <= 12) {
-                    var str = '<tr><th>t<sub>' + i; //row header
-                    str += '</sub></th><td><input id="ht' + i + '" type="text" onchange="updateRow(' + i + ')" /></td>'; //height input
-                    str += '<td><input id="wt' + i + '" type="text" onchange="updateRow(' + i + ')" /></td>'; //weight input
-                    str += '<td><input id="lad' + i + '" type="text" onchange="updateRow(' + i + ')" /></td>'; //lad input
+                    var str = '<tr><th>t<sub>' + i + '</sub></th>'; //row header
+                    str += '<td><input id="ht' + i + '" type="text" onchange="updateRow(' + i + ',\'lad\')" /></td>'; //height input
+                    str += '<td><input id="wt' + i + '" type="text" onchange="updateRow(' + i + ',\'lad\')" /></td>'; //weight input
+                    str += '<td><input id="lad' + i + '" type="text" onchange="updateRow(' + i + ',\'lad\')" /></td>'; //lad input
                     str += '<td class="results" id="bsa' + i + '">&nbsp;</td>'; //bsa results
                     str += '<td class="results" id="ladZ' + i + '">&nbsp;</td></tr>'; //zscore results
 
-                    $(str).appendTo('#ladData>tbody');
+                    $(str).appendTo('#tableData>tbody');
                     i++;
                 }
             });
 
             $('a#remove').click(function() {
                 if (i >= 2) {
-                    $('#ladData>tbody>tr:last').remove();
+                    $('#tableData>tbody>tr:last').remove();
                     i--;
                 }
             });
 
             $('#btnGraphIt').click(function() {
                 //send 'i' to the graphing function as the number of records
-                flotTest(i - 1);
+                flotTest(i - 1, 'lad');
             });
+            
+            
         });
     </script>
-
-     <style type="text/css">
-         #main
-         {
-             margin: 3em;
-         }
-     </style>
 
  </head>
     <body>
     <div id="main">
     <h2>Charting Demo: LAD</h2>
-    <p>Enter your LAD data (in mm!) into the table, adding as many rows as you need.<br />
+    <p>Enter your LAD data (mm) into the table, adding as many rows as you need.<br />
     Click the 'Graph It!' button to plot data on a z-score graph.</p>
     <div id="JTable">
-        <table id="ladData">
+        <table id="tableData">
             <thead>
                 <tr>
                     <td>
@@ -73,7 +65,7 @@
                         (kg)
                     </th>
                     <th>
-                        LAD (mm)
+                        RCA (mm)
                     </th>
                     <th>
                         BSA
@@ -89,13 +81,13 @@
                         t<sub>0</sub>
                     </th>
                     <td>
-                        <input id="ht0" type="text" onchange="updateRow(0)"/>
+                        <input id="ht0" type="text" onchange="updateRow(0, 'lad')"/>
                     </td>
                     <td>
-                        <input id="wt0" type="text" onchange="updateRow(0)"/>
+                        <input id="wt0" type="text" onchange="updateRow(0, 'lad')"/>
                     </td>
                     <td>
-                        <input id="lad0" type="text" onchange="updateRow(0)"/>
+                        <input id="lad0" type="text" onchange="updateRow(0, 'lad')"/>
                     </td>
                     <td class="results" id="bsa0">
                         &nbsp;
