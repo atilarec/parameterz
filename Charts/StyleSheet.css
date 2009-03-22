@@ -1,81 +1,84 @@
-﻿body {
+﻿body
+{
+}
+#main
+{
+    margin: 3em;
 }
 .calculator
 {
-margin: 1em 0.5em;
-font-family: Tahoma, Arial, Helvetica, sans-serif;
-font-size: 13px;
-
+    margin: 1em 0.5em;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 13px;
 }
 table
 {
-font-family: Tahoma, Arial, Helvetica, sans-serif;
-font-size: 13px;
-border-collapse: collapse;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    border-collapse: collapse;
 }
 input
 {
-width:8em;
+    width: 8em;
 }
 .label
 {
-text-align: right;
-padding-right:0.2em;
+    text-align: right;
+    padding-right: 0.2em;
 }
 .button
 {
-width: 98%;
+    width: 98%;
 }
 input.borderline
 {
-outline: none;
-border-style: none;
-border: 0;
-background-color: #FFBE5C;
-text-align: center;
+    outline: none;
+    border-style: none;
+    border: 0;
+    background-color: #FFBE5C;
+    text-align: center;
 }
 input.mild
 {
-outline: none;
-border-style: none;
-border: 0;
-background-color: #FFA929;
-text-align: center;
+    outline: none;
+    border-style: none;
+    border: 0;
+    background-color: #FFA929;
+    text-align: center;
 }
 input.moderate
 {
-outline: none;
-border-style: none;
-border: 0;
-background-color: #FF4D4D;
-text-align: center;
+    outline: none;
+    border-style: none;
+    border: 0;
+    background-color: #FF4D4D;
+    text-align: center;
 }
 input.severe
 {
-background-color: #FF3333;
-font-weight: bold;
-text-align: center;
-outline: none;
-border-style: none;
-border: 0;
+    background-color: #FF3333;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    border-style: none;
+    border: 0;
 }
 input.normal
 {
-background-color: #B8D3FF;
-text-align: center;
-border-style: none;
-border: 0;
-outline: none;
+    background-color: #B8D3FF;
+    text-align: center;
+    border-style: none;
+    border: 0;
+    outline: none;
 }
 td.results
 {
-border-style: none;
-outline: none;
-text-align: center;
-color: #000;
-background-color: #FFFFFF;
-width: 6em;
-
+    border-style: none;
+    outline: none;
+    text-align: center;
+    color: #000;
+    background-color: #FFFFFF;
+    width: 6em;
 }
 div.info
 {
@@ -85,13 +88,16 @@ div.info
     padding-left: 1em;
 }
 
-@media print {
-	body {
-		font-size: 10pt;
-		font-family: times new roman, times, serif;
-	}
+@media print
+{
+    body
+    {
+        font-size: 10pt;
+        font-family: times new roman, times, serif;
+    }
 
-	.buttonControls {
-		display: none;
-	}
+    .buttonControls
+    {
+        display: none;
+    }
 }
