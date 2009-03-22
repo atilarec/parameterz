@@ -1,48 +1,46 @@
-﻿//global arrays
+﻿function flotTest(numScores, site) {
     var mean = new Array;
     var upper = new Array;
     var lower = new Array;
     var twosd = new Array;
     var threesd = new Array;
-for (var i = 0.1; i <= 2.2; i += .01) {
-            mean.push([i, 10 * (0.31747 * Math.pow(i, 0.36008) - 0.02887)]);
-            upper.push([i, 10 * (0.31747 * Math.pow(i, 0.36008) - 0.02887) + 16.5 * (0.03040 + (0.01514 * i))]);
-            lower.push([i, 10 * (0.31747 * Math.pow(i, 0.36008) - 0.02887) - 16.5 * (0.03040 + (0.01514 * i))]);
-            twosd.push([i, 10 * (0.31747 * Math.pow(i, 0.36008) - 0.02887) + 20 * (0.03040 + (0.01514 * i))]);
-            threesd.push([i, 10 * (0.31747 * Math.pow(i, 0.36008) - 0.02887) + 30 * (0.03040 + (0.01514 * i))]);
-        }
-Array.prototype.max = function() {
-    var max = this[0];
-    var len = this.length;
-    for (var i = 1; i < len; i++) if (this[i] > max) max = this[i];
-    return max;
-}
-Array.prototype.min = function() {
-    var min = this[0];
-    var len = this.length;
-    for (var i = 1; i < len; i++) if (this[i] < min) min = this[i];
-    return min;
-}
+    
+    switch (site) {//accesses the global object 'myEcho' from calcsForChart.js 
+        case 'rca':
+            var method = myEcho.calcRCA;
+            break;
+        case 'lad':
+            var method = myEcho.calcLAD;
+            break;
+        case 'lmca':
+            var method = myEcho.calcLMCA;
+            break;
 
-function flotTest(numScores) {
-//setup local arrays
-    var lmca = new Array;
+    }
+    for (var i = 0.1; i <= 2.2; i += .01) {
+        mean.push([i, 10 * method.mean(i)]);
+        upper.push([i, 10 * (method.mean(i) + 1.65* method.sd(i))]);
+        lower.push([i, 10 * (method.mean(i) - 1.65 * method.sd(i))]);
+        twosd.push([i, 10 * (method.mean(i) + 2 * method.sd(i))]);
+        threesd.push([i, 10 * (method.mean(i) + 3 * method.sd(i))]);
+    } //setup local arrays
+    var coronary = new Array;
     var bsa = new Array;
-    var lmcaData = new Array;
+    var plotData = new Array;
 
     //empty the local arrays
-    lmca.length = 0;
+    coronary.length = 0;
     bsa.length = 0;
-    lmcaData.length = 0;
+    plotData.length = 0;
     //loop to get the data
     for (i = 0; i <= numScores; i++) {
-        lmca[i] = parseFloat(document.getElementById("lmca" + i).value);
+        coronary[i] = parseFloat(document.getElementById([site] + i).value);
         bsa[i] = document.getElementById("bsa" + i).innerHTML;
     } // end for loop
 
     //build the data array- contains x,y pairs to be graphed
     for (i = 0; i <= numScores; i++) {
-        lmcaData[i] = [bsa[i], lmca[i]]
+        plotData[i] = [bsa[i], coronary[i]]
     
     }//end for loop
     
@@ -51,9 +49,9 @@ function flotTest(numScores) {
         $.plot($("#placeholder"), [
         //first data series object
         {
-            data: lmcaData,
+            data: plotData,
         color: '#333333',
-        label: 'LMCA, mm',
+        label: site.toUpperCase() + ', mm',
         lines: { show: false },
         points: { show: true }
         }, 
