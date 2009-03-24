@@ -39,7 +39,42 @@
                 //send 'i' to the graphing function as the number of records
                 flotTest(i - 1, 'lad');
             });
-            
+            function showTooltip(x, y, contents) {
+                $('<div id="tooltip">' + contents + '</div>').css({
+                    position: 'absolute',
+                    display: 'none',
+                    top: y - 35,
+                    left: x - 25,
+                    border: '1px solid #fdd',
+                    padding: '2px',
+                    'background-color': '#fee',
+                    opacity: 0.80
+                }).appendTo("body").fadeIn(200);
+            }
+            var previousPoint = null;
+            $("#placeholder").bind("plothover", function(event, pos, item) {
+                $("#x").text(pos.x.toFixed(2));
+                $("#y").text(pos.y.toFixed(2));
+                if (item) {
+                    if (item.seriesIndex == 0) {
+                        if (previousPoint != item.datapoint) {
+                            previousPoint = item.datapoint;
+
+                            $("#tooltip").remove();
+                            var x = item.datapoint[0],
+                        y = item.datapoint[1];
+
+
+                            showTooltip(item.pageX, item.pageY,
+                                "BSA: " + x + "; LAD: " + y + "; Z-score: " + calcZ(x, 'lad', y).toFixed(1));
+                        }
+                    }
+                    else {
+                        $("#tooltip").remove();
+                        previousPoint = null;
+                    }
+                };
+            });            
             
         });
     </script>

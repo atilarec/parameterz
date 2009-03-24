@@ -143,7 +143,8 @@ label: 'Mean'
 //options
 
     {
-    shadowSize: 0
+        shadowSize: 0,
+    grid: { hoverable: true}
 });
 });
 } // end flotTest fx
