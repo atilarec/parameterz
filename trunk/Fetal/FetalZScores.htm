@@ -14,7 +14,9 @@
                 fetal.ega = $('#Weeksddl option:selected').val(); //sets the inital ega
                 $("select").change(function() {
                     fetal.ega = ($('#Weeksddl option:selected').val() * 1 + ($('#Daysddl option:selected').val() * 1 / 7)).toFixed(1) * 1;
-                        $("input").change();
+                    $("#LMP").html(fetal.lmp());
+                    $("#EDD").html(fetal.edd());
+                    $("input").change();
                 });
             });
     </script>
@@ -81,18 +83,11 @@
 
 </select>
 </div>
-<div style="display:none;">
-<input id="txtEGA" type="text" value="18.0" />
-</div>
 <div>Based on today's date and the given EGA: </div>
 <div>The LMP is <span id="LMP" class="strong">...</span></div>
 <div>The EDD is <span id="EDD" class="strong">...</span></div>
 <div>
 <table summary="Fetal Echo Z-Scores">
-
-<tr>
-<td>&nbsp;</td>
-</tr>
 
 <tr>
 <th>Site</th>
