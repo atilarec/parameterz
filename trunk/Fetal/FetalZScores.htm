@@ -14,22 +14,24 @@
                 fetal.ega = $('#Weeksddl option:selected').val(); //sets the inital ega
                 $("select").change(function() {
                     fetal.ega = ($('#Weeksddl option:selected').val() * 1 + ($('#Daysddl option:selected').val() * 1 / 7)).toFixed(1) * 1;
+                        $("input").change();
                 });
             });
     </script>
     <script type="text/javascript">
         function CalculateZScores(site, score, selector) {
-
-            var zselector = '#' + selector + 'Z';
-            var z = site.zscore(score)
-            $(zselector).html(z)
+            if (!isNaN(score) && score != "" ) {
+                var zselector = '#' + selector + 'Z';
+                var z = site.zscore(score)
+                $(zselector).html(z)
                 .removeClass()
                 .addClass(ZscoreFlag(z))
                 .attr("title", calcPercentile(z) + " percentile");
-            var mselector = '#' + selector + 'Mean';
-            $(mselector).html(site.valueOf(0));
-            var rselector = '#' + selector + 'Range';
-            $(rselector).html(site.valueOf(-1.65) + " - " + site.valueOf(1.65));
+                var mselector = '#' + selector + 'Mean';
+                $(mselector).html(site.valueOf(0));
+                var rselector = '#' + selector + 'Range';
+                $(rselector).html(site.valueOf(-1.65) + " - " + site.valueOf(1.65));
+            }
         }
     
     
@@ -123,7 +125,7 @@
 <tr>
 <td class="label"><label for="txtLV1">LV Minor:</label></td>
 
-<td><input id="txtLV1" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtLV1" type="text" onchange="CalculateZScores(fetal.lvminor, this.value, 'LV1')" /></td>
 
 <td id="LV1Mean" class="results">&nbsp;</td>
 
@@ -135,7 +137,7 @@
 <tr>
 <td class="label"><label for="txtLV2">LV Major:</label></td>
 
-<td><input id="txtLV2" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtLV2" type="text" onchange="CalculateZScores(fetal.lvmajor, this.value, 'LV2')" /></td>
 
 <td id="LV2Mean" class="results">&nbsp;</td>
 
@@ -147,7 +149,7 @@
 <tr>
 <td class="label"><label for="txtAOV">Aortic Valve:</label></td>
 
-<td><input id="txtAOV" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtAOV" type="text" onchange="CalculateZScores(fetal.aortic, this.value, 'AOV')" /></td>
 
 <td id="AOVMean" class="results">&nbsp;</td>
 
@@ -159,7 +161,7 @@
 <tr>
 <td class="label"><label for="txtAAO">AAO:</label></td>
 
-<td><input id="txtAAO" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtAAO" type="text" onchange="CalculateZScores(fetal.aao, this.value, 'AAO')" /></td>
 
 <td id="AAOMean" class="results">&nbsp;</td>
 
@@ -171,7 +173,7 @@
 <tr>
 <td class="label"><label for="txtDAO">DAO:</label></td>
 
-<td><input id="txtDAO" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtDAO" type="text" onchange="CalculateZScores(fetal.dao, this.value, 'DAO')" /></td>
 
 <td id="DAOMean" class="results">&nbsp;</td>
 
@@ -187,7 +189,7 @@
 <tr>
 <td class="label"><label for="txtTV">Tricuspid Valve:</label></td>
 
-<td><input id="txtTV" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtTV" type="text" onchange="CalculateZScores(fetal.tricuspid, this.value, 'TV')" /></td>
 
 <td id="TVMean" class="results">&nbsp;</td>
 
@@ -199,7 +201,7 @@
 <tr>
 <td class="label"><label for="txtRV1">RV Minor:</label></td>
 
-<td><input id="txtRV1" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtRV1" type="text" onchange="CalculateZScores(fetal.rvminor, this.value, 'RV1')" /></td>
 
 <td id="RV1Mean" class="results">&nbsp;</td>
 
@@ -211,7 +213,7 @@
 <tr>
 <td class="label"><label for="txtRV2">RV Major</label> :</td>
 
-<td><input id="txtRV2" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtRV2" type="text" onchange="CalculateZScores(fetal.rvmajor, this.value, 'RV2')" /></td>
 
 <td id="RV2Mean" class="results">&nbsp;</td>
 
@@ -223,7 +225,7 @@
 <tr>
 <td class="label"><label for="txtPV">Pulmonary Valve:</label></td>
 
-<td><input id="txtPV" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtPV" type="text" onchange="CalculateZScores(fetal.pulmonary, this.value, 'PV')" /></td>
 
 <td id="PVMean" class="results">&nbsp;</td>
 
@@ -235,7 +237,7 @@
 <tr>
 <td class="label"><label for="txtMPA">MPA:</label></td>
 
-<td><input id="txtMPA" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtMPA" type="text" onchange="CalculateZScores(fetal.mpa, this.value, 'MPA')" /></td>
 
 <td id="MPAMean" class="results">&nbsp;</td>
 
@@ -247,7 +249,7 @@
 <tr>
 <td class="label"><label for="txtRPA">RPA:</label></td>
 
-<td><input id="txtRPA" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtRPA" type="text" onchange="CalculateZScores(fetal.rpa, this.value, 'RPA')" /></td>
 
 <td id="RPAMean" class="results">&nbsp;</td>
 
@@ -259,7 +261,7 @@
 <tr>
 <td class="label"><label for="txtLPA">LPA:</label></td>
 
-<td><input id="txtLPA" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtLPA" type="text" onchange="CalculateZScores(fetal.lpa, this.value, 'LPA')" /></td>
 
 <td id="LPAMean" class="results">&nbsp;</td>
 
@@ -275,7 +277,7 @@
 <tr>
 <td class="label"><label for="txtIsthmus3">Isthmus, 3VV (mm):</label></td>
 
-<td><input id="txtIsthmus3" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtIsthmus3" type="text" onchange="CalculateZScores(fetal.isthmus3, this.value, 'Isthmus3')" /></td>
 
 <td id="Isthmus3Mean" class="results">&nbsp;</td>
 
@@ -287,7 +289,7 @@
 <tr>
 <td class="label"><label for="txtDuct3">Duct, 3VV (mm):</label></td>
 
-<td><input id="txtDuct3" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtDuct3" type="text" onchange="CalculateZScores(fetal.ductus, this.value, 'Duct3')" /></td>
 
 <td id="Duct3Mean" class="results">&nbsp;</td>
 
@@ -299,7 +301,7 @@
 <tr>
 <td class="label"><label for="txtIsthmus">Isthmus, Sagittal (mm):</label></td>
 
-<td><input id="txtIsthmus" type="text" onchange="CalculateZScores()" /></td>
+<td><input id="txtIsthmus" type="text" onchange="CalculateZScores(fetal.isthmus, this.value, 'Isthmus')" /></td>
 
 <td id="IsthmusMean" class="results">&nbsp;</td>
 

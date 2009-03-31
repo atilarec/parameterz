@@ -66,7 +66,7 @@
             return fetal.getMeasurement(this, zscore).toFixed(2);
         }
     },
-    "rv minor": {
+    "rvminor": {
         "intercept": -4.455,
         "multiplier": 1.363,
         "rmse": 0.1442,
@@ -77,7 +77,7 @@
             return fetal.getMeasurement(this, zscore).toFixed(2);
         }
     },
-    "rv major": {
+    "rvmajor": {
         "intercept": -3.566,
         "multiplier": 1.277,
         "rmse": 0.1658,
@@ -88,7 +88,7 @@
             return fetal.getMeasurement(this, zscore).toFixed(2);
         }
     },
-    "lv minor": {
+    "lvminor": {
         "intercept": -4.292,
         "multiplier": 1.298,
         "rmse": 0.1560,
@@ -99,7 +99,7 @@
             return fetal.getMeasurement(this, zscore).toFixed(2);
         }
     },
-    "lv major": {
+    "lvmajor": {
         "intercept": -3.231,
         "multiplier": 1.193,
         "rmse": 0.1376,
@@ -143,13 +143,57 @@
             return fetal.getMeasurement(this, zscore).toFixed(2);
         }
     },
+    "isthmus": {
+        "intercept": -2.489,
+        "multiplier": 1.109,
+        "rmse": 0.182,
+        "zscore": function(score) {
+            return fetal.getZScore(this, score).toFixed(2);
+        },
+        "valueOf": function(zscore) {
+            return fetal.getMeasurement(this, zscore).toFixed(2);
+        }
+    },
+    "isthmus3": {
+        "intercept": -2.822,
+        "multiplier": 1.224,
+        "rmse": 0.164,
+        "zscore": function(score) {
+            return fetal.getZScore(this, score).toFixed(2);
+        },
+        "valueOf": function(zscore) {
+            return fetal.getMeasurement(this, zscore).toFixed(2);
+        }
+    },
+    "ductus": {
+        "intercept": -3.359,
+        "multiplier": 1.396,
+        "rmse": 0.176,
+        "zscore": function(score) {
+            return fetal.getZScore(this, score).toFixed(2);
+        },
+        "valueOf": function(zscore) {
+            return fetal.getMeasurement(this, zscore).toFixed(2);
+        }
+    },
+    "dao": {
+        "intercept": -5.365,
+        "multiplier": 1.360,
+        "rmse": 0.1216,
+        "zscore": function(score) {
+            return fetal.getZScore(this, score).toFixed(2);
+        },
+        "valueOf": function(zscore) {
+            return fetal.getMeasurement(this, zscore).toFixed(2);
+        }
+    },
     "getZScore": function(site, score) {
-        var predicted = site.multiplier * Math.log(fetal.ega) + site.intercept;
-        return (Math.log(score) - predicted) / site.rmse;
+            var predicted = site.multiplier * Math.log(fetal.ega) + site.intercept;
+            return (Math.log(score) - predicted) / site.rmse;
     },
     "getMeasurement": function(site, zscore) {
-        var predicted = site.multiplier * Math.log(fetal.ega) + site.intercept;
-        return Math.exp(predicted + (zscore * site.rmse));
+            var predicted = site.multiplier * Math.log(fetal.ega) + site.intercept;
+            return Math.exp(predicted + (zscore * site.rmse));
     }
 };
 
