@@ -14,22 +14,22 @@
 
     if (!isNaN(bsa)) {
         $('#bsa').val(bsa.toFixed(2));
-    };
+    }
     
     if (!isNaN(aorooti)) {
         $('#aorooti').val(aorooti.toFixed(2));
-    };
+    }
 
     if (!isNaN(lar)) {
         $('#lar').val(lar.toFixed(2));
-    };
+    }
     
     if (!isNaN(mva)) {
         $('#mva').val(mva.toFixed(2));
         if (!isNaN(bsa)) {
             $('#mvai').val(mvai.toFixed(2));
         }
-    };
+    }
 
     //Score = 14.0 (BSA) +0.943(ROOT1) +4.78 (LAR) + 0.157(MVA1) - 12.03
 
