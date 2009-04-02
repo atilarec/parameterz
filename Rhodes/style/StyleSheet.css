@@ -1,0 +1,19 @@
+﻿body {
+}
+label
+{
+    float: right;
+    padding-right: 2px;
+}
+input
+{
+    width: 80px;
+}
+table
+{
+    width: 400px;
+}
+input[readonly]
+{
+    border-width: 0px;
+}

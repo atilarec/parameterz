@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Rhodes Score Calculator (for neonatal patients with aortic stenosis)</title>
+
+    <script src="scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+
+    <script src="scripts/jquery.cluetip.js" type="text/javascript"></script>
+
+    <script src="scripts/rhodes.js" type="text/javascript"></script>
+    <link href="style/jquery.cluetip.css" rel="stylesheet" type="text/css" />
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+   <script type="text/javascript">
+       $(document).ready(function() {
+           $('label a').cluetip({ local: true });
+           $('input').change(function() {
+                    calcRhodes()
+           });
+       });
+
+    </script>
+</head>
+<body>
+<h1>Rhodes Score Calculator</h1>
+<h2>for neonatal critical aortic stenosis</h2>
+    <table title="rhodes score worksheet" id="rhodes">
+        <tr>
+            <td>
+                <label for="ht">Height (cm):</label>
+            </td>
+            <td>
+                <input type="text" name="ht" id="ht" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="wt">Weight (kg):</label>
+            </td>
+            <td>
+                <input type="text" name="wt" id="wt" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="bsa">BSA (m<sup>2</sup>):</label>
+            </td>
+            <td>
+                <input type="text" name="bsa" id="bsa" readonly="readonly" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="aoroot"><a href="#aorticroottip" rel="#aorticroottip" title="Measuring the Aortic Root">Aortic Root (cm):</a></label>
+            </td>
+            <td>
+                <input type="text" name="aoroot" id="aoroot" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="aorooti">Aortic Root, indexed:</label></td>
+            <td>
+                <input type="text" readonly="readonly" name="aorooti" id="aorooti" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lvlax"><a href="#lvlaxtip" rel="#lvlaxtip" title="Measuring the LV Long Axis">Left Ventricular Long Axis:</a></label></td>
+            <td>
+                <input type="text" name="lvlax" id="lvlax" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="heartlax"><a href="#heartlaxtip" rel="#heartlaxtip" title="Measuring the Heart Long Axis">Heart Long Axis:</a></label>
+            </td>
+            <td>
+                <input type="text" name="heartlax" id="heartlax" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lar">Long Axis Ratio:</label>
+            </td>
+            <td>
+                <input type="text" readonly="readonly" name="lar" id="lar" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="mvlax"><a href="#mvlaxtip" rel="#mvlaxtip" title="Measuring the Mitral Annulus (LAX)">Mitral Valve Annulus, LAX (cm):</a></label></td>
+            <td>
+                <input type="text" name="mvlax" id="mvlax" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="mva4c"><a href="#mva4ctip" rel="#mva4ctip" title="Measuring the Mitral Annulus (A4C)">Mitral Valve Annulus, A4C (cm):</a></label></td>
+            <td>
+                <input type="text" name="mva4c" id="mva4c" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="mva">Mitral Valve Area:</label>
+            </td>
+            <td>
+                <input type="text" readonly="readonly" name="mva" id="mva" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="mvai">Mitral Valve Area, indexed:</label>
+            </td>
+            <td>
+                <input type="text" readonly="readonly" name="mvai" id="mvai" />
+            </td>
+        </tr>
+    </table>
+<div>
+<h3>Discriminant Score:</h3>
+<p>"...a discriminating score of less than -0.35 predictive of death after a two-ventricle repair."</p>
+<span id="results">&nbsp;</span>
+</div>
+<div id="tips">
+<p id="aorticroottip">
+Aortic root dimension is taken as the maximum dimension at the level of the sinuses of Valsalva, obtained from the parasternal long-axis view.
+</p>
+<p id="lvlaxtip">
+The long-axis length of the left ventricle is measured as the distance from the plane of the mitral valve annulus to the apex of the ventricle.
+</p>
+<p id="heartlaxtip">The long axis of the heart is measured from the apical four chamber view as the distance from the crux of the heart to the apical endocardium (either right or left ventricle, whichever formed the apex of the heart).
+</p>
+<p id="mvlaxtip">
+The antero-posterior early diastolic dimension of the mitral annulus is taken from the long-axis parasternal image.
+</p>
+<p id="mva4ctip">
+The lateral early diastolic dimension of the mitral annulus is taken from the apical four-chamber image.
+</p>
+</div>
+<p class="references">
+    <a href="http://circ.ahajournals.org/cgi/reprint/84/6/2325" title="link to Circulation online">Predictors of survival in neonates with critical aortic stenosis</a> [published erratum appears in Circulation 1995 Oct 1;92(7):2005]
+    <br />
+    LA Rhodes, SD Colan, SB Perry, RA Jonas and SP Sanders
+    <br />
+    Circulation 1991;84;2325-2335
+</p>
+</body>
+</html>
