@@ -9,7 +9,7 @@
     var bsa = calcBSA(ht, wt);
     var aorooti = aoroot / bsa;
     var lar = lvlax / heartlax;
-    var mva = Math.PI * (mvlax / 2 + mva4c / 2);
+    var mva = Math.PI * ((mvlax / 2) * (mva4c / 2));
     var mvai = mva / bsa;
 
     if (!isNaN(bsa)) {
