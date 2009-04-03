@@ -37,12 +37,8 @@
     score = 1 * score.toFixed(2);
 
     if (!isNaN(score)) {
-        if (score >= -0.35) {
-            $('#results').html("This score is <b>" + score + "</b>, which <em>favors</em> a biventricular repair.");
-        }
-        else {
-            $('#results').html("This score is <b>" + score + "</b>, which <em>does not favor</em> a biventricular repair.");
-        }
+        $('#results').html(score);
+        $('#interpretation').toggleClass("highlight", score <= -0.35);
     };
 } //end main fx
 

@@ -17,3 +17,8 @@ input[readonly]
 {
     border-width: 0px;
 }
+.highlight
+{
+    padding: 0.5em 1em;
+    background-color: #E1817B;
+}
