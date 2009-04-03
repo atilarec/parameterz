@@ -1,4 +1,6 @@
-﻿body {
+﻿body 
+{
+    margin: 1em 2em;
 }
 label
 {
@@ -21,4 +23,12 @@ input[readonly]
 {
     padding: 0.5em 1em;
     background-color: #E1817B;
+}
+h2 a, label a
+{
+    text-decoration: none;
+    border-bottom-style: dotted;
+    border-width: thin;
+    border-color: #0066cc;
+    color: #0066cc;
 }
