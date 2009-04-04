@@ -13,8 +13,8 @@
     <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
    <script type="text/javascript">
        $(document).ready(function() {
-           $('label a').cluetip({ local: true });
-           $('h2 a').cluetip({ local: true });
+           $('.tooltip').cluetip({ width: 400, local: true });
+           $('h2 a').cluetip({ width: 400, local: true });
            $('input').change(function() {
                     calcRhodes()
            });
@@ -51,10 +51,11 @@
         </tr>
         <tr>
             <td>
-                <label for="aoroot"><a href="#aorticroottip" rel="#aorticroottip" title="Measuring the Aortic Root">Aortic Root (cm):</a></label>
+                <label for="aoroot">Aortic Root (cm):</label>
             </td>
             <td>
                 <input type="text" name="aoroot" id="aoroot" />
+                <img src="images/information.png" class="tooltip" rel="#aorticroottip" title="Measuring the Aortic Root:" />
             </td>
         </tr>
         <tr>
@@ -66,16 +67,19 @@
         </tr>
         <tr>
             <td>
-                <label for="lvlax"><a href="#lvlaxtip" rel="#lvlaxtip" title="Measuring the LV Long Axis">Left Ventricular Long Axis:</a></label></td>
+                <label for="lvlax">Left Ventricular Long Axis:</label></td>
             <td>
-                <input type="text" name="lvlax" id="lvlax" /></td>
+                <input type="text" name="lvlax" id="lvlax" />
+                <img src="images/information.png" class="tooltip" rel="#lvlaxtip" title="Measuring the LV Long Axis:" />
+                </td>
         </tr>
         <tr>
             <td>
-                <label for="heartlax"><a href="#heartlaxtip" rel="#heartlaxtip" title="Measuring the Heart Long Axis">Heart Long Axis:</a></label>
+                <label for="heartlax">Heart Long Axis:</label>
             </td>
             <td>
                 <input type="text" name="heartlax" id="heartlax" />
+                <img src="images/information.png" class="tooltip" rel="#heartlaxtip" title="Measuring the Heart Long Axis:" />
             </td>
         </tr>
         <tr>
@@ -87,15 +91,19 @@
         </tr>
         <tr>
             <td>
-                <label for="mvlax"><a href="#mvlaxtip" rel="#mvlaxtip" title="Measuring the Mitral Annulus (LAX)">Mitral Valve Annulus, LAX (cm):</a></label></td>
+                <label for="mvlax">Mitral Valve Annulus, LAX (cm):</label></td>
             <td>
-                <input type="text" name="mvlax" id="mvlax" /></td>
+                <input type="text" name="mvlax" id="mvlax" />
+                <img src="images/information.png" class="tooltip" rel="#mvlaxtip" title="Measuring the Mitral Annulus (LAX):" />
+                </td>
         </tr>
         <tr>
             <td>
-                <label for="mva4c"><a href="#mva4ctip" rel="#mva4ctip" title="Measuring the Mitral Annulus (A4C)">Mitral Valve Annulus, A4C (cm):</a></label></td>
+                <label for="mva4c">Mitral Valve Annulus, A4C (cm):</label></td>
             <td>
-                <input type="text" name="mva4c" id="mva4c" /></td>
+                <input type="text" name="mva4c" id="mva4c" />
+                <img src="images/information.png" class="tooltip" rel="#mva4ctip" title="Measuring the Mitral Annulus (A4C):" />
+                </td>
         </tr>
         <tr>
             <td>

@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CHSS Score Calculator (for neonatal aortic stenosis)</title>
+
+    <script src="scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+
+    <script src="scripts/jquery.cluetip.js" type="text/javascript"></script>
+
+    <script src="scripts/CHSS.js" type="text/javascript"></script>
+    <link href="style/jquery.cluetip.css" rel="stylesheet" type="text/css" />
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+   <script type="text/javascript">
+       $(document).ready(function() {
+           $('.tooltip').cluetip({ width: 400, local: true });
+           $('h2 a').cluetip({ width: 400, local: true });
+           $('input, select').change(function() {
+               calcCHSS()
+           });
+
+       });
+
+    </script>
+
+    <style type="text/css">
+        .tooltip
+        {
+            border-width: 0px;
+        }
+    </style>
+
+</head>
+<body>
+<h1>CHSS Score Calculator</h1>
+<h2><a href="#patients" rel="#patients" title="Inclusion Criteria">for neonatal critical aortic stenosis</a></h2>
+    <table id="worksheet">
+        <tr>
+            <td>
+                <label for="ht">Height (cm):</label>
+            </td>
+            <td>
+                <input type="text" name="ht" id="ht" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="wt">Weight (kg):</label>
+            </td>
+            <td>
+                <input type="text" name="wt" id="wt" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="bsa">BSA (m<sup>2</sup>):</label>
+            </td>
+            <td id="bsa" class="results">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="age">Age (days):</label>
+            </td>
+            <td>
+                <input type="text" name="age" id="age" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="aorticroot">Aortic Root (cm):</label>
+            </td>
+            <td>
+                <input type="text" name="aorticroot" id="aorticroot" />
+                <img src="images/information.png" class="tooltip" title="Aortic Root Diameter:" alt="AO Root tooltip" rel="#aoroottip" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label>Aortic Root Z-Score:</label>
+            </td>
+            <td id="aorticrootz" class="results">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for ="efe">EFE Grade:</label>
+            </td>
+            <td>
+                <select name="efe" id="efe">
+                    <option value="0" title="none">0 = none</option>
+                    <option value="1" title="involvement of papillary muscles only">1 = paps</option>
+                    <option value="2" title="papillary muscle with some endocardial surface involvement">2 = some</option>
+                    <option value="3" title="extensive endocardial surface involvement">3 = extensive</option>
+                </select>
+                <img src="images/information.png" class="tooltip" rel="#efetip" title="Presence/Grade of EFE:" alt="efe tooltip" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="aao">Ascending Aorta (cm):</label>
+            </td>
+            <td>
+                <input type="text" name="aao" id="aao" />
+                <img src="images/information.png" class="tooltip" rel="#aaotip" title="Ascending Aorta:" alt="aao tooltip" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="tr">Tricuspid Regurgitation:</label>
+            </td>
+            <td>
+                <select name="tr" id="tr">
+                    <option value="0" selected="selected" title="TR: mild or less">none-mild</option>
+                    <option value="1" title="TR: moderate or worse">mod-severe</option>
+                </select>
+                <img src="images/information.png" class="tooltip" rel="#trtip" title="Tricuspid Regurgitation:" alt="TR tooltip" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lvlax">LV Long-Axis Length (cm):</label>
+            </td>
+            <td>
+                <input type="text" name="lvlax" id="lvlax" />
+                <img src="images/information.png" class="tooltip" rel="#lvlaxtip" title="Long-Axis Endocardial Length of LV" alt="lv tooltip" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>LV Long-Axis Z-Score:</label>
+            </td>
+            <td id="lvlaxz" class="results">
+                &nbsp;
+            </td>
+        </tr>
+        </table>
+<div>
+<h3>CHSS Score:&nbsp;<span id="results"></span></h3>
+<p id="interpretation">The result gives the predicted difference in percent
+survival for Norwood minus biventricular repair. <span id="norwood">A positive
+number would therefore favor a Norwood procedure</span>
+and <span id="biv"> negative number would favor a biventricular
+repair</span>, with the magnitude of the number representing the predicted difference in percent survival or the survival
+benefit for the optimal pathway.
+</p>
+</div>
+<div id="tips"></div>
+<p id="patients">Critical left ventricular outflow obstruction was defined as
+the presence of moderately or severely reduced left ventricular
+function <em>or</em> the presence of systemic perfusion dependent on
+right ventricular output via a patent arterial duct.<br />
+All patients had to have important left ventricular outflow obstruction or
+hypoplasia with concordant atrioventricular and ventriculoarterial
+connections, with echocardiographic, angiographic, or surgical demonstration of patency of the aortic valve.<br />
+<i>Patients with large ventricular septal defects or associated cardiac
+anomalies judged to be of worse prognostic significance than
+their left ventricular obstructive lesions were excluded</i>.</p>
+<p id="aoroottip">
+Measured in the PLAX view;<br /> 
+maximal antero-posterior diameter of aortic root at level of sinuses of Valsalva, inner edge to inner edge.
+</p>
+<p id="efetip">
+(EFE = endocardial fibroelastosis) <br />
+Graded from all views;<br />
+    <b>Mild</b> = involves only papillary muscle area<br />
+    <b>Moderate</b> = papillary muscle and some part of LV endocardium<br />
+    <b>Severe</b> = extensive endocardial involvement
+</p>
+<p id="aaotip">
+Measured in the PLAX view;<br />
+maximum diameter (systole), inner surface<br />
+"Measured at level above sinotubular junction"
+</p>
+<p id="trtip">
+Estimated from AP4C & PSSAX views;<br />
+"From color flow Doppler"
+</p>
+<p id="lvlaxtip">
+Measured in AP4C view (diastole);<br />
+Ventricular length from midpoint of plane of mitral valve annulus to apex of LV
+</p>
+<div id="references">
+<p>
+    <a href="http://jtcs.ctsnetjournals.org/cgi/content/full/121/1/0010" title="link to JTCVS online">Critical aortic stenosis in the neonate: A multi-institutional study of management, outcomes, and risk factors</a>. <br />
+    Lofland GK, McCrindle BW, Williams WG, Blackstone EH, Tchervenkov CI, Sittiwangkul R, Jonas RA.
+    <br />
+    J Thorac Cardiovasc Surg. 2001 Jan;121(1):10-27.
+</p>
+<p>
+    <a href="http://www.ncbi.nlm.nih.gov/pubmed/10476831" title="PubMed link">Relationship of the dimension of cardiac structures to body size: an echocardiographic study in normal infants and children</a>.<br />
+Daubeney PE, Blackstone EH, Weintraub RG, Slavik Z, Scanlon J, Webber SA.<br />
+Cardiol Young. 1999 Jul;9(4):402-10.
+</p>
+</div>
+</body>
+</html>
