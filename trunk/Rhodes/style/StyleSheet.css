@@ -19,6 +19,10 @@ input[readonly]
 {
     border-width: 0px;
 }
+select
+{
+    width: 85px;
+}
 .highlight
 {
     padding: 0.5em 1em;
@@ -31,4 +35,7 @@ h2 a, label a
     border-width: thin;
     border-color: #0066cc;
     color: #0066cc;
+}
+td .results
+{
 }
