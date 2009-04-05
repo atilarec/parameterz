@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Discriminant Score Calculator (for neonatal aortic stenosis)</title>
+
+    <script src="scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+
+    <script src="scripts/jquery.cluetip.js" type="text/javascript"></script>
+
+    <script src="scripts/discriminant.js" type="text/javascript"></script>
+    <link href="style/jquery.cluetip.css" rel="stylesheet" type="text/css" />
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+   <script type="text/javascript">
+       $(document).ready(function() {
+           $('.tooltip').cluetip({ width: 400, local: true });
+           $('h2 a').cluetip({ width: 400, local: true });
+           $('input, select').change(function() {
+               calcDiscriminant();
+           });
+
+       });
+
+    </script>
+</head>
+<body>
+<h1>Discriminant Score Calculator</h1>
+<h2><a href="#patients" rel="#patients" title="Inclusion Criteria">for neonatal critical aortic stenosis</a></h2>
+    <table id="rhodes">
+        <tr>
+            <td>
+                <label for="ht">Height (cm):</label>
+            </td>
+            <td>
+                <input type="text" name="ht" id="ht" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="wt">Weight (kg):</label>
+            </td>
+            <td>
+                <input type="text" name="wt" id="wt" /></td>
+        </tr>
+        <tr>
+            <td>
+                <label>BSA (m<sup>2</sup>):</label>
+            </td>
+            <td id="bsa">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="aov">Aortic Annulus (cm):</label>
+            </td>
+            <td>
+                <input type="text" name="aov" id="aov" />
+                <img src="images/information.png" class="tooltip" rel="#aovtip" title="Measuring the Aortic Annulus:" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Aortic Valve Z-Score:</label></td>
+            <td id="aovz">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lvlax">Left Ventricular Long Axis:</label></td>
+            <td>
+                <input type="text" name="lvlax" id="lvlax" />
+                <img src="images/information.png" class="tooltip" rel="#lvlaxtip" title="Measuring the LV Long Axis:" />
+                </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="heartlax">Heart Long Axis:</label>
+            </td>
+            <td>
+                <input type="text" name="heartlax" id="heartlax" />
+                <img src="images/information.png" class="tooltip" rel="#heartlaxtip" title="Measuring the Heart Long Axis:" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lar">Long Axis Ratio:</label>
+            </td>
+            <td id="lar">
+            &nbsp;    
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for ="efe">EFE Grade:</label>
+            </td>
+            <td>
+                <select name="efe" id="efe">
+                    <option value="false" title="omit from analysis">omit</option>
+                    <option value="0" title="none" selected="selected">0 = none</option>
+                    <option value="1" title="involvement of papillary muscles only">1 = paps</option>
+                    <option value="2" title="papillary muscle with some endocardial surface involvement">2 = some</option>
+                    <option value="3" title="extensive endocardial surface involvement">3 = extensive</option>
+                </select>
+                <img src="images/information.png" class="tooltip" rel="#efetip" title="Presence/Grade of EFE:" alt="efe tooltip" />
+            </td>
+        </tr>
+        </table>
+<div>
+<h3>Discriminant Score:&nbsp;<span id="results"></span></h3>
+<p>
+<span id="efeCutoff">Taking a discriminant cutoff of -0.65, this model accurately predicted outcome in 95% of survivors and
+80% of events (90% overall)</span>. Higher cutoff values allowed slightly improved specificity at the expense of
+sensitivity. The greatest specificity while maintaining &gt;85%
+sensitivity for predicting survival with a biventricular repair
+was at a discriminant cutoff of &lt;-0.46, which predicted outcome accurately in 86% of 
+    survivors and 82% of events. <br />
+    <span id="cutoff">If EFE is omitted from the analysis (owing to high 
+    interobserver variability in grading), a discriminant cutoff of -0.46 accurately 
+    predicted 91% of survivors and 80% of events
+(87% overall).</span>
+</p>
+</div>
+<div id="tips">
+<p id="patients">
+The new study cohort included patients who met
+the criteria specified in our original report: 1) surgical or
+balloon aortic valvuloplasty for valvar AS, 2) echocardiographic
+evidence of LV dysfunction and symptoms of
+congestive heart failure, 3) normally related great arteries,
+4) <i>absence of subvalvar/supravalvar AS</i>, 5) <i>intact ventricular
+septum</i>, 6) no prior procedures on the aortic valve, and
+7) adequate pre-intervention echocardiographic images to
+make all pertinent measurements. The presence of a patent
+ductus arteriosus was not considered in determining study
+eligibility. Mitral valve size was not considered for study
+inclusion.</p>
+<p id="aovtip">
+Aortic annulus diameters were measured
+from parasternal long-axis images.</p>
+<p id="lvlaxtip">
+The long-axis length of the left ventricle is measured as the distance from the plane of the mitral valve annulus to the apex of the ventricle.
+</p>
+<p id="heartlaxtip">The long axis of the heart is measured from the apical four chamber view as the distance from the crux of the heart to the apical endocardium (either right or left ventricle, whichever formed the apex of the heart).
+</p>
+<p id="efetip">
+0 = none<br /> 
+1 = involvement of MV papillary
+muscles only<br /> 
+2 = involvement of papillary muscles and
+some endocardial surface<br />
+3 = extensive endocardial
+surface involvement.<br />
+<br />
+Owing to high interobserver variability in grading, EFE can also be omitted from the analysis.
+</p>
+</div>
+<p class="references">
+    <a href="http://content.onlinejacc.org/cgi/content/full/47/9/1858" title="link to JACC Online">Validation and Re-Evaluation of a Discriminant Model Predicting Anatomic Suitability
+     for Biventricular Repair in Neonates With Aortic Stenosis</a>
+     <br />
+     Steven D. Colan, Doff B. McElhinney, Elizabeth C. Crawford, John F. Keane, and James E. Lock<br />
+     J. Am. Coll. Cardiol. 2006;47;1858-1865
+</p>
+</body>
+</html>
