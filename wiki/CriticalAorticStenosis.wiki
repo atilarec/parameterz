@@ -1,12 +1,14 @@
 == Introduction ==
 
-Several published works are available that aim to use echocardiographic data to help determine that nature of surgical repair in neonatal patients with "critical aortic stenosis". 
+Several published works are available that aim to use echocardiographic data to help determine the nature of surgical repair for neonates with "critical aortic stenosis". 
 
 These calculators are _works in progress_:
 
   * [http://parameterz.googlecode.com/svn/trunk/Rhodes/rhodes-score.htm Rhodes Score Calculator]
   * [http://parameterz.googlecode.com/svn/trunk/Rhodes/CHSS-score.htm CHSS Calculator]
   * [http://parameterz.googlecode.com/svn/trunk/Rhodes/discriminant-score.htm Discriminant Score Calculator]
+
+Eventually, I would like to compile all three into a single calculator, as many of the data points are common.
 
 *Disclaimer:*
 
