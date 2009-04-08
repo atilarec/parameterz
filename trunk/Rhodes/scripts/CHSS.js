@@ -58,13 +58,11 @@
     if (!isNaN(CHSS_score)) {
         if (CHSS_score >= 0) {
             $('#results').html('+' + CHSS_score.toFixed(2));
-            $('#biv').removeClass();
-            $('#norwood').addClass('highlight');
+            $('#norwood').effect("highlight", { color: "#E1817B" }, 4000);
         }
         else {
             $('#results').html(CHSS_score.toFixed(2));
-            $('#norwood').removeClass();
-            $('#biv').addClass('highlight');
+            $('#biv').effect("highlight", { color: "#E1817B" }, 4000);
         }
     };
 } //end main fx
