@@ -38,7 +38,10 @@
 
     if (!isNaN(score)) {
         $('#results').html(score);
-        $('#interpretation').toggleClass("highlight", score <= -0.35);
+        if (score <= -0.35) {
+            $('#norwood, #results').effect("highlight", { color: "#E1817B" }, 4000);
+        }
+
     };
 } //end main fx
 

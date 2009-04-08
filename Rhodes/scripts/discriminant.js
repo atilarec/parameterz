@@ -75,21 +75,15 @@ function calcDiscriminant() {
 
     //format the results
     if (CAS_APP.echo.efe === 'false') {
-        $('#efeCutoff').removeClass();
         if (CAS_APP.echo.discriminantScore() <= -0.46) {
-            $('#cutoff').addClass('highlight');
-        }
-        else {
-            $('#cutoff').removeClass();
+            $('#cutoff, #results').effect("highlight", { color: "#E1817B" }, 4000);
+
         }
     }
     if (CAS_APP.echo.efe !== 'false') {
-        $('#cutoff').removeClass();
         if (CAS_APP.echo.discriminantScore() <= -0.65) {
-            $('#efeCutoff').addClass('highlight');
-        }
-        else {
-            $('#efeCutoff').removeClass();
+            $('#efeCutoff, #results').effect("highlight", { color: "#E1817B" }, 4000);
+
         }
     }
 } //end calcDiscriminant fx
