@@ -35,6 +35,7 @@ h2 a, label a
     border-color: #0066cc;
     color: #0066cc;
 }
-td .results
+#interpretation
 {
+    width: 50%;
 }
