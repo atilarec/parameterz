@@ -8,7 +8,7 @@
                 return 0.1 * Math.pow(this.wt, (2 / 3));
             }
             else {
-                return 0.007184 * Math.pow(this.ht, 0.725) * Math.pow(this.wt, 0.425);
+                return 0.024265 * Math.pow(this.ht, 0.3964) * Math.pow(this.wt, 0.5378);
             }
         },
         lvlax: Number,

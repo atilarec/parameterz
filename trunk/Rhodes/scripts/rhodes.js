@@ -50,7 +50,7 @@ function calcBSA(ht, wt) {
         return 0.1 * Math.pow(wt, (2 / 3));
     }
     else {
-        return 0.007184 * Math.pow(ht, 0.725) * Math.pow(wt, 0.425);
+        return 0.024265 * Math.pow(ht, 0.3964) * Math.pow(wt, 0.5378);
 
     }
 } //end calcBSA fx

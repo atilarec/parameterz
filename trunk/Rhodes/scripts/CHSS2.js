@@ -68,9 +68,21 @@
 } //end main fx
 
 function calcAoRootZ(bsa, aoroot) {
-    var score = Math.log(aoroot);
-    var mean = 0.7224 + 0.5082 * Math.log(bsa);
-    return (score - mean) / 0.07284;
+    switch ($('#zScoreSource').val()) {
+
+        case "Default":
+            var score = Math.log(aoroot);
+            var mean = 0.7224 + 0.5082 * Math.log(bsa);
+            return (score - mean) / 0.07284;
+            break;
+
+        case "Alternate":
+            return (aoroot - (2.02 * Math.pow(bsa, 0.5))) / (0.098 + 0.12 * bsa);
+            break;
+
+
+
+    } //end switch
 
 } //end AoRootZ fx
 
