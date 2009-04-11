@@ -1,4 +1,5 @@
 #summary Rhodes Score (and similar) calculators
+#labels Featured
 == Introduction ==
 
 Several published works are available that aim to use echocardiographic data to help determine the nature of surgical repair for neonates with "critical aortic stenosis". 
