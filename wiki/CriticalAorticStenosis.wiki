@@ -29,5 +29,5 @@ The original article refers to an older source for the z-scores; a more current 
 ==== Discriminant Score ====
 This is the updated score which supersedes the Rhodes score.
 
-
+----
 *[Disclaimer]*
