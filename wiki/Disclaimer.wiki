@@ -1,4 +1,4 @@
-#site-wide disclaimer
+#summary site-wide disclaimer
 
 = Disclaimer: =
 
