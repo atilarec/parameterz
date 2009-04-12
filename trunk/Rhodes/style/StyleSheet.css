@@ -39,3 +39,10 @@ h2 a, label a
 {
     width: 50%;
 }
+.riskfactor
+{
+    padding-right: 18px;
+    background-position: right center;
+    background-image: url(../images/exclamation.png);
+    background-repeat: no-repeat;
+}
