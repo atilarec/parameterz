@@ -1,0 +1,52 @@
+﻿body 
+{
+    margin: 1em 2em;
+}
+label
+{
+    float: right;
+    padding-right: 2px;
+}
+input
+{
+    width: 80px;
+}
+
+input[readonly]
+{
+    border-width: 0px;
+}
+select
+{
+    width: 85px;
+}
+.highlight
+{
+    background-color: #E1817B;
+    font-weight: bold;
+}
+h2 a, label a
+{
+    text-decoration: none;
+    border-bottom-style: dotted;
+    border-width: thin;
+    border-color: #0066cc;
+    color: #0066cc;
+}
+#tblLVMI
+{
+    border-collapse: collapse;
+}
+#tblLVMI td
+{
+    width: 45px;
+    text-align: center;
+    background-color: #CCCCCC;
+    color: #000000;
+}
+#tblLVMI th
+{
+    color: #C0C0C0;
+    background-color: #333333;
+}
+
