@@ -74,12 +74,16 @@ function calcLVMI() {
     if (age >= 16) { ageGroup = "age9"; }
 
     //build the html for the table row (td's)
-    var rowhtml = '';
+    var LVMIRow = '<th align="right">LVMI:</th>';
+    var LVMRow = '<th align="right">Mass (g):</th>';
     for (var i = 0; i <= 5; i++) {
-        rowhtml += "<td>" + LVMIRef[gender][ageGroup][i] + "</td>";
+        LVMIRow += "<td>" + LVMIRef[gender][ageGroup][i] + "</td>";
+        LVMRow += "<td>" + ((LVMIRef[gender][ageGroup][i]) * Math.pow(ht, 2.7)).toFixed(2) + "</td>";
     }
     //write the results to the table
-    $('#LVMIPercentiles').html(rowhtml);
+    $('#LVMIPercentiles').html(LVMIRow);
+    $('#LVMValues').html(LVMRow);
+    
 
 
 
