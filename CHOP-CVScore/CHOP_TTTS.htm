@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>The CHOP Fetal TTTS Score</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <style type="text/css">
+    .cvScoreElement {width: 175px;}
+    .cvScoreValue, .cvScoreResult {
+        width: 75px; 
+        border: none;
+        border-width: 0px;
+    }
+    .auth, .title, .journal {display: block;}
+    .title {font-weight: bold;}
+  </style>
+</head>
+<body>
+<h1>CHOP Fetal TTTS Score Calculator</h1>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Variable
+                </td>
+                <td>
+                    Score
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    Donor
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Umbilical Artery Flow
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="AUFlow" name="AUFlow">
+                        <option value="0" selected="selected">Normal</option>
+                        <option value="1">Decreased diastolic flow</option>
+                        <option value="2">Absent/reversed flow</option>
+                    </select>
+                    <input class="cvScoreValue" id="lblUAFlow" type="text" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Recipient
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Ventricular Hypertrophy
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="VentHyper" name="VentHyper">
+                        <option value="0" selected="selected">None</option>
+                        <option value="1">Present</option>
+                    </select>
+                    <input class="cvScoreValue" id="lblHypertrophy" type="text" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Cardiac Dilation
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="Dilation" name="Dilation">
+                        <option value="0" selected="selected">None (CT ratio < 1/3)</option>
+                        <option value="1">Mild (CT Ratio < 1/2)</option>
+                        <option value="2">> Mild (CT Ratio > 1/2) </option>
+                    </select>
+                    <input class="cvScoreValue" id="lblDilation" type="text" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Ventricular Dysfunction
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="Dysfunction" name="Dysfunction">
+                        <option value="0" selected="selected">None (FS > 30%)</option>
+                        <option value="1">Mild (FS 20-30%)</option>
+                        <option value="2">> Mild (FS < 20%)</option>
+                    </select>
+                    <input class="cvScoreValue" id="lblDysfunction" type="text" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Tricuspid Regurgitation
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="TR" name="TR">
+                        <option value="0" selected="selected">None</option>
+                        <option value="1">Mild</option>
+                        <option value="2">> Mild</option>
+                    </select>
+                    <input class="cvScoreValue" id="lblTR" type="text" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Mitral Regurgitation
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="MR" name="MR">
+                        <option value="0" selected="selected">None</option>
+                        <option value="1">Mild</option>
+                        <option value="2">> Mild</option>
+                    </select>
+                    <input class="cvScoreValue" type="text" id="lblMR"readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Tricuspid Inflow
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="TVInflow" name="TVInflow">
+                        <option value="0" selected="selected">Distinct E & A</option>
+                        <option value="1">Fused E & A</option>
+                    </select>
+                    <input class="cvScoreValue" type="text" id="lblTV" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Mitral Inflow
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="MVInflow" name="MVInflow">
+                        <option value="0" selected="selected">Distinct E & A</option>
+                        <option value="1">Fused E & A</option>
+                    </select>
+                    <input class="cvScoreValue" type="text" id="lblMV" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Ductus Venosus Flow
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="Ductus" name="Ductus">
+                        <option value="0" selected="selected">All Antegrade</option>
+                        <option value="1">Absent Diastolic Flow</option>
+                        <option value="2">Reverse Diastolic Flow</option>
+                    </select>
+                    <input class="cvScoreValue" type="text" id="lblDV" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Umbilical Vein
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="UVFlow" name="UVFlow">
+                        <option value="0" selected="selected">No Pulsation</option>
+                        <option value="1">Has Pulsations</option>
+                    </select>
+                    <input class="cvScoreValue" type="text" id="lblUV" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Right-sided Outflow Tract
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="RVOT" name="RVOT">
+                        <option value="0" selected="selected">PA > AO</option>
+                        <option value="1">PA = AO</option>
+                        <option value="2">PA < AO</option>
+                        <option value="3">Outflow Obstruction</option>
+                    </select>
+                    <input class="cvScoreValue" type="text" id="lblRVOT" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Pulmonary Regurgitation
+                </td>
+                <td>
+                    <select class="cvScoreElement" id="PR" name="PR">
+                        <option value="0" selected="selected">None</option>
+                        <option value="1">Present</option>
+                    </select>
+                    <input class="cvScoreValue" type="text" id="lblPR" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td align="right">
+                    Cumulative Score:
+                </td>
+                <td>
+                    <input class="cvScoreResult" type="text" id="cvScore" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td align="right">
+                    Cardiovascular Grade:
+                </td>
+                <td>
+                    <input class="cvScoreResult" type="text" id="cvGrade" readonly="readonly" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<p>Based on:</p>
+<p><span class="auth">Rychik J, Tian Z, Bebbington M, et al.</span> <span class="title">
+    <a href="http://www.ncbi.nlm.nih.gov/pubmed/17904973" class="pubmedLink" title="PubMed link">The twin-twin transfusion syndrome: spectrum of cardiovascular abnormality and development of a cardiovascular score to assess severity of disease.</a></span> <span class="journal">Am J Obstet Gynecol 2007;197:392.e1-392.e8.</span></p>
+    
+</div>
+<script type="text/javascript">
+    function calcCVScore() {
+        var sum = 0;
+        $('.cvScoreValue').each(function() {
+            var score = parseInt($(this).val());
+            sum += score
+        });
+        $('#cvScore').val(sum);
+        //assign grade
+        var grade
+        if (sum <= 5) { grade = 1 }
+        else if (sum <= 10 ) { grade = 2}
+        else if (sum <= 15) { grade = 3}
+        else { grade = 4 };
+
+        $('#cvGrade').val(grade);
+    }
+</script>
+<script type="text/javascript">
+    $('.cvScoreElement').change(function() {
+        var value = $(this).val();
+        $(this).next().val(value);
+        calcCVScore();
+    });
+    $('.cvScoreElement').change();
+
+</script>
+</body>
+</html>
