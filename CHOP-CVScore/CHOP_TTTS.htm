@@ -21,6 +21,7 @@
 <body>
 <h2>CHOP Fetal CV Profile Score</h2>
 <div>
+<form id="CVForm">
     <table>
         <tbody>
             <tr>
@@ -246,8 +247,17 @@
                     <input class="cvScoreResult" type="text" id="cvGrade" readonly="readonly" />
                 </td>
             </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+                <td class="label">
+                    &nbsp;</td>
+                <td>
+                    <input type="button" onclick="formReset()" value="Reset"></td>
+            </tr>
         </tbody>
     </table>
+</form>
 <p>Based on:</p>
 <p><span class="auth">Rychik J, Tian Z, Bebbington M, et al.</span> <span class="title">
     <a href="http://www.ncbi.nlm.nih.gov/pubmed/17904973" class="pubmedLink" title="PubMed link">The twin-twin transfusion syndrome: spectrum of cardiovascular abnormality and development of a cardiovascular score to assess severity of disease.</a></span> <span class="journal">Am J Obstet Gynecol 2007;197:392.e1-392.e8.</span></p>
@@ -270,7 +280,14 @@
 
         $('#cvGrade').val(grade);
     }
+
+    function formReset() {
+        $('#CVForm')[0].reset();
+        $('.cvScoreElement').change();
+
+    }
 </script>
+
 <script type="text/javascript">
     $('.cvScoreElement').change(function() {
         var value = $(this).val();
