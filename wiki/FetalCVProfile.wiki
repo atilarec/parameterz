@@ -11,7 +11,7 @@ Am J Obstet Gynecol 2007;197:392.e1-392.e8.
 
 
 
-  * [http://parameterz.googlecode.com/svn/trunk/CHOP-CVScore/CHOP_TTTS.htm CHOP Fetal CV Profile Score]
+  * [http://parameterz.googlecode.com/svn/trunk/CHOP-CVScore/CHOP_TTTS.htm CHOP Fetal CV Profile Score Calculator]
 
 ==Details==
 
