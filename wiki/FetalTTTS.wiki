@@ -1,0 +1,15 @@
+#summary CHOP Fetal twin-twin transfusion syndrome / cardiovascular profile score  calculator
+
+== Introduction ==
+This is my online version of the scoring system presented in 
+
+Rychik J, Tian Z, Bebbington M, et al.
+ 
+The twin-twin transfusion syndrome: spectrum of cardiovascular abnormality and development of a cardiovascular score to assess severity of disease.
+ 
+Am J Obstet Gynecol 2007;197:392.e1-392.e8.
+
+
+= Details =
+
+---- 
