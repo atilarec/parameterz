@@ -2,7 +2,7 @@
 #labels Featured
 
 == Introduction ==
-This is my online calculator version of the scoring system presented in:
+This is an online calculator modeled after the scoring system proposed in:
 
 Rychik J, Tian Z, Bebbington M, et al.
  
@@ -11,6 +11,7 @@ The twin-twin transfusion syndrome: spectrum of cardiovascular abnormality and d
 Am J Obstet Gynecol 2007;197:392.e1-392.e8.
 
   * [http://parameterz.googlecode.com/svn/trunk/CHOP-CVScore/CHOP_TTTS.htm CHOP Fetal CV Profile Score]
+
 
 
 ----
