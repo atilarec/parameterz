@@ -5,37 +5,40 @@
   <title>The CHOP Fetal TTTS/CV Profile Score</title>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
   <style type="text/css">
-    .cvScoreElement {width: 175px;}
+    .cvScoreElement { width: 175px; }
     .cvScoreValue, .cvScoreResult {
         width: 75px; 
         border: none;
         border-width: 0px;
     }
-    .auth, .title, .journal {display: block;}
-    .title {font-weight: bold;}
+    .result, .cvScoreResult { font-weight: bold; }
+    .auth, .title, .journal { display: block; }
+    .title { font-weight: bold; }
+    label { float: right; padding-right: 3px; }
+    td.label { width: 200px; }
   </style>
 </head>
 <body>
-<h2>CHOP Fetal CV Profile Score Calculator</h2>
+<h2>CHOP Fetal CV Profile Score</h2>
 <div>
     <table>
         <tbody>
             <tr>
                 <td>
                 </td>
-                <td>
+                <th class="label">
                     Variable
-                </td>
-                <td>
+                </th>
+                <th>
                     Score
-                </td>
+                </th>
                 
             </tr>
             <tr>
-                <td>
+                <th>
                     Donor
-                </td>
-                <td>
+                </th>
+                <td class="label">
                 </td>
                 <td>
                 </td>
@@ -44,11 +47,11 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Umbilical Artery Flow
+                <td class="label">
+                    <label for="UAFlow">Umbilical Artery Flow:</label>
                 </td>
                 <td>
-                    <select class="cvScoreElement" id="AUFlow" name="AUFlow">
+                    <select class="cvScoreElement" id="UAFlow" name="UAFlow">
                         <option value="0" selected="selected">Normal</option>
                         <option value="1">Decreased diastolic flow</option>
                         <option value="2">Absent/reversed flow</option>
@@ -57,10 +60,10 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <th>
                     Recipient
-                </td>
-                <td>
+                </th>
+                <td class="label">
                 </td>
                 <td>
                 </td>
@@ -68,8 +71,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Ventricular Hypertrophy
+                <td class="label">
+                    <label for="VentHyper">Ventricular Hypertrophy:</label>
                 </td>
                 <td>
                     <select class="cvScoreElement" id="VentHyper" name="VentHyper">
@@ -82,9 +85,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Cardiac Dilation
-                </td>
+                <td class="label">
+                    <label for="Dilation">Cardiac Dilation:</label></td>
                 <td>
                     <select class="cvScoreElement" id="Dilation" name="Dilation">
                         <option value="0" selected="selected">None (CT ratio < 1/3)</option>
@@ -97,9 +99,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Ventricular Dysfunction
-                </td>
+                <td class="label">
+                    <label for="Dysfunction">Ventricular Dysfunction:</label></td>
                 <td>
                     <select class="cvScoreElement" id="Dysfunction" name="Dysfunction">
                         <option value="0" selected="selected">None (FS > 30%)</option>
@@ -112,9 +113,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Tricuspid Regurgitation
-                </td>
+                <td class="label">
+                    <label for="TR">Tricuspid Regurgitation:</label></td>
                 <td>
                     <select class="cvScoreElement" id="TR" name="TR">
                         <option value="0" selected="selected">None</option>
@@ -127,9 +127,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Mitral Regurgitation
-                </td>
+                <td class="label">
+                    <label for="MR">Mitral Regurgitation:</label></td>
                 <td>
                     <select class="cvScoreElement" id="MR" name="MR">
                         <option value="0" selected="selected">None</option>
@@ -142,9 +141,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Tricuspid Inflow
-                </td>
+                <td class="label">
+                    <label for="TVInflow">Tricuspid Inflow:</label></td>
                 <td>
                     <select class="cvScoreElement" id="TVInflow" name="TVInflow">
                         <option value="0" selected="selected">Distinct E & A</option>
@@ -156,9 +154,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Mitral Inflow
-                </td>
+                <td class="label">
+                    <label for="MVInflow">Mitral Inflow:</label></td>
                 <td>
                     <select class="cvScoreElement" id="MVInflow" name="MVInflow">
                         <option value="0" selected="selected">Distinct E & A</option>
@@ -170,9 +167,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Ductus Venosus Flow
-                </td>
+                <td class="label">
+                    <label for="Ductus">Ductus Venosus Flow:</label></td>
                 <td>
                     <select class="cvScoreElement" id="Ductus" name="Ductus">
                         <option value="0" selected="selected">All Antegrade</option>
@@ -185,9 +181,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Umbilical Vein
-                </td>
+                <td class="label">
+                    <label for="UVFlow">Umbilical Vein:</label></td>
                 <td>
                     <select class="cvScoreElement" id="UVFlow" name="UVFlow">
                         <option value="0" selected="selected">No Pulsation</option>
@@ -199,8 +194,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Right-sided Outflow Tract
+                <td class="label">
+                    <label for="RVOT">Right-sided Outflow Tract:</label>
                 </td>
                 <td>
                     <select class="cvScoreElement" id="RVOT" name="RVOT">
@@ -215,9 +210,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                    Pulmonary Regurgitation
-                </td>
+                <td class="label">
+                    <label for="PR">Pulmonary Regurgitation:</label></td>
                 <td>
                     <select class="cvScoreElement" id="PR" name="PR">
                         <option value="0" selected="selected">None</option>
@@ -228,12 +222,17 @@
             </tr>
             <tr>
                 <td>
-                </td>
+                    &nbsp;</td>
+                <td align="right" class="label">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
                 <td>
                 </td>
-                <td align="right">
-                    Cumulative Score:
-                </td>
+                <td class="label">
+                    <label class="result">Cumulative Score:</label></td>
                 <td>
                     <input class="cvScoreResult" type="text" id="cvScore" readonly="readonly" />
                 </td>
@@ -241,11 +240,8 @@
             <tr>
                 <td>
                 </td>
-                <td>
-                </td>
-                <td align="right">
-                    Cardiovascular Grade:
-                </td>
+                <td class="label">
+                    <label class="result">Cardiovascular Grade:</label></td>
                 <td>
                     <input class="cvScoreResult" type="text" id="cvGrade" readonly="readonly" />
                 </td>
