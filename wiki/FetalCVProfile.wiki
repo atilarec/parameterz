@@ -15,7 +15,7 @@ Am J Obstet Gynecol 2007;197:392.e1-392.e8.
 
 ==Details==
 
-The score rates various indexes of both donor and recipient cardiovascular performance/remodeling, as measured by fetal echo:
+The score rates various indices of both donor and recipient cardiovascular performance/remodeling, as measured by fetal echo:
 
   * Donor
     * umbilical artery flow, as a marker of placental vascular resistance
