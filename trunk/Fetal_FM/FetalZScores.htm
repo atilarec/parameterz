@@ -8,280 +8,350 @@
     <script src="Fetal_FL.js" type="text/javascript"></script>
     <script src="ZUtils.js" type="text/javascript"></script>    
     <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
-        function updateFL(fl) {
-            //set the femur length
-            var fl = parseFloat($('#FL').val())
-            if (!isNaN(fl) && fl != '') {
-                fetal.fl = fl;
-                var ega = fetal.ega();
-                var w = Math.floor(ega);
-                var d = Math.floor(7 * (ega - w));
-                $('#EGA').html(ega.toFixed(2) + ' weeks (' + w + 'w, ' + d +'d)');
-                $('#LMP').html(fetal.lmp());
-                $('#EDD').html(fetal.edd());
-                $('#fetalInputs input').change();
-            }
-            else return;
-            
-        }
-        function CalculateZScores(site, score) {
-            //set the femur length
-            var fl = parseFloat($('#FL').val())
-            if (!isNaN(fl) && fl != '') {
-                fetal.fl = fl;
-            }
-            else return;
-            if (!isNaN(score) && score != "" ) {
-                var zselector = '#' + site + 'Z';
-                var z = fetal[site].zscore(score)
-                $(zselector).html(z)
-                .removeClass()
-                .addClass(ZscoreFlag(z))
-                .attr("title", calcPercentile(z) + " percentile");
-                var mselector = '#' + site + 'Mean';
-                $(mselector).html(fetal[site].valueOf(0));
-                var rselector = '#' + site + 'Range';
-                $(rselector).html(fetal[site].valueOf(-1.65) + " - " + fetal[site].valueOf(1.65));
-            }
-        }
-    
-    
-    </script>
 
 </head>
 <body>
-<div class="myGadget">
-<div>
-<label for="FL">Femur Length (cm): </label>
-<input type="text" id="FL" onchange='updateFL(this.value)' />
-</div>
-<p>Based on today's date and the given femur length: </p>
-<p>The EGA is <span id="EGA" class="strong">...</span>;<br /> 
-the LMP was <span id="LMP" class="strong">...</span>; <br />
-the EDD is <span id="EDD" class="strong">...</span></p>
-<div id='fetalInputs'>
-<table summary="Fetal Echo Z-Scores">
+  <div class="myGadget">
+    <div>
+      <label for="FL">Femur Length (cm):</label> <input type="text" id="FL" onchange=
+      'updateFL(this.value)' />
+    </div>
 
-<tr>
-<th>Site</th>
+    <p>Based on today's date and the given femur length:</p>
 
-<th>Measured</th>
+    <p>The EGA is <span id="EGA" class="strong">...</span>;<br />
+    the LMP was <span id="LMP" class="strong">...</span>;<br />
+    the EDD is <span id="EDD" class="strong">...</span></p>
 
-<th>Mean</th>
+    <div id='fetalInputs'>
+      <table summary="Fetal Echo Z-Scores">
+        <tr>
+          <th>Site</th>
 
-<th>Range</th>
+          <th>Measured</th>
 
-<th>Z-Score</th>
-</tr>
+          <th>Mean</th>
 
-<tr>
-<th colspan="2">Left Heart (cm)</th>
-</tr>
+          <th>Range</th>
 
-<tr>
-<td class="label"><label for="txtMV">Mitral Valve:</label></td>
+          <th>Z-Score</th>
+        </tr>
 
-<td><input id="txtMV" type="text" onchange="CalculateZScores('MV', this.value)" /></td>
+        <tr>
+          <th colspan="2">Left Heart (cm)</th>
+        </tr>
 
-<td id="MVMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtMV">Mitral Valve:</label></td>
 
-<td id="MVRange" class="results">&nbsp;</td>
+          <td><input id="txtMV" type="text" onchange=
+          "CalculateZScores('MV', this.value)" /></td>
 
-<td id="MVZ" class="results">&nbsp;</td>
-</tr>
+          <td id="MVMean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtLV1">LV Minor:</label></td>
+          <td id="MVRange" class="results">&nbsp;</td>
 
-<td><input id="txtLV1" type="text" onchange="CalculateZScores('LV1', this.value)" /></td>
+          <td id="MVZ" class="results">&nbsp;</td>
+        </tr>
 
-<td id="LV1Mean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtLV1">LV Minor:</label></td>
 
-<td id="LV1Range" class="results">&nbsp;</td>
+          <td><input id="txtLV1" type="text" onchange=
+          "CalculateZScores('LV1', this.value)" /></td>
 
-<td id="LV1Z" class="results">&nbsp;</td>
-</tr>
+          <td id="LV1Mean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtLV2">LV Major:</label></td>
+          <td id="LV1Range" class="results">&nbsp;</td>
 
-<td><input id="txtLV2" type="text" onchange="CalculateZScores('LV2', this.value)" /></td>
+          <td id="LV1Z" class="results">&nbsp;</td>
+        </tr>
 
-<td id="LV2Mean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtLV2">LV Major:</label></td>
 
-<td id="LV2Range" class="results">&nbsp;</td>
+          <td><input id="txtLV2" type="text" onchange=
+          "CalculateZScores('LV2', this.value)" /></td>
 
-<td id="LV2Z" class="results">&nbsp;</td>
-</tr>
+          <td id="LV2Mean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtAOV">Aortic Valve:</label></td>
+          <td id="LV2Range" class="results">&nbsp;</td>
 
-<td><input id="txtAOV" type="text" onchange="CalculateZScores('AOV', this.value)" /></td>
+          <td id="LV2Z" class="results">&nbsp;</td>
+        </tr>
 
-<td id="AOVMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtAOV">Aortic Valve:</label></td>
 
-<td id="AOVRange" class="results">&nbsp;</td>
+          <td><input id="txtAOV" type="text" onchange=
+          "CalculateZScores('AOV', this.value)" /></td>
 
-<td id="AOVZ" class="results">&nbsp;</td>
-</tr>
+          <td id="AOVMean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtAAO">AAO:</label></td>
+          <td id="AOVRange" class="results">&nbsp;</td>
 
-<td><input id="txtAAO" type="text" onchange="CalculateZScores('AAO', this.value)" /></td>
+          <td id="AOVZ" class="results">&nbsp;</td>
+        </tr>
 
-<td id="AAOMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtAAO">AAO:</label></td>
 
-<td id="AAORange" class="results">&nbsp;</td>
+          <td><input id="txtAAO" type="text" onchange=
+          "CalculateZScores('AAO', this.value)" /></td>
 
-<td id="AAOZ" class="results">&nbsp;</td>
-</tr>
+          <td id="AAOMean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtDAO">DAO:</label></td>
+          <td id="AAORange" class="results">&nbsp;</td>
 
-<td><input id="txtDAO" type="text" onchange="CalculateZScores('DAO', this.value)" /></td>
+          <td id="AAOZ" class="results">&nbsp;</td>
+        </tr>
 
-<td id="DAOMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtDAO">DAO:</label></td>
 
-<td id="DAORange" class="results">&nbsp;</td>
+          <td><input id="txtDAO" type="text" onchange=
+          "CalculateZScores('DAO', this.value)" /></td>
 
-<td id="DAOZ" class="results">&nbsp;</td>
-</tr>
+          <td id="DAOMean" class="results">&nbsp;</td>
 
-<tr>
-<th colspan="2">Right Heart (cm)</th>
-</tr>
+          <td id="DAORange" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtTV">Tricuspid Valve:</label></td>
+          <td id="DAOZ" class="results">&nbsp;</td>
+        </tr>
 
-<td><input id="txtTV" type="text" onchange="CalculateZScores('TV', this.value)" /></td>
+        <tr>
+          <th colspan="2">Right Heart (cm)</th>
+        </tr>
 
-<td id="TVMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtTV">Tricuspid Valve:</label></td>
 
-<td id="TVRange" class="results">&nbsp;</td>
+          <td><input id="txtTV" type="text" onchange=
+          "CalculateZScores('TV', this.value)" /></td>
 
-<td id="TVZ" class="results">&nbsp;</td>
-</tr>
+          <td id="TVMean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtRV1">RV Minor:</label></td>
+          <td id="TVRange" class="results">&nbsp;</td>
 
-<td><input id="txtRV1" type="text" onchange="CalculateZScores('RV1', this.value)" /></td>
+          <td id="TVZ" class="results">&nbsp;</td>
+        </tr>
 
-<td id="RV1Mean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtRV1">RV Minor:</label></td>
 
-<td id="RV1Range" class="results">&nbsp;</td>
+          <td><input id="txtRV1" type="text" onchange=
+          "CalculateZScores('RV1', this.value)" /></td>
 
-<td id="RV1Z" class="results">&nbsp;</td>
-</tr>
+          <td id="RV1Mean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtRV2">RV Major</label> :</td>
+          <td id="RV1Range" class="results">&nbsp;</td>
 
-<td><input id="txtRV2" type="text" onchange="CalculateZScores('RV2', this.value)" /></td>
+          <td id="RV1Z" class="results">&nbsp;</td>
+        </tr>
 
-<td id="RV2Mean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtRV2">RV Major</label> :</td>
 
-<td id="RV2Range" class="results">&nbsp;</td>
+          <td><input id="txtRV2" type="text" onchange=
+          "CalculateZScores('RV2', this.value)" /></td>
 
-<td id="RV2Z" class="results">&nbsp;</td>
-</tr>
+          <td id="RV2Mean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtPV">Pulmonary Valve:</label></td>
+          <td id="RV2Range" class="results">&nbsp;</td>
 
-<td><input id="txtPV" type="text" onchange="CalculateZScores('PV', this.value)" /></td>
+          <td id="RV2Z" class="results">&nbsp;</td>
+        </tr>
 
-<td id="PVMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtPV">Pulmonary Valve:</label></td>
 
-<td id="PVRange" class="results">&nbsp;</td>
+          <td><input id="txtPV" type="text" onchange=
+          "CalculateZScores('PV', this.value)" /></td>
 
-<td id="PVZ" class="results">&nbsp;</td>
-</tr>
+          <td id="PVMean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtMPA">MPA:</label></td>
+          <td id="PVRange" class="results">&nbsp;</td>
 
-<td><input id="txtMPA" type="text" onchange="CalculateZScores('MPA', this.value)" /></td>
+          <td id="PVZ" class="results">&nbsp;</td>
+        </tr>
 
-<td id="MPAMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtMPA">MPA:</label></td>
 
-<td id="MPARange" class="results">&nbsp;</td>
+          <td><input id="txtMPA" type="text" onchange=
+          "CalculateZScores('MPA', this.value)" /></td>
 
-<td id="MPAZ" class="results">&nbsp;</td>
-</tr>
+          <td id="MPAMean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtRPA">RPA:</label></td>
+          <td id="MPARange" class="results">&nbsp;</td>
 
-<td><input id="txtRPA" type="text" onchange="CalculateZScores('RPA', this.value)" /></td>
+          <td id="MPAZ" class="results">&nbsp;</td>
+        </tr>
 
-<td id="RPAMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtRPA">RPA:</label></td>
 
-<td id="RPARange" class="results">&nbsp;</td>
+          <td><input id="txtRPA" type="text" onchange=
+          "CalculateZScores('RPA', this.value)" /></td>
 
-<td id="RPAZ" class="results">&nbsp;</td>
-</tr>
+          <td id="RPAMean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtLPA">LPA:</label></td>
+          <td id="RPARange" class="results">&nbsp;</td>
 
-<td><input id="txtLPA" type="text" onchange="CalculateZScores('LPA', this.value)" /></td>
+          <td id="RPAZ" class="results">&nbsp;</td>
+        </tr>
 
-<td id="LPAMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtLPA">LPA:</label></td>
 
-<td id="LPARange" class="results">&nbsp;</td>
+          <td><input id="txtLPA" type="text" onchange=
+          "CalculateZScores('LPA', this.value)" /></td>
 
-<td id="LPAZ" class="results">&nbsp;</td>
-</tr>
+          <td id="LPAMean" class="results">&nbsp;</td>
 
-<tr>
-<th colspan="2">Isthmus &amp; Duct (mm)</th>
-</tr>
+          <td id="LPARange" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtIsthmus3">Isthmus, 3VV (mm):</label></td>
+          <td id="LPAZ" class="results">&nbsp;</td>
+        </tr>
 
-<td><input id="txtIsthmus3" type="text" onchange="CalculateZScores('Isthmus3', this.value)" /></td>
+        <tr>
+          <th colspan="2">Isthmus &amp; Duct (mm)</th>
+        </tr>
 
-<td id="Isthmus3Mean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtIsthmus3">Isthmus, 3VV (mm):</label></td>
 
-<td id="Isthmus3Range" class="results">&nbsp;</td>
+          <td><input id="txtIsthmus3" type="text" onchange=
+          "CalculateZScores('Isthmus3', this.value)" /></td>
 
-<td id="Isthmus3Z" class="results">&nbsp;</td>
-</tr>
+          <td id="Isthmus3Mean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtDuct3">Duct, 3VV (mm):</label></td>
+          <td id="Isthmus3Range" class="results">&nbsp;</td>
 
-<td><input id="txtDuct3" type="text" onchange="CalculateZScores('Duct3', this.value)" /></td>
+          <td id="Isthmus3Z" class="results">&nbsp;</td>
+        </tr>
 
-<td id="Duct3Mean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtDuct3">Duct, 3VV (mm):</label></td>
 
-<td id="Duct3Range" class="results">&nbsp;</td>
+          <td><input id="txtDuct3" type="text" onchange=
+          "CalculateZScores('Duct3', this.value)" /></td>
 
-<td id="Duct3Z" class="results">&nbsp;</td>
-</tr>
+          <td id="Duct3Mean" class="results">&nbsp;</td>
 
-<tr>
-<td class="label"><label for="txtIsthmus">Isthmus, Sagittal (mm):</label></td>
+          <td id="Duct3Range" class="results">&nbsp;</td>
 
-<td><input id="txtIsthmus" type="text" onchange="CalculateZScores('Isthmus', this.value)" /></td>
+          <td id="Duct3Z" class="results">&nbsp;</td>
+        </tr>
 
-<td id="IsthmusMean" class="results">&nbsp;</td>
+        <tr>
+          <td class="label"><label for="txtIsthmus">Isthmus, Sagittal (mm):</label></td>
 
-<td id="IsthmusRange" class="results">&nbsp;</td>
+          <td><input id="txtIsthmus" type="text" onchange=
+          "CalculateZScores('Isthmus', this.value)" /></td>
 
-<td id="IsthmusZ" class="results">&nbsp;</td>
-</tr>
+          <td id="IsthmusMean" class="results">&nbsp;</td>
 
-</table>
+          <td id="IsthmusRange" class="results">&nbsp;</td>
 
-</div>
-</div>
+          <td id="IsthmusZ" class="results">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <th colspan="2">Ratioes</th>
+        </tr>
+
+        <tr>
+          <td class="label">MV/TV:</td>
+
+          <td id="MVTV">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td class="label">LV/RV:</td>
+
+          <td id="LVRV">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td class="label">AoV/PV:</td>
+
+          <td id="AOVPV">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td class="label">&nbsp;</td>
+
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+            function updateFL(fl) {
+                //set the femur length
+                var fl = parseFloat($('#FL').val());
+                if (!isNaN(fl) && fl != '') {
+                    fetal.fl = fl;
+                    var ega = fetal.ega();
+                    var w = Math.floor(ega);
+                    var d = Math.floor(7 * (ega - w));
+                    $('#EGA').html(ega.toFixed(2) + ' weeks (' + w + 'w, ' + d + 'd)');
+                    $('#LMP').html(fetal.lmp());
+                    $('#EDD').html(fetal.edd());
+                    $('#fetalInputs input').change();
+                } else {
+                    return;
+                }
+
+            }
+            function calcRatioes() {
+                //get the inputs, build the ratioes(mv,tv,aov,pv,lv,rv)
+                var ratios = [];
+                ratios[0] = parseFloat($('#txtMV').val()) / parseFloat($('#txtTV').val());
+                ratios[1] = parseFloat($('#txtAOV').val()) / parseFloat($('#txtPV').val());
+                ratios[2] = parseFloat($('#txtLV1').val()) / parseFloat($('#txtRV1').val());
+                var ratioElements = ['#MVTV', '#AOVPV', '#LVRV'];
+                for (var i = 0; i <= 2; i++) {
+                    if (!isNaN(ratios[i])) {
+                        $(ratioElements[i]).text((ratios[i]).toFixed(2));
+                        //  alert(ratios[i] + ', ' + typeof (ratios[i]));
+                        if (ratios[i] < 0.6) {
+                            $(ratioElements[i]).removeClass().addClass('severe');
+                        } else {
+                            $(ratioElements[i]).removeClass().addClass('normal');
+                        }
+                    } else {// ratio is NaN
+                        $(ratioElements[i]).text('~').removeClass();
+                    }
+                } //end for loop
+
+
+
+            } //end calcRatioes
+
+            function CalculateZScores(site, score) {
+                //set the femur length
+                var fl = parseFloat($('#FL').val());
+                if (!isNaN(fl) && fl != '') {
+                    fetal.fl = fl;
+                } else {
+                    return;
+                }
+                if (!isNaN(score) && score != "") {
+                    var zselector = '#' + site + 'Z';
+                    var z = fetal[site].zscore(score);
+                    $(zselector).html(z)
+                .removeClass()
+                .addClass(ZscoreFlag(z))
+                .attr("title", calcPercentile(z) + " percentile");
+                    var mselector = '#' + site + 'Mean';
+                    $(mselector).html(fetal[site].valueOf(0));
+                    var rselector = '#' + site + 'Range';
+                    $(rselector).html(fetal[site].valueOf(-1.65) + " - " + fetal[site].valueOf(1.65));
+                }
+                calcRatioes();
+            }
+  </script>
 </body>
 </html>
