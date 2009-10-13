@@ -306,7 +306,7 @@
                 }
 
             }
-            function calcRatioes() {
+            function calcRatios() {
                 //get the inputs, build the ratioes(mv,tv,aov,pv,lv,rv)
                 var ratios = [];
                 ratios[0] = parseFloat($('#txtMV').val()) / parseFloat($('#txtTV').val());
@@ -327,7 +327,7 @@
                     }
                 } //end for loop
 
-            } //end calcRatioes
+            } //end calcRatios
 
             function CalculateZScores(site, score) {
                 //set the femur length
@@ -353,10 +353,10 @@
                     var mselector = '#' + site + 'Mean';
                     var rselector = '#' + site + 'Range';
                     var selectors = mselector + ', ' + rselector + ', ' + zselector;
-                        $(selectors).text('').removeClass('normal mild moderate severe').attr('title','');
+                    $(selectors).text('').removeClass('normal mild moderate severe').attr('title','');
                 }//end else if
                 
-                calcRatioes();
+                calcRatios();
             }
   </script>
 </body>
