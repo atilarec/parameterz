@@ -222,7 +222,7 @@
           <td class="label"><label for="txtIsthmus3">Isthmus, 3VV (mm):</label></td>
 
           <td><input id="txtIsthmus3" type="text" onchange=
-          "CalculateZScores('Isthmus3', this.value)" /></td>
+          "CalculateZScores('Isthmus3', this.value)" title="isthmus: use millimeters(mm)!" /></td>
 
           <td id="Isthmus3Mean" class="results">&nbsp;</td>
 
@@ -235,7 +235,7 @@
           <td class="label"><label for="txtDuct3">Duct, 3VV (mm):</label></td>
 
           <td><input id="txtDuct3" type="text" onchange=
-          "CalculateZScores('Duct3', this.value)" /></td>
+          "CalculateZScores('Duct3', this.value)" title="duct: use millimeters(mm)!" /></td>
 
           <td id="Duct3Mean" class="results">&nbsp;</td>
 
@@ -248,7 +248,8 @@
           <td class="label"><label for="txtIsthmus">Isthmus, Sagittal (mm):</label></td>
 
           <td><input id="txtIsthmus" type="text" onchange=
-          "CalculateZScores('Isthmus', this.value)" /></td>
+          "CalculateZScores('Isthmus', this.value)" 
+                  title="isthmus (sag.): use millimeters(mm)!" /></td>
 
           <td id="IsthmusMean" class="results">&nbsp;</td>
 
@@ -326,8 +327,6 @@
                     }
                 } //end for loop
 
-
-
             } //end calcRatioes
 
             function CalculateZScores(site, score) {
@@ -349,7 +348,14 @@
                     $(mselector).html(fetal[site].valueOf(0));
                     var rselector = '#' + site + 'Range';
                     $(rselector).html(fetal[site].valueOf(-1.65) + " - " + fetal[site].valueOf(1.65));
-                }
+                } else if (isNaN(score) || score == "") {
+                    var zselector = '#' + site + 'Z';
+                    var mselector = '#' + site + 'Mean';
+                    var rselector = '#' + site + 'Range';
+                    var selectors = mselector + ', ' + rselector + ', ' + zselector;
+                        $(selectors).text('').removeClass('normal mild moderate severe').attr('title','');
+                }//end else if
+                
                 calcRatioes();
             }
   </script>
