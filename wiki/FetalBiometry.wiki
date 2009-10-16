@@ -1,0 +1,5 @@
+#summary Calculates normal values for thoracic circumference and femur length based on EGA.
+
+=== Introduction ===
+
+* [http://parameterz.googlecode.com/svn/trunk/Fetal_TC/HTMLPage.htm Fetal Biometry Calculator]
