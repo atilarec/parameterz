@@ -2,4 +2,4 @@
 
 === Introduction ===
 
- * [http://parameterz.googlecode.com/svn/trunk/Fetal_TC/Fetal-Biometry Fetal Biometry Calculator]
+ * [http://parameterz.googlecode.com/svn/trunk/Fetal_TC/Fetal-Biometry.htm Fetal Biometry Calculator]
