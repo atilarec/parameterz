@@ -1,4 +1,4 @@
-#summary Calculates normal values for thoracic circumference and femur length based on EGA.
+#summary Calculates normal values for fetal thoracic circumference and femur length based on EGA.
 
 === Introduction ===
 
