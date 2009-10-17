@@ -3,3 +3,8 @@
 === Introduction ===
 
  * [http://parameterz.googlecode.com/svn/trunk/Fetal_TC/Fetal-Biometry.htm Fetal Biometry Calculator]
+
+
+----
+
+*[Disclaimer]*
