@@ -1,0 +1,22 @@
+﻿body {
+}
+
+dd {
+    margin-bottom: 5px;
+}
+.references {
+    margin-top: 15px;
+}
+
+p.results {
+    line-height: 3.5em;
+}
+a[href^="http:"] {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../img/Icon_External_Link.png) no-repeat scroll right center;
+padding-bottom:0;
+padding-right:14px;
+}
+
