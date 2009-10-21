@@ -1,4 +1,6 @@
 ﻿body {
+margin-top:15px;
+margin-left:15px
 }
 
 dd {
@@ -19,4 +21,13 @@ background:transparent url(../img/Icon_External_Link.png) no-repeat scroll right
 padding-bottom:0;
 padding-right:14px;
 }
-
+.resultTable {
+    width: 80%;
+}
+th.right {
+    text-align: right;
+    margin-right: 5px;
+}
+td {
+padding: 2px;
+}
