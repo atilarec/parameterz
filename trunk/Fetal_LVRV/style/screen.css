@@ -76,7 +76,7 @@ caption {background:#eee;}
 
 /* forms.css */
 label {font-weight:bold;}
-fieldset {padding:1.4em;margin:0input[type=text], input[type=password], input.text, input.title, textarea, select {background-color:#fff;border:1px solid #bbb;}ackground-color: #fff;
+fieldset {padding:1.4em;margin:0input[type=text], input[type=password], input.text, input.title, textarea, select {background-color:#fff;border:1px solid #bbb;}background-color: #fff;
     border: 1px solid #bbb;
     margin-bottom: -2px;
 }

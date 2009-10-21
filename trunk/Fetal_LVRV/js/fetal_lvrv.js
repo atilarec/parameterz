@@ -60,3 +60,55 @@ pz.fetalRV[40] = [2.3, 3.6, 5.1];
 pz.fetalRV[41] = [2.4, 3.7, 5.3];
 pz.fetalRV[42] = [2.4, 3.8, 5.4];
 
+pz.firpo = function(ega) {
+    this.ega = ega;
+    //these return the mean values from the published regression equations
+    this.rvMean = function() {
+        return (-0.1473 + 0.02045 * this.ega - 0.0002 * Math.pow(this.ega, 2));
+    };
+    this.ivsMean = function() {
+        return (-0.1321 + 0.01927 * this.ega - 0.00018 * Math.pow(this.ega, 2));
+    };
+    this.lvMean = function() {
+        return (-0.136 + 0.01967 * this.ega - 0.00019 * Math.pow(this.ega, 2));
+    };
+    //these are the published SEE's
+    this.rvSEE = 0.0322;
+    this.ivsSEE = 0.0356;
+    this.lvSEE = 0.0305;
+    //return the upper and lower limits (1.65 = 90% CI's)
+    this._lower = function(mean, SEE) {
+        return (mean - (1.65 * SEE));
+    };
+    this._upper = function(mean, SEE) {
+        return (mean + (1.65 * SEE));
+    };
+    //internal arrays of min/mean/max values
+    this._rvfw = [this._lower(this.rvMean(), this.rvSEE), this.rvMean(), this._upper(this.rvMean(), this.rvSEE)];
+    this._ivs = [this._lower(this.ivsMean(), this.ivsSEE), this.ivsMean(), this._upper(this.ivsMean(), this.ivsSEE)];
+    this._lvfw = [this._lower(this.lvMean(), this.lvSEE), this.lvMean(), this._upper(this.lvMean(), this.lvSEE)];
+    //'public' methods to return data in >> millimeters <<
+    this.rvfw = function() {
+        var a = [];
+        for (var x in this._rvfw) {
+            a[x] = this._rvfw[x] * 10;
+        };
+        return a;
+    };
+    this.ivs = function() {
+        var a = [];
+        for (var x in this._ivs) {
+            a[x] = this._ivs[x] * 10;
+        }
+        return a;
+    };
+    this.lvfw = function() {
+        var a = [];
+        for (var x in this._lvfw) {
+            a[x] = this._lvfw[x] * 10;
+        };
+        return a;
+    };
+};
+
+
