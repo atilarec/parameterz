@@ -92,7 +92,7 @@ pz.firpo = function(ega) {
         var a = [];
         for (var x in this._rvfw) {
             a[x] = this._rvfw[x] * 10;
-        };
+        }
         return a;
     };
     this.ivs = function() {
@@ -106,7 +106,7 @@ pz.firpo = function(ega) {
         var a = [];
         for (var x in this._lvfw) {
             a[x] = this._lvfw[x] * 10;
-        };
+        }
         return a;
     };
 };
