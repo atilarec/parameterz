@@ -1,0 +1,10 @@
+#reference values for fetal cardiac RV/IVS/LV thickness
+
+== Introduction ==
+
+There is a paucity of data describing reference values for fetal cardiac wall dimensions.
+This calculator adds to the previous version by including a second reference (autopsy data).
+
+== Details ==
+
+  * [http://parameterz.googlecode.com/svn/trunk/Fetal_LVRV/Fetal-LVRV.htm Fetal Wall Thickness Calculator]
