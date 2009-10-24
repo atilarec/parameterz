@@ -1,0 +1,71 @@
+﻿body {
+    margin: 15px;
+}
+.myGadget
+{
+margin: 1em 0.5em;
+}
+table
+{
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 13px;
+border-collapse: collapse;
+}
+input
+{
+width:8em;
+}
+.label
+{
+text-align: right;
+padding-right:0.2em;
+}
+.button
+{
+width: 98%;
+}
+td.borderline
+{
+background-color: #FFBE5C;
+text-align: center;
+}
+td.mild
+{
+background-color: #FFA929;
+text-align: center;
+}
+td.moderate
+{
+background-color: #FF4D4D;
+text-align: center;
+}
+td.severe
+{
+background-color: #FF3333;
+font-weight: bold;
+text-align: center;
+}
+td.normal
+{
+background-color: #B8D3FF;
+text-align: center;
+}
+.results
+{
+text-align: center;
+}
+tr:hover
+{
+background-color: #F2F2F2;
+}
+#footer {
+background-color: #F2F2F2;
+}
+
+#footer p {
+margin: 1.5em;
+}
+
+#footer a {
+text-decoration: none;
+}
