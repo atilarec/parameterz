@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Parameter(z): Cardiac Valve Z-Scores</title>
+    
+
+    <script src="js/CardiacValves01.js" type="text/javascript"></script>
+
+    <link href="style/screen.css" rel="stylesheet" type="text/css" />
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="container">
+<div id="header" class="span-24">
+<h2>Cardiac Valve Z-Scores</h2>
+</div>
+<div class="myGadget span-24">
+<table class="zTable" summary="cardiac valve z-score calculator">
+<tr>
+<td class="label"><label for="txtHT">Height (cm):</label></td>
+
+<td><input id="txtHT" type="text" onchange="thinkAboutIt()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtWT">Weight (kg):</label></td>
+
+<td><input id="txtWT" type="text" onchange="Calculate()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="cmbBSA">BSA formula:</label></td>
+
+<td><select id="cmbBSA" onchange="Calculate()">
+<option value="Boyd">
+Boyd
+</option>
+
+<option value="DuBois" selected="selected">
+DuBois
+</option>
+
+<option value="Gehan">
+Gehan &amp; George
+</option>
+
+<option value="Haycock">
+Haycock
+</option>
+
+<option value="Mosteller">
+Mosteller
+</option>
+
+<option value="Dreyer">
+Weight ONLY
+</option>
+</select></td>
+
+<td id="BSA" colspan="3"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="cmbGender">Gender:</label></td>
+
+<td><select id="cmbGender" onchange="Calculate()">
+<option value="girls" selected="selected">
+Female
+</option>
+
+<option value="boys">
+Male
+</option>
+</select></td>
+</tr>
+
+<tr>
+<td id="info" colspan="2">&nbsp;</td>
+</tr>
+
+<tr>
+<th>Location</th>
+
+<th>Measured</th>
+
+<th>Mean</th>
+
+<th>Range</th>
+
+<th>Z-Score</th>
+</tr>
+
+<tr>
+<td class="label"><label for="txtMV">Mitral Valve (cm):</label></td>
+
+<td><input id="txtMV" type="text" onchange="Calculate()" /></td>
+
+<td id="MVMean" class="results"></td>
+
+<td id="MVRange" class="results"></td>
+
+<td id="MVZ" class="results"></td>
+</tr>
+
+<tr class="alternate">
+<td class="label"><label for="txtAOV">Aortic Valve (cm):</label></td>
+
+<td><input id="txtAOV" type="text" onchange="Calculate()" /></td>
+
+<td id="AOVMean" class="results"></td>
+
+<td id="AOVRange" class="results"></td>
+
+<td id="AOVZ" class="results"></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtTV">Tricuspid Valve (cm):</label></td>
+
+<td><input id="txtTV" type="text" onchange="Calculate()" /></td>
+
+<td id="TVMean" class="results"></td>
+
+<td id="TVRange" class="results"></td>
+
+<td id="TVZ" class="results"></td>
+</tr>
+
+<tr class="alternate">
+<td class="label"><label for="txtPV">Pulmonary Valve (cm):</label></td>
+
+<td><input id="txtPV" type="text" onchange="Calculate()" /></td>
+
+<td id="PVMean" class="results"></td>
+
+<td id="PVRange" class="results"></td>
+
+<td id="PVZ" class="results"></td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td><input id="Button1" class="button" type="button" value="Update" onclick=
+"Calculate()" /></td>
+</tr>
+</table>
+<div id="references">
+<h3>References:</h3>
+<dl>
+<dt><a href="http://www.ncbi.nlm.nih.gov/pubmed/16374684">
+    Two-dimensional echocardiographic valve measurements in healthy children: 
+    gender-specific differences</a>.</dt>
+<dd>Zilberman MV, Khoury PR, Kimball RT. </dd>
+    <dd>Pediatr Cardiol. 2005 Jul-Aug;26(4):356-60.</dd>
+    <dd><a href="http://fortuitousconcatenation.blogspot.com/2007/12/erratumz.html">Erratum</a> in: Pediatr Cardiol. 2008 Mar;29(2):475.</dd>     
+</dl>
+</div>
+</div>
+<hr />
+<div id="footer" class="span-24">
+<p>Brought to you by: <a href="http://parameterz.com">Parameter(z).com</a></p>
+</div>
+</div>
+</body>
+</html>
