@@ -26,7 +26,7 @@ padding-right:0.2em;
 {
 width: 98%;
 }
-input.borderline
+.borderline
 {
 outline: none;
 border-style: none;
@@ -34,7 +34,7 @@ border: 0;
 background-color: #FFBE5C;
 text-align: center;
 }
-input.mild
+.mild
 {
 outline: none;
 border-style: none;
@@ -42,7 +42,7 @@ border: 0;
 background-color: #FFA929;
 text-align: center;
 }
-input.moderate
+.moderate
 {
 outline: none;
 border-style: none;
@@ -50,7 +50,7 @@ border: 0;
 background-color: #FF4D4D;
 text-align: center;
 }
-input.severe
+.severe
 {
 background-color: #FF3333;
 font-weight: bold;
@@ -59,7 +59,7 @@ outline: none;
 border-style: none;
 border: 0;
 }
-input.normal
+.normal
 {
 background-color: #B8D3FF;
 text-align: center;
