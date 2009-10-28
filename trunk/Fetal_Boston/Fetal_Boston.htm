@@ -15,7 +15,13 @@
 </head>
 <body>
 <div class="container">
-<div>
+<div id="header" class="span-18 last">
+      <h2>Fetal Echo Z-Scores</h2>
+      <hr id="top" />
+    </div>
+
+<div id="main" class="span-18 last">
+<p>
 <label for="Weeksddl">Select EGA weeks and days: </label>
 <select id="Weeksddl">
     <option value="">Select Weeks</option>
@@ -56,14 +62,14 @@
     <option value="6">6 days</option>
 
 </select>
-</div>
-<div style="display:none;">
+</p>
+<p style="display:none;">
 <input id="txtEGA" type="text" value="18.0" />
-</div>
-<div>Based on today's date and the given EGA: </div>
-<div>The LMP was <span id="LMP" class="strong">...</span></div>
-<div>The EDD is <span id="EDD" class="strong">...</span></div>
-<div>
+</p>
+<p>Based on today's date and the given EGA: <br/ >
+The LMP was <span id="LMP" class="strong">...</span><br />
+The EDD is <span id="EDD" class="strong">...</span></p>
+
 <table summary="Fetal Echo Z-Scores">
 
 <tr>
@@ -167,12 +173,30 @@
 <tr>
 <td>&nbsp;</td>
 
-<td><input id="btnCalculateZ" type="button" value="Calculate !" onclick=
+<td><input id="btnCalculateZ" type="button" value="update" onclick=
 "CalculateZScores()" class="button" /></td>
 </tr>
-</table>
-</div>
 
+<tr>
+<td>&nbsp;</td>
+
+<td><a class="reset" href="#top">reset</a></td>
+</tr>
+</table>
+<hr />
+</div>
+<div id="references" class="span-18 last">
+<h3>References</h3>
+<dl>
+<dt><a href="http://www.ncbi.nlm.nih.gov/pubmed/19786635?itool=EntrezSystem2.PEntrez.Pubmed.Pubmed_ResultsPanel.Pubmed_RVDocSum&amp;ordinalpos=1">
+        Predictors of technical success and postnatal biventricular outcome after in 
+        utero aortic valvuloplasty for aortic stenosis with evolving hypoplastic left 
+        heart syndrome.</a></dt>
+<dd>McElhinney DB, Marshall AC, Wilkins-Haug LE, Brown DW, Benson CB, Silva V, Marx GR, Mizrahi-Arnaud A, Lock JE, Tworetzky W.</dd>
+<dd>Circulation. 2009 Oct 13;120(15):1482-90. Epub 2009 Sep 28.</dd>
+</dl>
+<!-- end ref div -->
+</div>
 
 <!-- end container div -->
 </div>
@@ -194,6 +218,16 @@
         var decimal_wks = parseInt($('#Weeksddl').val()) + parseInt($('#Daysddl').val()) / 7
         $('#txtEGA').val(decimal_wks.toFixed(2));
         CalculateZScores();
+    });
+
+    $('a.reset').click(function() {
+        //clear selects
+        $('#Weeksddl').val('');
+        $('#Daysddl').val('0');
+        //clear inputs
+        $('#EDD, #LMP').text('...');
+        //clear results
+        $('.inputValue').val('').change();
     });
 
 </script>
