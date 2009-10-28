@@ -27,7 +27,7 @@ Mean = (0.09512 x GA) - 0.68831
 SD = (0.00890 x GA) - 0.01642
 */
 function fb(ega) {
-    this.ega = ega;
+    this.ega = parseFloat(ega);
     this.aov = {
         mean: function() { return (0.02415 * ega) - 0.17158 },
         sd: function() { return (0.00206 * ega) - 0.00519 },
@@ -65,6 +65,8 @@ function fb(ega) {
         limit: function(z) { return (z * this.sd()) + this.mean() }
     };
 }; //end fb constructor
+
+
 
 function CalculateZScore(value, label) {
     var score = parseFloat(value);
