@@ -79,7 +79,7 @@ function CalculateZScore(value, label) {
         var zscore = h[label].zscore(score);
         $(mean).text(h[label].mean().toFixed(2));
         $(z).text(zscore.toFixed(2));
-        $(z).removeClass('normal mild moderate severe')
+        $(z).removeClass('normal borderline mild moderate severe')
             .addClass(ZscoreFlag(zscore))
             .attr('title', calcPercentile(zscore));
         var lower = h[label].limit(-1.65).toFixed(2);
@@ -89,7 +89,7 @@ function CalculateZScore(value, label) {
     } //end if
     else {
         $(mean + ',' + range + ',' + z).text('')
-        .removeClass('normal mild moderate severe')
+        .removeClass('normal borderline mild moderate severe')
         .attr('title', '');
         return false;
     } // bail out
