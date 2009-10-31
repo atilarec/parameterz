@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <title>Fetal Echo Z-Score Smackdown!</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type=
+  "text/javascript">
+</script>
+  <script src="js/fetal_boston.js" type="text/javascript">
+</script>
+  <link href="style/screen.css" rel="stylesheet" type="text/css" />
+  <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <div id="header" class="span-18 last">
+      <h2>Fetal Echo Z-Score Smackdown: Boston vs. Royal Brompton</h2>
+      <hr id="top" />
+    </div>
+
+    <div id="main" class="span-18 last">
+      <p><label for="Weeksddl">Select EGA weeks and days:</label> <select id="Weeksddl">
+        <option value="">
+          Select Weeks
+        </option>
+
+        <option value="15">
+          15 weeks
+        </option>
+
+        <option value="16">
+          16 weeks
+        </option>
+
+        <option value="17">
+          17 weeks
+        </option>
+
+        <option value="18" selected="selected">
+          18 weeks
+        </option>
+
+        <option value="19">
+          19 weeks
+        </option>
+
+        <option value="20">
+          20 weeks
+        </option>
+
+        <option value="21">
+          21 weeks
+        </option>
+
+        <option value="22">
+          22 weeks
+        </option>
+
+        <option value="23">
+          23 weeks
+        </option>
+
+        <option value="24">
+          24 weeks
+        </option>
+
+        <option value="25">
+          25 weeks
+        </option>
+
+        <option value="26">
+          26 weeks
+        </option>
+
+        <option value="27">
+          27 weeks
+        </option>
+
+        <option value="28">
+          28 weeks
+        </option>
+
+        <option value="29">
+          29 weeks
+        </option>
+
+        <option value="30">
+          30 weeks
+        </option>
+
+        <option value="31">
+          31 weeks
+        </option>
+
+        <option value="32">
+          32 weeks
+        </option>
+
+        <option value="33">
+          33 weeks
+        </option>
+
+        <option value="34">
+          34 weeks
+        </option>
+
+        <option value="35">
+          35 weeks
+        </option>
+
+        <option value="36">
+          36 weeks
+        </option>
+
+        <option value="37">
+          37 weeks
+        </option>
+
+        <option value="38">
+          38 weeks
+        </option>
+
+        <option value="39">
+          39 weeks
+        </option>
+
+        <option value="40">
+          40 weeks
+        </option>
+      </select> <select id="Daysddl">
+        <option value="0" selected="selected">
+          0 days
+        </option>
+
+        <option value="1">
+          1 day
+        </option>
+
+        <option value="2">
+          2 days
+        </option>
+
+        <option value="3">
+          3 days
+        </option>
+
+        <option value="4">
+          4 days
+        </option>
+
+        <option value="5">
+          5 days
+        </option>
+
+        <option value="6">
+          6 days
+        </option>
+      </select></p>
+
+      <p style="display:none;"><input id="txtEGA" type="text" value="18.0" /></p>
+
+      <table summary="Fetal Echo Z-Scores">
+        <tr>
+          <th>Site</th>
+
+          <th>Measured</th>
+
+          <th>Mean</th>
+
+          <th>Range</th>
+
+          <th>Z-Score</th>
+        </tr>
+
+        <tr>
+          <th colspan="2">Left Heart (cm)</th>
+        </tr>
+
+        <tr>
+          <td class="label"><label for="txtmv">Mitral Valve:</label></td>
+
+          <td><input id="txtmv" type="text" onchange="CalculateZScore(this.value, 'mv' )"
+          class="inputValue" /></td>
+
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+
+          <th class="right">Boston:</th>
+
+          <td id="mvMean-b" class="results">&nbsp;</td>
+
+          <td id="mvRange-b" class="results">&nbsp;</td>
+
+          <td id="mvZ-b" class="results">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+
+          <th class="right">Royal Brompton:</td>
+
+          <td id="mvMean-rb" class="results">&nbsp;</td>
+
+          <td id="mvRange-rb" class="results">&nbsp;</td>
+
+          <td id="mvZ-rb" class="results">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td class="label"><label for="txtlvMinor">LV Minor:</label></td>
+
+          <td><input id="txtlvMinor" type="text" onchange=
+          "CalculateZScore(this.value, 'lvMinor')" class="inputValue" /></td>
+
+          <td id="lvMinorMean" class="results">&nbsp;</td>
+
+          <td id="lvMinorRange" class="results">&nbsp;</td>
+
+          <td id="lvMinorZ" class="results">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td class="label"><label for="txtaov">Aortic Valve:</label></td>
+
+          <td><input id="txtaov" type="text" onchange=
+          "CalculateZScore(this.value, 'aov')" class="inputValue" /></td>
+
+          <td id="aovMean" class="results">&nbsp;</td>
+
+          <td id="aovRange" class="results">&nbsp;</td>
+
+          <td id="aovZ" class="results">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td class="label"><label for="txtaao">AAO:</label></td>
+
+          <td><input id="txtaao" type="text" onchange=
+          "CalculateZScore(this.value, 'aao')" class="inputValue" /></td>
+
+          <td id="aaoMean" class="results">&nbsp;</td>
+
+          <td id="aaoRange" class="results">&nbsp;</td>
+
+          <td id="aaoZ" class="results">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+
+          <td><input id="btnCalculateZ" type="button" value="update" onclick=
+          "CalculateZScores()" class="button" /></td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+
+          <td><a class="reset" href="#top">reset</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+
+    <div id="references" class="span-18 last">
+      <h3>References</h3>
+
+      <dl>
+        <dt><a href=
+        "http://www.ncbi.nlm.nih.gov/pubmed/19786635">
+        Predictors of technical success and postnatal biventricular outcome after in
+        utero aortic valvuloplasty for aortic stenosis with evolving hypoplastic left
+        heart syndrome.</a></dt>
+
+        <dd>McElhinney DB, Marshall AC, Wilkins-Haug LE, Brown DW, Benson CB, Silva V,
+        Marx GR, Mizrahi-Arnaud A, Lock JE, Tworetzky W.</dd>
+
+        <dd>Circulation. 2009 Oct 13;120(15):1482-90. Epub 2009 Sep 28.</dd>
+      </dl><!-- end ref div -->
+    </div><!-- end container div -->
+  </div><script type="text/javascript">
+            function CalculateZScores() {
+                $('.inputValue').change();
+            }
+
+
+            $('#Weeksddl, #Daysddl').change(function() {
+                //parse inputs into days
+                var egaW = 7 * parseInt($('#Weeksddl').val());
+                var egaD = parseInt($('#Daysddl').val());
+                var d = Date.today();
+                var d2 = Date.today();
+                $('#EDD').text(d.addDays(40 * 7 - (egaD + egaW)).toString('D'));
+                $('#LMP').text(d2.addDays(-(egaD + egaW)).toString('D'));
+                //setup the decimal fraction of ega weeks
+                var decimal_wks = parseInt($('#Weeksddl').val()) + parseInt($('#Daysddl').val()) / 7
+                $('#txtEGA').val(decimal_wks.toFixed(2));
+                CalculateZScores();
+            });
+
+            $('a.reset').click(function() {
+                //clear selects
+                $('#Weeksddl').val('');
+                $('#Daysddl').val('0');
+                //clear inputs
+                $('#EDD, #LMP').text('...');
+                //clear results
+                $('.inputValue').val('').change();
+            });
+
+  </script>
+</body>
+</html>
