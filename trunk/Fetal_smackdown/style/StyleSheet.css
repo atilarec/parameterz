@@ -1,0 +1,74 @@
+﻿body {
+margin-top:15px;
+margin-left:15px
+}
+
+dd {
+    margin-bottom: 5px;
+}
+.references {
+    margin-top: 15px;
+}
+
+p.results {
+    line-height: 3.5em;
+}
+a[href^="http:"] {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../img/Icon_External_Link.png) no-repeat scroll right center;
+padding-bottom:0;
+padding-right:14px;
+}
+.resultTable {
+    width: 80%;
+}
+th.right {
+    text-align: right;
+    margin-right: 5px;
+}
+td {
+padding: 2px;
+}
+.borderline
+{
+outline: none;
+border-style: none;
+border: 0;
+background-color: #FFBE5C;
+text-align: center;
+}
+.mild
+{
+outline: none;
+border-style: none;
+border: 0;
+background-color: #FFA929;
+text-align: center;
+}
+.moderate
+{
+outline: none;
+border-style: none;
+border: 0;
+background-color: #FF4D4D;
+text-align: center;
+}
+.severe
+{
+background-color: #FF3333;
+font-weight: bold;
+text-align: center;
+outline: none;
+border-style: none;
+border: 0;
+}
+.normal
+{
+background-color: #B8D3FF;
+text-align: center;
+border-style: none;
+border: 0;
+outline: none;
+}
