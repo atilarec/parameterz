@@ -1,17 +1,28 @@
-﻿body {
+﻿ ....loading....
+ 
+Firebug's log limit has been reached. %S entries not shown.		Preferences	 
+"Reload to activate window console"
+				
+Firebug's log limit has been reached. %S entries not shown.		Preferences	 
+Net panel activated. Any requests while the net panel is inactive are not shown.
+-
+			
+0KB
+	
+(0KB from cache)
+0ms
+body {
+margin-left:15px;
 margin-top:15px;
-margin-left:15px
 }
-
 dd {
-    margin-bottom: 5px;
+margin-bottom:5px;
 }
 .references {
-    margin-top: 15px;
+margin-top:15px;
 }
-
 p.results {
-    line-height: 3.5em;
+line-height:3.5em;
 }
 a[href^="http:"] {
 -moz-background-clip:border;
@@ -22,56 +33,56 @@ padding-bottom:0;
 padding-right:14px;
 }
 .resultTable {
-    width: 80%;
+width:80%;
 }
 th.right {
-    text-align: right;
-    margin-right: 5px;
+margin-right:5px;
+text-align:right;
 }
 td {
-padding: 2px;
+padding:2px;
 }
-.borderline
-{
-outline: none;
-border-style: none;
-border: 0;
-background-color: #FFBE5C;
-text-align: center;
+.borderline {
+background-color:#FFBE5C;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
 }
-.mild
-{
-outline: none;
-border-style: none;
-border: 0;
-background-color: #FFA929;
-text-align: center;
+.mild {
+background-color:#FFA929;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
 }
-.moderate
-{
-outline: none;
-border-style: none;
-border: 0;
-background-color: #FF4D4D;
-text-align: center;
+.moderate {
+background-color:#FF4D4D;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
 }
-.severe
-{
-background-color: #FF3333;
-font-weight: bold;
-text-align: center;
-outline: none;
-border-style: none;
-border: 0;
+.severe {
+background-color:#FF3333;
+border:1px solid #fff;
+font-weight:bold;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
 }
-.normal
-{
-background-color: #B8D3FF;
-text-align: center;
-border-style: none;
-border: 0;
-outline: none;
+.normal {
+background-color:#B8D3FF;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
 }
 input.radio {
-    margin-right: 2em;
+margin-right:2em;
 }
