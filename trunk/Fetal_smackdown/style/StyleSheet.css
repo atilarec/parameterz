@@ -73,3 +73,7 @@ text-align:center;
 input.radio {
 margin-right:2em;
 }
+.placeholder {
+/*-- for flot graphs --*/
+height: 400px;
+}
