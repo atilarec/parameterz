@@ -72,3 +72,6 @@ border-style: none;
 border: 0;
 outline: none;
 }
+input.radio {
+    margin-right: 2em;
+}
