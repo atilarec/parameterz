@@ -77,3 +77,7 @@ margin-right:2em;
 /*-- for flot graphs --*/
 height: 400px;
 }
+p.choices {
+    margin-bottom: 4em;
+    margin-left: 2em;
+}

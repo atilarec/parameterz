@@ -1,5 +1,175 @@
 ﻿$(function() {
-    var datasets = {
+    var aovDatasets = {
+        "Boston-AoV-Upper": {
+            label: "Boston AoV Upper",
+            data: [[16, 0.261],
+            [17, 0.288],
+            [18, 0.316],
+            [19, 0.343],
+            [20, 0.371],
+            [21, 0.398],
+            [22, 0.426],
+            [23, 0.453],
+            [24, 0.481],
+            [25, 0.509],
+            [26, 0.536],
+            [27, 0.564],
+            [28, 0.591],
+            [29, 0.619],
+            [30, 0.646],
+            [31, 0.674],
+            [32, 0.701],
+            [33, 0.729],
+            [34, 0.757],
+            [35, 0.784],
+            [36, 0.812],
+            [37, 0.839],
+            [38, 0.867],
+            [39, 0.894],
+            [40, 0.922]]
+        },
+        "Boston-AoV-Mean": {
+            label: "Boston AoV Mean",
+            data: [[16, 0.215],
+                [17, 0.239],
+                [18, 0.263],
+                [19, 0.287],
+                [20, 0.311],
+                [21, 0.336],
+                [22, 0.360],
+                [23, 0.384],
+                [24, 0.408],
+                [25, 0.432],
+                [26, 0.456],
+                [27, 0.480],
+                [28, 0.505],
+                [29, 0.529],
+                [30, 0.553],
+                [31, 0.577],
+                [32, 0.601],
+                [33, 0.625],
+                [34, 0.650],
+                [35, 0.674],
+                [36, 0.698],
+                [37, 0.722],
+                [38, 0.746],
+                [39, 0.770],
+                [40, 0.794]]
+        },
+        "Boston-AoV-Lower": {
+            label: "Boston AoV Lower",
+            data: [[16, 0.169],
+                [17, 0.190],
+                [18, 0.211],
+                [19, 0.231],
+                [20, 0.252],
+                [21, 0.273],
+                [22, 0.294],
+                [23, 0.314],
+                [24, 0.335],
+                [25, 0.356],
+                [26, 0.377],
+                [27, 0.397],
+                [28, 0.418],
+                [29, 0.439],
+                [30, 0.460],
+                [31, 0.480],
+                [32, 0.501],
+                [33, 0.522],
+                [34, 0.543],
+                [35, 0.563],
+                [36, 0.584],
+                [37, 0.605],
+                [38, 0.626],
+                [39, 0.646],
+                [40, 0.667]]
+        },
+        "Royal-Aov-Upper": {
+            label: "Royal Brompton AoV Upper",
+            data: [[16, 0.271],
+                [17, 0.293],
+                [18, 0.314],
+                [19, 0.337],
+                [20, 0.359],
+                [21, 0.382],
+                [22, 0.405],
+                [23, 0.429],
+                [24, 0.452],
+                [25, 0.476],
+                [26, 0.500],
+                [27, 0.525],
+                [28, 0.549],
+                [29, 0.574],
+                [30, 0.599],
+                [31, 0.625],
+                [32, 0.650],
+                [33, 0.676],
+                [34, 0.702],
+                [35, 0.728],
+                [36, 0.755],
+                [37, 0.781],
+                [38, 0.808],
+                [39, 0.835],
+                [40, 0.862]]
+        },
+        "Royal-Aov-Mean": {
+            label: "Royal Brompton AoV Mean",
+            data: [[16, 0.219],
+                [17, 0.237],
+                [18, 0.254],
+                [19, 0.272],
+                [20, 0.291],
+                [21, 0.309],
+                [22, 0.328],
+                [23, 0.347],
+                [24, 0.366],
+                [25, 0.385],
+                [26, 0.405],
+                [27, 0.425],
+                [28, 0.445],
+                [29, 0.465],
+                [30, 0.485],
+                [31, 0.506],
+                [32, 0.526],
+                [33, 0.547],
+                [34, 0.568],
+                [35, 0.589],
+                [36, 0.611],
+                [37, 0.632],
+                [38, 0.654],
+                [39, 0.676],
+                [40, 0.698]]
+        },
+        "Royal-Aov-Lower": {
+            label: "Royal Brompton AoV Lower",
+            data: [[16, 0.178],
+                [17, 0.192],
+                [18, 0.206],
+                [19, 0.221],
+                [20, 0.235],
+                [21, 0.250],
+                [22, 0.265],
+                [23, 0.281],
+                [24, 0.296],
+                [25, 0.312],
+                [26, 0.328],
+                [27, 0.344],
+                [28, 0.360],
+                [29, 0.376],
+                [30, 0.393],
+                [31, 0.409],
+                [32, 0.426],
+                [33, 0.443],
+                [34, 0.460],
+                [35, 0.477],
+                [36, 0.494],
+                [37, 0.512],
+                [38, 0.529],
+                [39, 0.547],
+                [40, 0.565]]
+        }
+    };
+    var mvDatasets = {
         "Boston-MV-Upper": {
             label: "Boston MV Upper",
             data: [[16, 0.433],
@@ -170,40 +340,70 @@
         }
     };
     // hard-code color indices to prevent them from shifting as
-    // countries are turned on/off
+    // values are turned on/off
     var i = 0;
-    $.each(datasets, function(key, val) {
+    $.each(mvDatasets, function(key, val) {
+        val.color = i;
+        ++i;
+    });
+    var i = 0;
+    $.each(aovDatasets, function(key, val) {
         val.color = i;
         ++i;
     });
 
-    // insert checkboxes 
-    var choiceContainer = $("#choices");
-    $.each(datasets, function(key, val) {
-        choiceContainer.append('<br/><input type="checkbox" name="' + key +
+    // insert checkboxes
+    var choiceContainer1 = $("#mv-choices");
+    $.each(mvDatasets, function(key, val) {
+        choiceContainer1.append('<br/><input type="checkbox" name="' + key +
                                '" checked="checked" id="id' + key + '">' +
                                '<label for="id' + key + '">'
                                 + val.label + '</label>');
     });
-    choiceContainer.find("input").click(plotAccordingToChoices);
+    choiceContainer1.find("input").click(plotAccordingToChoices1);
+
+    var choiceContainer2 = $("#aov-choices");
+    $.each(aovDatasets, function(key, val) {
+        choiceContainer2.append('<br/><input type="checkbox" name="' + key +
+                               '" checked="checked" id="id' + key + '">' +
+                               '<label for="id' + key + '">'
+                                + val.label + '</label>');
+    });
+    choiceContainer2.find("input").click(plotAccordingToChoices2);
 
 
-    function plotAccordingToChoices() {
+    function plotAccordingToChoices1() {
         var data = [];
 
-        choiceContainer.find("input:checked").each(function() {
+        choiceContainer1.find("input:checked").each(function() {
             var key = $(this).attr("name");
-            if (key && datasets[key])
-                data.push(datasets[key]);
+            if (key && mvDatasets[key])
+                data.push(mvDatasets[key]);
         });
 
         if (data.length > 0)
-            $.plot($("#placeholder"), data, {
-                yaxis: { min: 0, max: 2},
+            $.plot($("#mv-placeholder"), data, {
+                yaxis: { min: 0, max: 2 },
+                xaxis: { tickDecimals: 0 }
+            });
+    }
+    function plotAccordingToChoices2() {
+        var data = [];
+
+        choiceContainer2.find("input:checked").each(function() {
+        var key = $(this).attr("name");
+        if (key && aovDatasets[key])
+                data.push(aovDatasets[key]);
+        });
+
+        if (data.length > 0)
+            $.plot($("#aov-placeholder"), data, {
+                yaxis: { min: 0, max: 1 },
                 xaxis: { tickDecimals: 0 }
             });
     }
 
-    plotAccordingToChoices();
+    plotAccordingToChoices1();
+    plotAccordingToChoices2();
 
-});  //end ready fx
+});            //end ready fx
