@@ -1,0 +1,86 @@
+﻿body {
+margin-left:15px;
+margin-top:15px;
+}
+dd {
+margin-bottom:5px;
+}
+.references {
+margin-top:15px;
+}
+p.results {
+line-height:3.5em;
+}
+a[href^="http:"] {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../img/Icon_External_Link.png) no-repeat scroll right center;
+padding-bottom:0;
+padding-right:14px;
+}
+.resultTable {
+width:80%;
+}
+th.right {
+margin-right:5px;
+text-align:right;
+}
+td {
+padding:2px;
+}
+.borderline {
+background-color:#FFBE5C;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
+}
+.mild {
+background-color:#FFA929;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
+}
+.moderate {
+background-color:#FF4D4D;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
+}
+.severe {
+background-color:#FF3333;
+border:1px solid #fff;
+font-weight:bold;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
+}
+.normal {
+background-color:#B8D3FF;
+border:1px solid #fff;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+text-align:center;
+}
+input.radio {
+margin-right:2em;
+}
+.placeholder {
+/*-- for flot graphs --*/
+height: 400px;
+}
+p.choices {
+    margin-bottom: 4em;
+    margin-left: 2em;
+}
+.references span.title, .references span.authors, .references span.journal {
+    display: block;
+}
