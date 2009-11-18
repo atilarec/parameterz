@@ -1,4 +1,18 @@
 ﻿function CalcBSA(ht, wt, BSAMethod) {
+    /// <summary>returns the body surface area in meters^2; calling with a single arg is assumed to be 'wt'</summary>
+    /// <param name="ht">height, units = cm</param>
+    /// <param name="wt">weight, units = kg</param>
+    /// <param name="BSAMethod">optional; any of the following:DuBois, Haycock(default), Gehan, Mosteller, Boyd, or Dreyer</param>
+    /// <returns>Number</returns>
+    // allow for BSAMethod to be an optional arg:
+    if (!wt && !BSAMethod) {
+        // only one arg was passed, assume it was 'wt'
+        var wt = ht;
+        var BSAMethod = "Dreyer";
+    }
+    else if (!BSAMethod) {
+        var BSAMethod = "Haycock";
+    }
     switch (BSAMethod) {
     case "DuBois":
         return 0.007184 * Math.pow(ht, 0.725) * Math.pow(wt, 0.425);
@@ -16,7 +30,9 @@
         return 0.1 * Math.pow(wt, (2 / 3));
     }//end switch
 
-}// end BSA function
+} // end BSA function
+
+
 //Percentiles function for z-scores (adapted by Dan Dyar)
 //The following JavaScript functions for calculating normal and
 //chi-square probabilities and critical values were adapted by
