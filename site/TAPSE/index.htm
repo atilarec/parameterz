@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Right Ventricular Function Z-Scores: TAPSE</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+
+    <script src="../js/jquery.flot.js" type="text/javascript"></script>
+    <script src="../js/excanvas.min.js" type="text/javascript"></script>
+    <script src="js/tapse.js" type="text/javascript"></script>
+    <link href="../style/screen.css" rel="stylesheet" type="text/css" />
+    <link href="../style/forms.css" rel="stylesheet" type="text/css" />
+    <link href="../style/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="container">
+<h2 id="title">Right Ventricular Function Z-Score: TAPSE</h2>
+<hr />
+<div>
+<form id="tapse_form" method="" action="">
+<fieldset>
+<legend>Input Data:</legend>
+<p>
+<label for="age">Age:</label><br />
+<select id="age" name="age">
+<option>select age</option>
+<option value="1m">0-30 days</option>
+<option value="3m">1-3 mos</option>
+<option value="6m">4-6 mos</option>
+<option value="12m">7-12 mos</option>
+<option value="1y">1 yr</option>
+<option value="2y">2 yr</option>
+<option value="3y">3 yr</option>
+<option value="4y">4 yr</option>
+<option value="5y">5 yr</option>
+<option value="6y">6 yr</option>
+<option value="7y">7 yr</option>
+<option value="8y">8 yr</option>
+<option value="9y">9 yr</option>
+<option value="10y">10 yr</option>
+<option value="11y">11 yr</option>
+<option value="12y">12 yr</option>
+<option value="13y">13 yr</option>
+<option value="14y">14 yr</option>
+<option value="15y">15 yr</option>
+<option value="16y">16 yr</option>
+<option value="17y">17 yr</option>
+<option value="18y">18 yr</option>
+
+</select>
+</p>
+<p>
+<label for="tapse">Measured TAPSE (cm):</label><br />
+<input type="text" id="tapse" name="tapse" />
+</p>
+<p><label>TAPSE Z-Score: <span id="zscore">&nbsp;</span></label></p>
+<p>
+<input id="Button1" type="button" value="Update" />
+<input id="Reset1" type="reset" value="reset" />
+</p>
+</fieldset>
+</form>
+<!--end form div--></div>
+<div class="plots">
+<h3>Plot:</h3>
+<div style="width: 600px; height: 300px; position: relative;" id="placeholder"></div>
+<!--end plots div--></div>
+<div class="references">
+<hr />
+<h3>References</h3>
+<ol>
+<li>
+<span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/19423286">Right Ventricular Function in Infants, Children and
+Adolescents: Reference Values of the Tricuspid
+Annular Plane Systolic Excursion (TAPSE) in 640
+Healthy Patients and Calculation of z Score Values.</a></span>
+<span class="authors">Koestenberger M, Ravekes W, Everett AD, Stueger HP, Heinzl B, Gamillscheg A, Cvirn G, Boysen A, Fandl A, Nagel B.</span>
+<span class="journal">J Am Soc Echocardiogr. 2009 Jun;22(6):715-9. Epub 2009 May 7.</span>
+</li>
+</ol>
+
+<!-- end references div --></div>
+<!-- end container div --></div>
+<script type="text/javascript">
+    $(':input').change(calcTAPSE);
+    $('#Reset1').click(resetForm);
+
+</script>
+</body>
+</html>
