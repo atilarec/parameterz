@@ -28,7 +28,8 @@ var TAPSE = { //values are mean, lower limit (-3SD)
     var age = $('#age').val();
     var score = parseFloat($('#tapse').val());
     //calculate the age-adjusted z-score if age,tapse exist:
-    if(score) {
+
+    if (score && age != 'select age') {
         var mean = TAPSE[age][0];
         var sd = (mean - TAPSE[age][1]) / 3;
         var z = (score - mean) / sd;
