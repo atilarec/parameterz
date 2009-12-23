@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org" />
+
+  <title>Fetal Aortic Isthmus Doppler Z-Scores</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type=
+  "text/javascript">
+</script>
+  <script src="js/fetalIsthmusDoppler.js" type="text/javascript">
+</script>
+  <script src="../js/ZUtils.js" type="text/javascript">
+</script>
+  <link href="../style/screen.css" rel="stylesheet" type="text/css" />
+  <link href="../style/forms.css" rel="stylesheet" type="text/css" />
+  <link href="../style/StyleSheet.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+/*<![CDATA[*/
+    td.label {text-align:right;}
+    input[type=text] {margin: 0; width: 6em;}
+    td.results {text-align: center;}
+  /*]]>*/
+  </style>
+  <script type="text/javascript">
+      //<![CDATA[
+      $(function() {
+
+          $('input,select').change(
+    updateResults
+    );
+
+      });
+      //]]>
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="span-18 last">
+      <h2 id="title">Fetal Aortic Isthmus Doppler Z-Score Calculator</h2>
+      <hr />
+
+      <form id="form" method="get" action="/">
+        <table summary="Fetal Aortic Isthmus Data Table">
+          <tbody>
+            <tr>
+              <td class="label"><label for="ega">select EGA:</label></td>
+                <td>
+                    <select id="ega">
+                        <option value="18">18 wks </option>
+                        <option value="19">19 wks </option>
+                        <option value="20">20 wks </option>
+                        <option value="21">21 wks </option>
+                        <option value="22">22 wks </option>
+                        <option value="23">23 wks </option>
+                        <option value="24">24 wks </option>
+                        <option value="25">25 wks </option>
+                        <option value="26">26 wks </option>
+                        <option value="27">27 wks </option>
+                        <option value="28">28 wks </option>
+                        <option value="29">29 wks </option>
+                        <option value="30">30 wks </option>
+                        <option value="31">31 wks </option>
+                        <option value="32">32 wks </option>
+                        <option value="33">33 wks </option>
+                        <option value="34">34 wks </option>
+                        <option value="35">35 wks </option>
+                        <option value="36">36 wks </option>
+                        <option value="37">37 wks </option>
+                        <option value="38">38 wks </option>
+                        <option value="39">39 wks </option>
+                        <option value="40">40 wks </option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+              <td>&nbsp;</td>
+
+              <th>Measured</th>
+
+              <th>Z-Score</th>
+
+              <th>(min, mean, max)</th>
+            </tr>
+
+            <tr>
+              <td class="label"><label for="psv">Peak Systolic Velocity
+              (cm/s):</label></td>
+
+              <td><input type="text" id="psv" /></td>
+
+              <td id="psv-z" class="results">&nbsp;</td>
+
+              <td id="psv-range" class="results">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td class="label"><label for="edv">End Diastolic Velocity
+              (cm/s):</label></td>
+
+              <td><input type="text" id="edv" /></td>
+
+              <td id="edv-z" class="results"></td>
+
+              <td id="edv-range" class="results">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td class="label"><label for="tamxv">Time-Averaged Maximum Velocity
+              (cm/s):</label></td>
+
+              <td><input type="text" id="tamxv" /></td>
+
+              <td id="tamxv-z" class="results">&nbsp;</td>
+
+              <td id="tamxv-range" class="results">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td class="label"><label>Pulsatility Index:</label></td>
+
+              <td id="pi" class="results">&nbsp;</td>
+
+              <td id="pi-z" class="results">&nbsp;</td>
+
+              <td id="pi-range" class="results">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td class="label"><label>Resistance Index:</label></td>
+
+              <td id="ri" class="results">&nbsp;</td>
+
+              <td id="ri-z" class="results">&nbsp;</td>
+
+              <td id="ri-range" class="results">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td>&nbsp;</td>
+
+              <td><input id="Reset1" type="reset" value="reset" onclick=
+              "resetFx()" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </form><!--end form div-->
+    </div>
+
+    <div id="references" class="references span-18 last">
+      <hr />
+
+      <h3>References</h3>
+
+      <ol>
+        <li><span class="title"><a href=
+        "http://www.ncbi.nlm.nih.gov/pubmed/16795125">Reference ranges for Doppler
+        parameters of the fetal aortic isthmus during the second half of
+        pregnancy.</a></span> <span class="authors">Del Río M, Martínez JM, Figueras F, López M, Palacio M, Gómez O, Coll O, Puerto B.</span> <span class="journal">Ultrasound
+        Obstet Gynecol. 2006 Jul;28(1):71-6.</span></li>
+      </ol><!-- end references div -->
+    </div><!-- end container div -->
+  </div>
+
+</body>
+</html>
