@@ -120,11 +120,11 @@ function CalculateZScore() {
                 break;
 
         }//end switch
-        $('#mean').text(fetal.aov.mean().toFixed(2));
+        $('#mean').text(fetal.aov.mean().toFixed(3));
         var zscore = fetal.aov.zscore(score);
-        $('#zscore').text(zscore.toFixed(1));
-        var lower = fetal.aov.limit(-1.65).toFixed(2);
-        var upper = fetal.aov.limit(1.65).toFixed(2);
+        $('#zscore').text(zscore.toFixed(2));
+        var lower = fetal.aov.limit(-1.65).toFixed(3);
+        var upper = fetal.aov.limit(1.65).toFixed(3);
         range = lower + " - " + upper;
         $('#range').text(range);
         $('.results').removeClass('normal borderline mild moderate severe').addClass(zscoreFlag(zscore));
