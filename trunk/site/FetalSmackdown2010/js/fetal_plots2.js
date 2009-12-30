@@ -120,7 +120,7 @@ var Royal_aov_data = [{
                 [40, 0.565]]
 }];
 var Michigan_aov_data = [
-        { label: "Michigan AoV Upper",
+        { label: "Wm. Beaumont AoV Upper",
             color: 1,
             lines: { show: true, fill: true },
             data: [[16, 0.256],
@@ -150,7 +150,7 @@ var Michigan_aov_data = [
             [40, 1.012]]
         },
         {
-            label: "Michigan AoV Lower",
+            label: "Wm. Beaumont AoV Lower",
             color: 1,
             lines: { show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.8)" },
             data: [[16, 0.148],
@@ -182,7 +182,7 @@ var Michigan_aov_data = [
 
 function plotIt(array, ref) {
     var myData = {
-        label: "your data",
+        label: "Your Data",
         color: "#000000",
         data: [array],
         points: { show: true },
