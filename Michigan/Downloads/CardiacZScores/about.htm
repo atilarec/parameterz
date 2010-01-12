@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>About the Z-Scores of Cardiac Structures Calculator</title>
+
+    <script src="js/syntaxhighlighter/scripts/shCore.js" type="text/javascript"></script>
+
+    <script src="js/syntaxhighlighter/scripts/shBrushJScript.js" type="text/javascript"></script>
+
+    <link href="js/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="js/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <link href="style/screen.css" rel="stylesheet" type="text/css" />
+    <link href="style/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        SyntaxHighlighter.all()
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="span-20 last">
+            <h2>
+                About the Calculator</h2>
+            <ul id="contents">
+                <li><a href="#Usage">Usage</a></li>
+                <li><a href="#Calculations">Calculations</a></li>
+                <li><a href="#Disclaimer">Disclaimer</a></li>
+            </ul>
+            <div id="Usage">
+                <h3>
+                    Using the Calculator</h3>
+                <p>
+                    This z-score calculator is based on the data published in the 2008 JASE article
+                    <i><b>Regression Equations for Calculation of Z Scores of Cardiac Structures in a Large
+                        Cohort of Healthy Infants, Children, and Adolescents: An Echocardiographic Study</b></i>.
+                    In an effort to provide transparency in the manner in which the calculations are
+                    made, this summary is provided.</p>
+                <p>
+                    This "calculator" consists of html, css, and JavaScript files&mdash; essentially
+                    a mini website. As such, it is important the the files and folders maintain thier
+                    hierarchy. Users can place the containing folder anywhere on their computer, but
+                    the files and folders within should remain in the supplied arrangement. The pages
+                    should be viewable using a standard web browser. The calculator has been tested in
+                    the following browsers: Internet Explorer (v.7), Firefox (v3.5), and Google Chrome
+                    (v.4).</p>
+            </div>
+            <div id="Calculations">
+                <h3>
+                    About the Calculations</h3>
+                <p>
+                    The published data has been fashioned into a series of JavaScript <dfn title="a collection of simple 'name: value' pairs">
+                        objects</dfn>. Each "site" (i.e., LVIDd, aortic valve, etc.) has an associated
+                    label and data object. The site objects are collected together in yet another object,
+                    "sites":
+                </p>
+                <pre class="brush: js; first-line: 4">
+var sites = {
+    'RVD': { label: 'RVD', data: { intercept: -0.317, b1: 1.85, b2: -1.274, b3: 0.335, mse: 0.058} },
+    'IVSd': { label: 'IVSd', data: { intercept: -1.242, b1: 1.272, b2: -0.762, b3: 0.208, mse: 0.046 } },
+    'IVSs': { label: 'IVSs', data: { intercept: -1.048, b1: 1.751, b2: -1.177, b3: 0.318, mse: 0.034 } },
+    'LVIDd': { label: 'LVIDd', data: { intercept: 0.105, b1: 2.859, b2: -2.119, b3: 0.552, mse: 0.01 } },
+    //etc.
+};
+</pre>
+                <p>
+                    Two important functions make use of this data: <i>mean()</i> and <i>zscore()</i>.
+                    The <i>mean()</i> function is a generic function that accepts a data object and
+                    uses the intercept and beta multipliers to calculate the log transformed mean value.
+                    (the global variable <i>bsa</i> is calculated by a separate function):
+                </p>
+                <pre class="brush: js; first-line: 28; highlight: [36];">
+function mean(data) {
+    //returns: number
+    //returns the log-transformed mean value, used in other calculations
+    var intercept, b1, b2, b3;
+    intercept = data.intercept;
+    b1 = data.b1;
+    b2 = data.b2;
+    b3 = data.b3;
+    return intercept + (b1 * bsa) + (b2 * Math.pow(bsa, 2)) + (b3 * Math.pow(bsa, 3));
+}            </pre>
+                <p>
+                    When data from an individual <i>site</i> is passed to this function, the returned
+                    mean value can be back-transformed (exponetiated) to provide the &quot;natural&quot;
+                    mean value. The log-transformed mean values is also specifically used in the calculation
+                    of the z-score, using the published equation:</p>
+                <blockquote>
+                    z = ln(score) - mean / rmse</blockquote>
+                <pre class="brush: js; first-line: 38; highlight: [45];">
+function zscore(data, score) {
+    //returns: number
+    //returns the z score given a site and score
+    var x, sd;
+    x = mean(data);
+    score = Math.log(score);
+    sd = Math.sqrt(data.mse);
+    return (score - x) / sd;
+}          
+</pre>
+                <p>
+                    (Note that z-score equations of this form treat the regression rmse as equal to&mdash;and
+                    interchangeable with&mdash;the population standard deviation.)</p>
+                <p>
+                    The upper and lower limit range values are calculated by re-arranging the z-score
+                    formula</p>
+                <blockquote>
+                    z = (score- mean) / sd</blockquote>
+                <p>
+                    and instead solves for a known z-score:
+                </p>
+                <blockquote>
+                    score = mean + z * sd</blockquote>
+                <p>
+                    The solving of these equations is handled by the <i>range</i> function:</p>
+                <pre class="brush: js; first-line: 47">
+function range(data) {
+    //returns: string
+    //returns a string in the format "(min - max)" given a zscore range (eg., +/- 1.65 sd)
+    z = zlimit; //configured as a global variable
+    var min, max, x, sd;
+    x = mean(data);
+    sd = Math.sqrt(data.mse);
+    min = Math.exp((x - z * sd)).toFixed(2);
+    max = Math.exp((x + z * sd)).toFixed(2);
+    return '(' + min + ' - ' + max + ')';
+}
+</pre>
+                <p>
+                    By editing the global variable <i>zlimit</i>, users can customise the predicted
+                    range limits.
+                </p>
+            </div>
+            <div id="#Disclaimer">
+                <h3>
+                    Disclaimer</h3>
+                <p>
+                    <b>Calculations:</b> The calculators provided are not meant to be a substitute for
+                    professional advice and are not to be used for medical diagnosis. All calculations
+                    must be confirmed before clinical use or diagnostic purposes by qualified medical
+                    professionals. The author makes no claims of the accuracy of the information contained
+                    herein. The author make no claims whatsoever, expressed or implied, about the authenticity,
+                    accuracy, reliability, completeness or timeliness of the material, software, text,
+                    graphics and links given. In no event shall the author, suppliers, affiliates or
+                    any third parties be liable in any manner whatsoever for any damage arising upon
+                    use of any information provided. These calculations are provided "AS IS" with no warranties, and confer no rights.</p>
+                <p>
+                    <b>Code:</b> The provided code and calculator are in no way intended to exemplify
+                    the "best" way to to use the published data- they merely represent my <i>hack</i>
+                    at it.</p>
+            </div>
+            <div id="footer">
+                <p>
+                    Brought to you by: <a href="http://parameterz.com">ParameterZ.com</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
