@@ -37,7 +37,7 @@ function calcBSA(wt, ht, BSAMethod) {
         case "Dreyer":
             return 0.1 * Math.pow(wt, (2 / 3));
         default:
-            return 0.024265 * Math.pow(ht, 0.3964) * Math.pow(wt, 0.5378);//Haycock
+            return 0.024265 * Math.pow(ht, 0.3964) * Math.pow(wt, 0.5378);// returns Haycock in the event an unfamiliar method is passed in
     } //end switch
 
 }
