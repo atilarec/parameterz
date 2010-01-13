@@ -36,6 +36,8 @@ function calcBSA(wt, ht, BSAMethod) {
             return 0.0003207 * Math.pow(ht, 0.3) * Math.pow(wt, exponent);
         case "Dreyer":
             return 0.1 * Math.pow(wt, (2 / 3));
+        default:
+            return 0.024265 * Math.pow(ht, 0.3964) * Math.pow(wt, 0.5378);//Haycock
     } //end switch
 
 }
