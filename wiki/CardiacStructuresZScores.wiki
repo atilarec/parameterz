@@ -22,7 +22,7 @@ var sites = {
 }; 
 }}}
 
-Two important functions make use of this data: mean() and zscore(). The mean() function is a generic function that accepts a data object and uses the intercept and beta multipliers to calculate the log transformed mean value. (the global variable bsa is calculated by a separate function):
+Two important functions make use of this data: mean() and zscore(). The mean() function is a generic function that accepts a data object and uses the intercept and beta multipliers to calculate the log transformed mean value. (the global variable bsa  [CalculateBSA is calculated by a separate function]):
 
 {{{
 function mean(data) {
