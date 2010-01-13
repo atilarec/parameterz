@@ -54,10 +54,10 @@ function zscore(data, score) {
 (Note that z-score equations of this form treat the regression rmse as equal to—and interchangeable with—the population standard deviation.)
 
 The upper and lower limit range values are calculated by re-arranging the z-score formula:
- _z = (score- mean) / sd_
+ _'z = (score- mean) / sd'_
 
 and instead solves for a known z-score: 
- _score = mean + z * sd_
+ _'score = mean + z * sd'_
 
 The solving of these equations is handled by the range function:
 
