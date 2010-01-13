@@ -37,7 +37,7 @@ function mean(data) {
 }}}
 
 When data from an individual site is passed to this function, the returned mean value can be back-transformed (exponetiated) to provide the "natural" mean value. The log-transformed mean values is also specifically used in the calculation of the z-score, using the published equation:
- _z = ln(score) - mean / rmse_
+ {{{z = ln(score) - mean / rmse}}}
 
 {{{
 function zscore(data, score) {
@@ -54,10 +54,10 @@ function zscore(data, score) {
 (Note that z-score equations of this form treat the regression rmse as equal to—and interchangeable with—the population standard deviation.)
 
 The upper and lower limit range values are calculated by re-arranging the z-score formula:
- _'z = (score- mean) / sd'_
+ {{{z = (score- mean) / sd}}}
 
 and instead solves for a known z-score: 
- _'score = mean + z * sd'_
+ {{{score = mean + z * sd}}}
 
 The solving of these equations is handled by the range function:
 
