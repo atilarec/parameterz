@@ -76,9 +76,9 @@ function range(data) {
 }
 }}}
 
-By editing the global variable {{{zlimit}}}, users can customise the predicted range limits.
+By editing the global variable {{{zlimit}}}, users can customize the predicted range limits.
 
-== [http://parameterz.googlecode.com/svn/trunk/site/CardiacStructures/index.htm Cardiac Structures Z-Score Calculator] ==
+=== [http://parameterz.googlecode.com/svn/trunk/site/CardiacStructures/index.htm Cardiac Structures Z-Score Calculator] ===
 ----
 [Disclaimer]
  
