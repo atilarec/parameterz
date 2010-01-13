@@ -2,7 +2,10 @@
 
 == Usage ==
 
-This z-score calculator is based on the data published in the 2008 JASE article Regression Equations for Calculation of Z Scores of Cardiac Structures in a Large Cohort of Healthy Infants, Children, and Adolescents: An Echocardiographic Study. In an effort to provide transparency in the manner in which the calculations are made, this summary is provided.
+This z-score calculator is based on the data published in the 2008 JASE article
+ Regression Equations for Calculation of Z Scores of Cardiac Structures in a Large Cohort of Healthy Infants, Children, and Adolescents: An Echocardiographic Study.
+
+In an effort to provide transparency in the manner in which the calculations are made, this summary is provided.
 
 This "calculator" consists of html, css, and JavaScript files— essentially a mini website. As such, it is important the the files and folders maintain their hierarchy. Users can place the containing folder anywhere on their computer, but the files and folders within should remain in the supplied arrangement. The pages should be viewable using a standard web browser. The calculator has been tested in the following browsers: Internet Explorer (v.7), Firefox (v3.5), and Google Chrome (v.4).
 
