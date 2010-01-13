@@ -77,5 +77,6 @@ function range(data) {
 
 By editing the global variable {{{zlimit}}}, users can customise the predicted range limits.
 
-
+----
+[Disclaimer]
  
