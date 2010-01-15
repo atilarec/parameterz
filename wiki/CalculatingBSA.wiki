@@ -11,7 +11,7 @@ function calcBSA(wt, ht, BSAMethod) {
     /// <summary>returns the body surface area in meters^2; calling with a single arg is assumed to be 'wt'</summary>
     /// <param name="ht">height, units = cm</param>
     /// <param name="wt">weight, units = kg</param>
-    /// <param name="BSAMethod">optional; any of the following:DuBois, Haycock(default), Gehan, Mosteller, Boyd, or Dreyer</param>
+    /// <param name="BSAMethod">optional; type = string (any of the following:"DuBois", "Haycock"(default), "Gehan", "Mosteller", "Boyd", or "Dreyer")</param>
     /// <returns>Number</returns>
     // allow for ht and method to be optional:
     if (!ht && !BSAMethod) {
