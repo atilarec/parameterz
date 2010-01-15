@@ -2,7 +2,7 @@
 
 == Introduction ==
 
-Many formulas can be used to estimate body surface area. To better understand how these various different calculations can affect the prediction of cardiac z-scores, most of my z-score calculators allow the user to select any of several different equations. 
+Many formulas can be used to estimate body surface area. To better understand how these various different calculations can affect the prediction of cardiac z-scores, most of the calculators at [http://parameterz.com ParameterZ.com] allow the user to select any of several different equations. 
 
 == The Code ==
 
