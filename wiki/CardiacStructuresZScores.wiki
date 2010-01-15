@@ -5,7 +5,7 @@
 [http://parameterz.googlecode.com/svn/trunk/site/CardiacStructures/index.htm This z-score calculator] is based on the data published in the 2008 JASE article
  Regression Equations for Calculation of Z Scores of Cardiac Structures in a Large Cohort of Healthy Infants, Children, and Adolescents: An Echocardiographic Study. ([http://www.ncbi.nlm.nih.gov/pubmed/18406572 PubMed link])
 
-In an effort to provide transparency in the manner in which the calculations are made, this summary is provided.
+In an effort to provide even more transparency into the manner in which the calculations are made, this summary is provided.
 
 
 == About the Calculations ==
