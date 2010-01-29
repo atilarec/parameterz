@@ -78,7 +78,7 @@ function range(data) {
 
 By editing the global variable {{{zlimit}}}, users can customize the predicted range limits.
 
-The uncompressed js file is here: [http://assets.parameterz.com/js/Michigan06.js Michigan06.js]; the live version of the calculator uses a [http://assets.parameterz.com/js/Michigan.min.js minimized version].
+The uncompressed js file is here: [http://assets.parameterz.com/js/Michigan06.js Michigan06.js]; the live version of the calculator uses a [http://assets.parameterz.com/js/Michigan.min.js minified version].
 
 
 ----
