@@ -74,4 +74,4 @@ The z-score is calculated by first comparing the measured value to the mean valu
 
 }}}
 
-The uncompressed js file can be found [http://assets.parameterz.com/js/mmode.js here]; the actual calculator uses a [http://assets.parameterz.com/js/mmode.min.js minified version]
+The uncompressed js file can be found [http://assets.parameterz.com/js/Mmode.js here]; the actual calculator uses a [http://assets.parameterz.com/js/Mmode.min.js minified version]
