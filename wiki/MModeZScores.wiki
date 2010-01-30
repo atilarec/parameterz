@@ -46,3 +46,30 @@ The position (global variable {{{index}}}) within these arrays that we will pull
     }
     
 }}}
+
+The {{{index}}} is then used to fetch the mean and range limits from the corresponding positions within the data object(s):
+
+{{{
+            //pull the mean value out of the object/array
+            str_mean = (this[data]['mean'][index]);
+            meanElement.text(str_mean);
+            //pull the upper and lower limit values
+            str_range = "(" + this[data]['lower'][index] + " - " + this[data]['upper'][index] + ")";
+            rangeElement.text(str_range);
+
+}}}
+
+The z-score is calculated by first comparing the measured value to the mean value and determining which of the published 2 SD limits to use:
+
+{{{
+        //determine if score is above/below mean and calculate the derived 1sd
+        if (score >= mean) {
+            sd = (data.upper[index] - data.mean[index]) / 2;
+        }
+        else {
+            sd = (data.mean[index] - data.lower[index]) / 2;
+        }
+        //calculate the z-score
+        z = (score - mean) / sd;
+
+}}}
