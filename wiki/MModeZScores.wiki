@@ -2,8 +2,11 @@
 
 = Introduction =
 
-Add your content here.
+[http://parameterz.blogspot.com/2008/09/m-mode-z-scores.html This] z-score calculator is based on the data published in ..
 
+    ... (PubMed link) 
+
+In an effort to provide even more transparency into the manner in which the calculations are made, this summary is provided. 
 
 = Details =
 
