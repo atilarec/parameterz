@@ -27,3 +27,7 @@ var sites = {
     },
 //etc
 }}}
+
+*Note:* The data is arranged within the arrays in _descending_ order of weight/BSA.
+
+Once the height and weight are entered the [CalculatingBSA bsa is calculated]
