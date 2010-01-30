@@ -10,7 +10,4 @@ In an effort to provide even more transparency into the manner in which the calc
 
 == About the Calculations ==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Unlike most of the other z-score calculators, the m-mode z-score calculator does not use any prediction equations. Rather, the published tables have been transformed into 'JavaScript' objects.
