@@ -8,7 +8,7 @@
 
 In an effort to provide even more transparency into the manner in which the calculations are made, this summary is provided. 
 
-== Details ==
+== About the Calculations ==
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
