@@ -1,14 +1,14 @@
 #summary About the M-Mode z-score calculator.
 
-= Introduction =
+== Introduction ==
 
-[http://parameterz.blogspot.com/2008/09/m-mode-z-scores.html This] z-score calculator is based on the data published in ..
+[http://parameterz.blogspot.com/2008/09/m-mode-z-scores.html This] z-score calculator is based on the data published in the June 2000 issue of _Heart_
 
-    ... (PubMed link) 
+    Normal values of M mode echocardiographic measurements of more than 2000 healthy infants and children in central Europe. ([http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1760862/?tool=pubmed PubMed link]) 
 
 In an effort to provide even more transparency into the manner in which the calculations are made, this summary is provided. 
 
-= Details =
+== Details ==
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
