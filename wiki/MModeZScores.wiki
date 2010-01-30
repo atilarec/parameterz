@@ -30,7 +30,7 @@ var sites = {
 
 *Note:* The data is arranged within the arrays in _descending order_ of weight/BSA.
 
-The position within these arrays that we will pull data from is determined by passing the BSA and weight into another function and looping through corresponding arrays (also arranged in _descending order_) to find the nearest matching value, like this:
+The position (global variable {{{index}}}) within these arrays that we will pull data from is determined by passing the BSA and weight into another function and looping through corresponding arrays (also arranged in _descending order_) to find the nearest matching value:
 
 {{{
 
