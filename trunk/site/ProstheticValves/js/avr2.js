@@ -187,4 +187,5 @@ var avrColumns = [
 	        return nRow;
 	    }
 	});
+	$('#avrTable_filter input').val('Example: 23 bov').addClass('search_init');
 	});

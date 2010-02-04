@@ -61,8 +61,8 @@
 
 .dataTables_filter {
 	width: 50%;
-	float: right;
-	text-align: right;
+	float: left;
+	text-align: left;
 }
 
 .dataTables_info {
@@ -251,8 +251,8 @@ tfoot input {
 	color: #444;
 }
 
-tfoot input.search_init {
-	color: #999;
+input.search_init {
+    color: #999;
 }
 
 td.group {
