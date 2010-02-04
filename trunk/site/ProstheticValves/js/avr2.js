@@ -188,4 +188,17 @@ var avrColumns = [
 	    }
 	});
 	$('#avrTable_filter input').val('Example: 23 bov').addClass('search_init');
+	$("#avrTable_filter input").focus(function() {
+	    if (this.className == "search_init") {
+	        this.className = "";
+	        this.value = "";
+	    }
+	});
+	$("#avrTable_filter input").blur(function() {
+	    if (this.value == "") {
+	        this.className = "search_init";
+	        this.value = "Example: 23 bov";
+	    }
+	});
+	
 	});
