@@ -175,6 +175,16 @@ var avrColumns = [
 	$('#avrTable').dataTable({
 	    "aaData": avrDataSet,
 	    "aoColumns": avrColumns,
-	    "bPaginate": false
+	    "bPaginate": false,
+	    "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+	        /* Append the grade to the default row class name */
+	    if (aData[1] == "Bileaflet") {
+	        $(nRow).addClass('Bileaflet');
+	    }
+	    else if (aData[1] == "Homograft valves") {
+	    $(nRow).addClass('gradeX');
+	}
+	        return nRow;
+	    }
 	});
 	});
