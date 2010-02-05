@@ -159,46 +159,58 @@
     ['St. Jude Medical', 'Stentless', '23', '16.2± 9.0', '8.2± 4.7', '1.6± 0.6'],
     ['St. Jude Medical', 'Stentless', '25', '12.7± 8.2', '6.3± 4.1', '1.8± 0.5'],
     ['St. Jude Medical', 'Stentless', '27', '10.1± 5.8', '5.0± 2.9', '2.0± 0.3'],
-    ['St. Jude Medical', 'Stentless', '29', '7.7± 4.4', '4.1± 2.4', '2.4± 0.6']    
-    ];
+    ['St. Jude Medical', 'Stentless', '29', '7.7± 4.4', '4.1± 2.4', '2.4± 0.6']
+];
 
-var avrColumns = [
-	{ "sTitle": "Valve" },
-	{ "sTitle": "Type" },
-	{ "sTitle": "Size (mm)" },
-	{ "sTitle": "Peak gradient (mmHg)", "bSearchable": false },
-	{ "sTitle": "Mean gradient (mmHg)", "bSearchable": false },
-	{ "sTitle": "Effective orifice area (cm2)", "bSearchable": false }
-	];
+var avrColumns = [{
+    "sTitle": "Valve"
+},
+{
+    "sTitle": "Type"
+},
+{
+    "sTitle": "Size (mm)"
+},
+{
+    "sTitle": "Peak gradient (mmHg)",
+    "bSearchable": false
+},
+{
+    "sTitle": "Mean gradient (mmHg)",
+    "bSearchable": false
+},
+{
+    "sTitle": "Effective orifice area (cm2)",
+    "bSearchable": false
+}];
 
-	$(document).ready(function() {
-	$('#avrTable').dataTable({
-	    "aaData": avrDataSet,
-	    "aoColumns": avrColumns,
-	    "bPaginate": false,
-	    "fnRowCallback": function(nRow, aData, iDisplayIndex) {
-	        /* Append the grade to the default row class name */
-	    if (aData[1] == "Bileaflet") {
-	        $(nRow).addClass('Bileaflet');
-	    }
-	    else if (aData[1] == "Homograft valves") {
-	    $(nRow).addClass('gradeX');
-	}
-	        return nRow;
-	    }
-	});
-	$('#avrTable_filter input').val('Example: 23 bov').addClass('search_init');
-	$("#avrTable_filter input").focus(function() {
-	    if (this.className == "search_init") {
-	        this.className = "";
-	        this.value = "";
-	    }
-	});
-	$("#avrTable_filter input").blur(function() {
-	    if (this.value == "") {
-	        this.className = "search_init";
-	        this.value = "Example: 23 bov";
-	    }
-	});
-	
-	});
+    $(document).ready(function() {
+        $('#avrTable').dataTable({
+            "aaData": avrDataSet,
+            "aoColumns": avrColumns,
+            "bPaginate": false,
+            "fnRowCallback": function(nRow, aData, iDisplayIndex) {
+                /* Append the grade to the default row class name */
+                if (aData[1] == "Bileaflet") {
+                    $(nRow).addClass('Bileaflet');
+                } else if (aData[1] == "Homograft valves") {
+                    $(nRow).addClass('gradeX');
+                }
+                return nRow;
+            }
+        });
+        $('#avrTable_filter input').val('Example: 23 bov').addClass('search_init');
+        $("#avrTable_filter input").focus(function() {
+            if (this.className == "search_init") {
+                this.className = "";
+                this.value = "";
+            }
+        });
+        $("#avrTable_filter input").blur(function() {
+            if (this.value == "") {
+                this.className = "search_init";
+                this.value = "Example: 23 bov";
+            }
+        });
+
+    });
