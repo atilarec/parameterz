@@ -12,7 +12,7 @@
 
 <body>
   <div class="container">
-    <div>
+    <div class="span-24 last">
       <table id="mvrTable" class="display" summary=
       "Normal Doppler Echocardiographic Values for Prosthetic Mitral Valves">
         <thead>
@@ -1853,14 +1853,14 @@
                          return nRow;
                      },
                      "aoColumns": [
-        null, //valve
+        { "sWidth": "18em" }, //valve
         null, //type
         null, //size
-        {"bSearchable": false }, //peakGr
-        {"bSearchable": false }, //meanGr
-        {"bSearchable": false }, //peakV
-        {"bSearchable": false }, //pr1/2t
-        {"bSearchable": false} //eoa
+        { "bSearchable": false }, //peakGr
+        { "bSearchable": false }, //meanGr
+        { "bSearchable": false }, //peakV
+        { "bSearchable": false }, //pr1/2t
+        { "bSearchable": false} //eoa
         ],
                      "bPaginate": false
 
