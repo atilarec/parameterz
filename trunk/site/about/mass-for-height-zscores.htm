@@ -40,22 +40,14 @@
 </head>
 
 <body>
-  <!--    <div class="buttons">
-        <input type="button" id="prev" value="&laquo; Prev" />
-        <input type="button" id="next" value="Next &raquo;" />
-    </div>
--->
-
   <div class="container">
     <h3 id="goal">Goal</h3>
-
     <div>
       <p>To work through an LV mass-for-height z-score calculation according to <a href="#references">Foster et
       al.</a>, using example data.</p>
     </div>
 
     <h3 id="data">Data</h3>
-
     <div>
       <p>The data required to make these calculations is supplied with the
       article as supplemental material, available here: <a href=
@@ -234,8 +226,8 @@
         
     </div>
   
-  <h3 id="calculate-zscore">Calculate Z-Score</h3>
-  <div>
+    <h3 id="calculate-zscore">Calculate Z-Score</h3>
+    <div>
     <p>After obtaining the correct L,M,S values, the data is plugged into the provided formula:</p>
     <p class="maths">z-score = [(LVMobs / M)<sup>L</sup> – 1] / (L * S)</p>
     <pre>
@@ -266,8 +258,8 @@
     
   </div>
   
-    <h3 "calculate-range">Calculate Mean and Range</h3>
-      <div>
+    <h3 id="calculate-range">Calculate Mean and Range</h3>
+    <div>
           <p>
               The mean value is simply "Mu"; the range limits are calculated by re-arranging the
               z-score formula to yield a LV mass value using a known z-score. The original formula:</p>
@@ -286,18 +278,17 @@
     
         </pre>
       </div>
-      <h3 id="references">References</h3>
-  <div class="references">
-<span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/18490525">A novel method of expressing left ventricular mass relative to body size in
+    <h3 id="references">References</h3>
+    <div class="references">
+    <span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/18490525">A novel method of expressing left ventricular mass relative to body size in
 children.</a></span><span class="authors">Foster BJ, Mackie AS, Mitsnefes M, Ali H, Mamber S, Colan SD.</span>
-<span class="journal">Circulation. 2008 May 27;117(21):2769-75.</span>
+    <span class="journal">Circulation. 2008 May 27;117(21):2769-75.</span>
   </div>
-  <div class="footer">
+    <div class="footer">
     <hr />
     </div>
   </div><!--end container-->
 <script src="js/about_lvmZ.js" type="text/javascript">
 </script>
-
 </body>
 </html>
