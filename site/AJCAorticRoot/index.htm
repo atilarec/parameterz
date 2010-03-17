@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../style/screen.css" rel="stylesheet" type="text/css" />
+    <link href="../style/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="../js/ZUtils.js" type="text/javascript"></script>
+    <script src="js/AJCRoot.js" type="text/javascript"></script>
+    <title>2010 AJC Aortic Root Z-Score Calculator</title>
+        <style type="text/css">
+    .zTable {
+    border-collapse: collapse;
+}
+input[type=text] {
+    margin: 0;
+}
+td.label {
+    text-align: right;
+}
+th {
+    text-align: center;
+}
+tr:hover {
+    background-color: #F2F2F2;
+}
+.references h3 {
+    color: #0066cc;
+}
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+<h2>Aortic Root Z-Scores</h2>
+    <p class="span-14 last">
+        Z-scores of the aortic root at the level of the aortic annulus, sinuses of Valsalva,
+        sinotubular junction, and ascending aorta. Measurements are from the parasternal
+        long axis: aortic annulus measured in <i><b>systole</b></i> at the hinge points of the leaflets;
+        sinuses, sinotubular junction and ascending aorta are measured in <i><b>diastole</b></i> using
+        <i><b>leading-edge to leading-edge technique</b></i>. Data from 353 normal children as reported
+        by investigators at Hôpital Bichat, Paris, France.
+    </p>
+<form action="" method="">
+<table class="zTable" summary="Z-Scores of Cardiac Structures">
+<tr>
+<td class="label"><label for="txtHT">Height (cm):</label></td>
+
+<td><input id="txtHT" type="text" onchange="CalculateZScores()" title="cm" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtWT">Weight (kg):</label></td>
+
+<td><input id="txtWT" type="text" onchange="CalculateZScores()" title="kg" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="cmbGender">Gender:</label></td>
+
+<td><select id="cmbGender" onchange="CalculateZScores()">
+<option value="girls" selected="selected">Female</option>
+<option value="boys">Male</option>
+</select></td>
+</tr>
+
+<tr>
+<td class="label"><label for="cmbBSA">BSA formula:</label></td>
+
+<td><select id="cmbBSA" onchange="CalculateZScores()">
+<option value="Boyd">
+Boyd
+</option>
+
+<option value="DuBois" selected="selected">
+DuBois
+</option>
+
+<option value="Gehan">
+Gehan &amp; George
+</option>
+
+<option value="Haycock">
+Haycock
+</option>
+
+<option value="Mosteller">
+Mosteller
+</option>
+
+<option value="Dreyer">
+Weight ONLY
+</option>
+</select></td>
+
+<td id="BSA" colspan="3"></td>
+</tr>
+
+<tr>
+<td id="info" colspan="2">&nbsp;</td>
+</tr>
+
+<tr>
+<th>Site</th>
+
+<th>Measured (mm)</th>
+
+<th>Mean</th>
+
+<th>ULN</th>
+
+<th>Z-Score</th>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtAVA">Aortic Annulus:</label></td>
+
+<td><input id="txtAVA" type="text" class="site" 
+        onchange="updateSite('AVA', this.value)" 
+        title="measured in SYSTOLE at leaflet hinge points" /></td>
+
+<td id="AVAMean" class="results">&nbsp;</td>
+
+<td id="AVAULN" class="results">&nbsp;</td>
+
+<td id="AVAZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtSinuses">Sinuses:</label></td>
+
+<td><input id="txtSinuses" type="text" class="site" 
+        onchange="updateSite('Sinuses', this.value)" 
+        title="measured in DIASTOLE from leading edge to leading edge" /></td>
+
+<td id="SinusesMean" class="results">&nbsp;</td>
+
+<td id="SinusesULN" class="results">&nbsp;</td>
+
+<td id="SinusesZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtSTJ">ST Junction:</label></td>
+
+<td><input id="txtSTJ" type="text" class="site" 
+        onchange="updateSite('STJ', this.value)" 
+        title="measured in DIASTOLE from leading edge to leading edge" /></td>
+
+<td id="STJMean" class="results">&nbsp;</td>
+
+<td id="STJULN" class="results">&nbsp;</td>
+
+<td id="STJZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtTransv">Ascending Aorta:</label></td>
+
+<td><input id="txtAAO" type="text" class="site" 
+        onchange="updateSite('AAO', this.value)" 
+        title="measured in DIASTOLE from leading edge to leading edge" /></td>
+
+<td id="AAOMean" class="results">&nbsp;</td>
+
+<td id="AAOULN" class="results">&nbsp;</td>
+
+<td id="AAOZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+
+<td><input id="btnCalculateZ" type="button" value="Update" onclick="CalculateZScores()"
+class="button" /></td>
+    <td>
+        <input id="Reset1" type="reset" value="reset" onclick="resetForm()" /></td>
+</tr>
+</table>
+</form>
+<div id="references" class="references">
+<h3>References:</h3>
+    <p class="span-14 last">
+        <span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/20211339">Nomograms
+            for Aortic Root Diameters in Children Using Two-Dimensional Echocardiography.</a></span>
+            <span class="authors">Gautier M, Detaint D, Fermanian C, Aegerter P, Delorme G, Arnoult
+                F, Milleron O, Raoux F, Stheneur C, Boileau C, Vahanian A, Jondeau G.</span>
+        <span class="journal">Am J Cardiol. 2010 Mar 15;105(6):888-894.</span>
+    </p>
+</div>
+
+</div><!-- end container -->
+</body>
+</html>
