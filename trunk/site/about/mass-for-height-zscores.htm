@@ -47,16 +47,16 @@
       al.</a>, using example data.</p>
     </div>
 
-    <h3 id="data">Data</h3>
+    <h3 id="data">LMS Data</h3>
     <div>
       <p>The data required to make these calculations is supplied with the
       article as supplemental material, available here: <a href=
       "http://circ.ahajournals.org/cgi/content/full/CIRCULATIONAHA.107.741157/DC1">http://circ.ahajournals.org/cgi/content/full/CIRCULATIONAHA.107.741157/DC1</a></p>
 
-      <p>The data is provided in tabular form with data points for the L, M, and
-      S values
-      arranged by height, from "47.5cm" to 191cm. This data has been transformed into a
-      JavaScript array so that it can be accessed programmatically:</p>
+      <p>The data is provided in tabular form with data points for the lambda
+      (L), mu (M), and sigma (S) values arranged by height, from "47.5cm" to
+      191cm. This data has been transformed into a JavaScript array so that it
+      can be accessed programmatically:</p>
       <pre>
       <code class="js">
     var lmsArray = [];
@@ -212,7 +212,7 @@
     <h3 id="retrieve-values" >Retrieve Values</h3>
     <div>
         <p>
-            The first part of making the calculation is to retrieve the correct L,M,S data from the array based on the
+            The first part of making the calculation is to simply retrieve the correct L,M,S data from the array based on the
             patient's height. This is done after parsing the input (and making sure it falls within the range 47 - 191 cm)
         </p>
 <pre>
@@ -228,7 +228,7 @@
   
     <h3 id="calculate-zscore">Calculate Z-Score</h3>
     <div>
-    <p>After obtaining the correct L,M,S values, the data is plugged into the provided formula:</p>
+    <p>After obtaining the correct L,M,S values, the data is plugged into the provided z-score formula:</p>
     <p class="maths">z-score = [(LVMobs / M)<sup>L</sup> – 1] / (L * S)</p>
     <pre>
         
@@ -258,11 +258,11 @@
     
   </div>
   
-    <h3 id="calculate-range">Calculate Mean and Range</h3>
+    <h3 id="calculate-range">Mean and Range</h3>
     <div>
           <p>
               The mean value is simply "Mu"; the range limits are calculated by re-arranging the
-              z-score formula to yield a LV mass value using a known z-score. The original formula:</p>
+              z-score formula and solving for LV mass using a known z-score. The original formula:</p>
           <p class="maths">
               z-score = [(LVMobs / M)<sup>L</sup> – 1] / (L * S)
           </p>
@@ -280,9 +280,16 @@
       </div>
     <h3 id="references">References</h3>
     <div class="references">
-    <span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/18490525">A novel method of expressing left ventricular mass relative to body size in
-children.</a></span><span class="authors">Foster BJ, Mackie AS, Mitsnefes M, Ali H, Mamber S, Colan SD.</span>
-    <span class="journal">Circulation. 2008 May 27;117(21):2769-75.</span>
+    <p class="ref"> <span class="title"><a
+    href="http://www.ncbi.nlm.nih.gov/pubmed/18490525">A novel method of
+    expressing left ventricular mass relative to body size in
+children.</a></span><span class="authors">Foster BJ, Mackie AS, Mitsnefes M, Ali
+H, Mamber S, Colan SD.</span>
+    <span class="journal">Circulation. 2008 May 27;117(21):2769-75.</span></p>
+    <p class="ref">Also see:</p>
+    <p class="ref"><span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/2354692">The LMS method for constructing
+    normalized growth standards.</a></span><span class="authors">Cole TJ.</span>
+    <span class="journal">Eur J Clin Nutr. 1990 Jan;44(1):45-60.</span></p>
   </div>
     <div class="footer">
     <hr />
