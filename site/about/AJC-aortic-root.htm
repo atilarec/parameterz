@@ -72,51 +72,56 @@
             for a male subject is reported as:</p>
             <pre>
             
-    Z = [ln(d) - 2.78–0.47 * ln(BSA)]/0.1
+    Z = [ln(d) - 3.1–0.49 * ln(BSA)]/0.1
             </pre>
-            <p>This example calculation assumes a male patient with a BSA of 1.00 m<sup>2</sup> and a measured 
-            aortic annulus of 15.5 mm:</p>
+            <p>This example calculation assumes a male patient with a BSA of 1.45 m<sup>2</sup> and a measured 
+            aortic annulus of 30.0 mm:</p>
             <pre>
             
-    Z = [ln(15.5) - 2.78-0.47 * ln(1.00)]/0.1    
+    Z = [ln(30) - 3.1-0.49 * ln(1.45)]/0.1    
     
     which resolves to
-    Z = [2.74084 - 2.78-0.47 * 0]/0.1
+    Z = [3.4012 - 3.1-0.49 * 0.3716]/0.1
     
     ...
-    Z = [2.74084 - 2.78-0]/0.1  
+    Z = [3.4012 - 3.1-0.1821]/0.1  
     
     ...
-    Z = [-1.03916]/0.1
+    Z = [0.1191]/0.1
     
     which resolves to
-    <strong>Z = -0.3916</strong>
+    <strong>Z = 1.191</strong>
     
     
             </pre>
+            <p>(The example worked in the article is rounded to "1.2")</p>
         </div>
         <h3 id="calculate-uln">
             Calculate the Upper Limit of Normal</h3>
         <div>
-        <p>The formula for prediction of the 
+        <p>According to the article, the formula for prediction of the 
         upper limit of normal (ULN) has the form:</p>
             <pre>
 
     e<sup>(b + 2SD)</sup>*x<sup>a</sup>
+    
+    or, for the sinuses of Valsalva
+    
+    y = 26.95 * BSA<sup>0.49</sup>
             </pre>
-        <p>Working through this calculation with the same assumptions (bsa = 1.0 m<sup>2</sup>, male):</p>
+        <p>Working through this calculation with the same assumptions (bsa = 1.45 m<sup>2</sup>, male):</p>
         <pre>
         
-    y = 19.57 * (BSA)<sup>0.47</sup>
+    y = 26.95 * (BSA)<sup>0.49</sup>
     
     which resolves to
-    y = 19.57 * 1.0<sup>0.47</sup>
+    y = 26.95 * 1.45<sup>0.49</sup>
     
     ...
-    y = 19.57 * 1
+    y = 26.95 * 1.1997
     
     which resolves to
-    <strong>y = 19.57</strong>
+    <strong>y = 32.33</strong>
         </pre>
         </div>
         <h3 id="references">
