@@ -34,156 +34,154 @@ tr:hover {
 <body>
 <div class="container">
 <h2>Aortic Root Z-Scores</h2>
-    <p class="span-14 last">
-        Z-scores of the aortic root at the level of the aortic annulus, sinuses of Valsalva,
-        sinotubular junction, and ascending aorta. Measurements are from the parasternal
-        long axis: aortic annulus measured in <i><b>systole</b></i> at the hinge points of the leaflets;
-        sinuses, sinotubular junction and ascending aorta are measured in <i><b>diastole</b></i> using
-        <i><b>leading-edge to leading-edge technique</b></i>. Data from 353 normal children as reported
-        by investigators at Hôpital Bichat, Paris, France.
-    </p>
-<form action="" method="">
-<table class="zTable" summary="Z-Scores of Cardiac Structures">
-<tr>
-<td class="label"><label for="txtHT">Height (cm):</label></td>
+        <p class="span-14 last">
+            Z-scores of the aortic root at the level of the aortic annulus, sinuses of Valsalva,
+            sinotubular junction, and ascending aorta. Measurements are from the parasternal
+            long axis: aortic annulus measured in <i><b>systole</b></i> at the hinge points of the leaflets;
+            sinuses, sinotubular junction and ascending aorta are measured in <i><b>diastole</b></i> using
+            <i><b>leading-edge to leading-edge technique</b></i>. Data is from 353 normal children as reported
+            by investigators at Hôpital Bichat, Paris, France.
+        </p>
+    <form action="" method="">
+    <table class="zTable" summary="Z-Scores of Cardiac Structures">
+    <tr>
+    <td class="label"><label for="txtHT">Height (cm):</label></td>
 
-<td><input id="txtHT" type="text" onchange="CalculateZScores()" title="cm" /></td>
-</tr>
+    <td><input id="txtHT" type="text" onchange="CalculateZScores()" title="cm" /></td>
+    </tr>
 
-<tr>
-<td class="label"><label for="txtWT">Weight (kg):</label></td>
+    <tr>
+    <td class="label"><label for="txtWT">Weight (kg):</label></td>
 
-<td><input id="txtWT" type="text" onchange="CalculateZScores()" title="kg" /></td>
-</tr>
+    <td><input id="txtWT" type="text" onchange="CalculateZScores()" title="kg" /></td>
+    </tr>
+    <tr>
+    <td class="label"><label for="cmbBSA">BSA formula:</label></td>
 
-<tr>
-<td class="label"><label for="cmbGender">Gender:</label></td>
+    <td><select id="cmbBSA" onchange="CalculateZScores()">
+    <option value="Boyd">
+    Boyd
+    </option>
 
-<td><select id="cmbGender" onchange="CalculateZScores()">
-<option value="girls" selected="selected">Female</option>
-<option value="boys">Male</option>
-</select></td>
-</tr>
+    <option value="DuBois" selected="selected">
+    DuBois
+    </option>
 
-<tr>
-<td class="label"><label for="cmbBSA">BSA formula:</label></td>
+    <option value="Gehan">
+    Gehan &amp; George
+    </option>
 
-<td><select id="cmbBSA" onchange="CalculateZScores()">
-<option value="Boyd">
-Boyd
-</option>
+    <option value="Haycock">
+    Haycock
+    </option>
 
-<option value="DuBois" selected="selected">
-DuBois
-</option>
+    <option value="Mosteller">
+    Mosteller
+    </option>
 
-<option value="Gehan">
-Gehan &amp; George
-</option>
+    <option value="Dreyer">
+    Weight ONLY
+    </option>
+    </select></td>
 
-<option value="Haycock">
-Haycock
-</option>
+    <td id="BSA" colspan="3"></td>
+    </tr>
+    <tr>
+    <td class="label"><label for="cmbGender">Gender:</label></td>
 
-<option value="Mosteller">
-Mosteller
-</option>
+    <td><select id="cmbGender" onchange="CalculateZScores()">
+    <option value="girls" selected="selected">Female</option>
+    <option value="boys">Male</option>
+    </select></td>
+    </tr>
 
-<option value="Dreyer">
-Weight ONLY
-</option>
-</select></td>
+    <tr>
+    <td id="info" colspan="2">&nbsp;</td>
+    </tr>
 
-<td id="BSA" colspan="3"></td>
-</tr>
+    <tr>
+    <th>Site</th>
 
-<tr>
-<td id="info" colspan="2">&nbsp;</td>
-</tr>
+    <th>Measured (mm)</th>
 
-<tr>
-<th>Site</th>
+    <th>Mean</th>
 
-<th>Measured (mm)</th>
+    <th>ULN</th>
 
-<th>Mean</th>
+    <th>Z-Score</th>
 
-<th>ULN</th>
+    </tr>
 
-<th>Z-Score</th>
+    <tr>
+    <td class="label"><label for="txtAVA">Aortic Annulus:</label></td>
 
-</tr>
+    <td><input id="txtAVA" type="text" class="site" 
+            onchange="updateSite('AVA', this.value)" 
+            title="measured in SYSTOLE at leaflet hinge points" /></td>
 
-<tr>
-<td class="label"><label for="txtAVA">Aortic Annulus:</label></td>
+    <td id="AVAMean" class="results">&nbsp;</td>
 
-<td><input id="txtAVA" type="text" class="site" 
-        onchange="updateSite('AVA', this.value)" 
-        title="measured in SYSTOLE at leaflet hinge points" /></td>
+    <td id="AVAULN" class="results">&nbsp;</td>
 
-<td id="AVAMean" class="results">&nbsp;</td>
+    <td id="AVAZ" class="results">&nbsp;</td>
 
-<td id="AVAULN" class="results">&nbsp;</td>
+    </tr>
 
-<td id="AVAZ" class="results">&nbsp;</td>
+    <tr>
+    <td class="label"><label for="txtSinuses">Sinuses:</label></td>
 
-</tr>
+    <td><input id="txtSinuses" type="text" class="site" 
+            onchange="updateSite('Sinuses', this.value)" 
+            title="measured in DIASTOLE from leading edge to leading edge" /></td>
 
-<tr>
-<td class="label"><label for="txtSinuses">Sinuses:</label></td>
+    <td id="SinusesMean" class="results">&nbsp;</td>
 
-<td><input id="txtSinuses" type="text" class="site" 
-        onchange="updateSite('Sinuses', this.value)" 
-        title="measured in DIASTOLE from leading edge to leading edge" /></td>
+    <td id="SinusesULN" class="results">&nbsp;</td>
 
-<td id="SinusesMean" class="results">&nbsp;</td>
+    <td id="SinusesZ" class="results">&nbsp;</td>
 
-<td id="SinusesULN" class="results">&nbsp;</td>
+    </tr>
 
-<td id="SinusesZ" class="results">&nbsp;</td>
+    <tr>
+    <td class="label"><label for="txtSTJ">ST Junction:</label></td>
 
-</tr>
+    <td><input id="txtSTJ" type="text" class="site" 
+            onchange="updateSite('STJ', this.value)" 
+            title="measured in DIASTOLE from leading edge to leading edge" /></td>
 
-<tr>
-<td class="label"><label for="txtSTJ">ST Junction:</label></td>
+    <td id="STJMean" class="results">&nbsp;</td>
 
-<td><input id="txtSTJ" type="text" class="site" 
-        onchange="updateSite('STJ', this.value)" 
-        title="measured in DIASTOLE from leading edge to leading edge" /></td>
+    <td id="STJULN" class="results">&nbsp;</td>
 
-<td id="STJMean" class="results">&nbsp;</td>
+    <td id="STJZ" class="results">&nbsp;</td>
 
-<td id="STJULN" class="results">&nbsp;</td>
+    </tr>
 
-<td id="STJZ" class="results">&nbsp;</td>
+    <tr>
+    <td class="label"><label for="txtTransv">Ascending Aorta:</label></td>
 
-</tr>
+    <td><input id="txtAAO" type="text" class="site" 
+            onchange="updateSite('AAO', this.value)" 
+            title="measured in DIASTOLE from leading edge to leading edge" /></td>
 
-<tr>
-<td class="label"><label for="txtTransv">Ascending Aorta:</label></td>
+    <td id="AAOMean" class="results">&nbsp;</td>
 
-<td><input id="txtAAO" type="text" class="site" 
-        onchange="updateSite('AAO', this.value)" 
-        title="measured in DIASTOLE from leading edge to leading edge" /></td>
+    <td id="AAOULN" class="results">&nbsp;</td>
 
-<td id="AAOMean" class="results">&nbsp;</td>
+    <td id="AAOZ" class="results">&nbsp;</td>
 
-<td id="AAOULN" class="results">&nbsp;</td>
+    </tr>
 
-<td id="AAOZ" class="results">&nbsp;</td>
+    <tr>
+    <td>&nbsp;</td>
 
-</tr>
-
-<tr>
-<td>&nbsp;</td>
-
-<td><input id="btnCalculateZ" type="button" value="Update" onclick="CalculateZScores()"
-class="button" /></td>
-    <td>
-        <input id="Reset1" type="reset" value="reset" onclick="resetForm()" /></td>
-</tr>
-</table>
-</form>
+    <td><input id="btnCalculateZ" type="button" value="Update" onclick="CalculateZScores()"
+    class="button" /></td>
+        <td>
+            <input id="Reset1" type="reset" value="reset" onclick="resetForm()" /></td>
+    </tr>
+    </table>
+    </form>
 <div id="references" class="references">
 <h3>References:</h3>
     <p class="span-14 last">
