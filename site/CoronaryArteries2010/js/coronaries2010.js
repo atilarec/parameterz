@@ -28,8 +28,8 @@ function zscore(o, score) {
 function range(o) {
     //returns: string
     //returns a string in the format "(min - max)" given a zscore range (eg., +/- 1.65 sd)
+    var min, max, z;
     z = zlimit; //configured as a global variable
-    var min, max
     min = (mean(o) - z * sd(o)).toFixed(2);
     max = (mean(o) + z * sd(o)).toFixed(2);
     return '(' + min + ' - ' + max + ')';
@@ -51,7 +51,7 @@ function CalculateZScores() {
     }
     $('#BSA').html(bsa.toFixed(2) + ' M<sup>2</sup>').attr('title', bsa);
     //update mean/ranges
-    $.each(sites, function() {
+    $.each(sites, function () {
         var meanElement, rangeElement, str_mean, str_range;
         meanElement = $('#' + this.label + 'Mean');
         rangeElement = $('#' + this.label + 'Range');
@@ -75,7 +75,6 @@ function updateSite(site, value) {
     } else {
         zelement.text('').removeClass('normal borderline mild moderate severe')
             .attr('title', '');
-        ;
     }
 }
 function resetForm() {
