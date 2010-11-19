@@ -1,7 +1,7 @@
 ﻿// based on: Dallaire and Dahdah, JASE 2010
 //globals
 var bsa;
-var zlimit = 1.65; // sets the limit for upper and lower range values
+var zlimit = 2.0; // sets the limit for upper and lower range values
 var sites = {
     'LMCA': { label: 'LMCA', data: { a1: -0.1817, b1: 2.9238, a2: 0.1801, b2: 0.2530} },
     'LAD': { label: 'LAD', data: { a1: -0.1502, b1: 2.2672, a2: 0.1709, b2: 0.2293} },
