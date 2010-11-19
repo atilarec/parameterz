@@ -49,7 +49,7 @@ function CalculateZScores() {
     else {
         return false;
     }
-    $('#BSA').html(bsa.toFixed(2) + ' M<sup>2</sup>');
+    $('#BSA').html(bsa.toFixed(2) + ' M<sup>2</sup>').attr('title', bsa);
     //update mean/ranges
     $.each(sites, function() {
         var meanElement, rangeElement, str_mean, str_range;
@@ -79,8 +79,9 @@ function updateSite(site, value) {
     }
 }
 function resetForm() {
-    $('#BSA, .results').text('').removeClass('normal borderline mild moderate severe');
+    $('#BSA, .results').text('').removeClass('normal borderline mild moderate severe').attr('title', '');
     bsa = null;
+    
 }
 
 
