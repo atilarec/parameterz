@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ParameterZ.com | Pediatric Echo Z-Scores | Coronary Artery Z-Score Data</title>
+    <link href="../style/screen.css" rel="stylesheet" type="text/css" />
+    <link href="../style/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/ZUtils.js" type="text/javascript"></script>
+    <script src="js/coronaries2010.js" type="text/javascript"></script>
+    <style type="text/css">
+    .zTable {
+    border-collapse: collapse;
+}
+input[type=text] {
+    margin: 0;
+}
+td.label {
+    text-align: right;
+}
+th {
+    text-align: center;
+}
+tr:hover {
+    background-color: #F2F2F2;
+}
+.references h3 {
+    color: #0066cc;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="span-20 last">
+<h2 id="title">Coronary Artery Z-Scores (JASE Nov. 2010)</h2>
+<form action="" method="">
+<table class="zTable" summary="Z-Scores of Cardiac Structures">
+<tr>
+<td class="label"><label for="txtHT">Height (cm):</label></td>
+
+<td><input id="txtHT" type="text" onchange="CalculateZScores()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtWT">Weight (kg):</label></td>
+
+<td><input id="txtWT" type="text" onchange="CalculateZScores()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="cmbBSA">BSA formula:</label></td>
+
+<td><select id="cmbBSA" onchange="CalculateZScores()">
+<option value="Boyd">
+Boyd
+</option>
+
+<option value="DuBois">
+DuBois
+</option>
+
+<option value="Gehan">
+Gehan &amp; George
+</option>
+
+<option value="Haycock" selected="selected">
+Haycock
+</option>
+
+<option value="Mosteller">
+Mosteller
+</option>
+
+<option value="Dreyer">
+Weight ONLY
+</option>
+</select></td>
+
+<td id="BSA" colspan="3"></td>
+</tr>
+
+<tr>
+<td id="info" colspan="2">&nbsp;</td>
+</tr>
+
+<tr>
+<th>Site</th>
+
+<th>Measured (mm)</th>
+
+<th>Mean</th>
+
+<th>Range</th>
+
+<th>Z-Score</th>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtLMCA">LMCA:</label></td>
+
+<td><input id="txtLMCA" type="text" class="site" onchange="updateSite('LMCA', this.value)" /></td>
+
+<td id="LMCAMean" class="results">&nbsp;</td>
+
+<td id="LMCARange" class="results">&nbsp;</td>
+
+<td id="LMCAZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtLAD">LAD:</label></td>
+
+<td><input id="txtLAD" type="text" class="site" onchange="updateSite('LAD', this.value)" /></td>
+
+<td id="LADMean" class="results">&nbsp;</td>
+
+<td id="LADRange" class="results">&nbsp;</td>
+
+<td id="LADZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtCIRC">Circumflex:</label></td>
+
+<td><input id="txtCIRC" type="text" class="site" onchange="updateSite('CIRC', this.value)" /></td>
+
+<td id="CIRCMean" class="results">&nbsp;</td>
+
+<td id="CIRCRange" class="results">&nbsp;</td>
+
+<td id="CIRCZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtPROXRCA">Proximal RCA:</label></td>
+
+<td><input id="txtPROXRCA" type="text" class="site" onchange="updateSite('PROXRCA', this.value)" /></td>
+
+<td id="PROXRCAMean" class="results">&nbsp;</td>
+
+<td id="PROXRCARange" class="results">&nbsp;</td>
+
+<td id="PROXRCAZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtMIDRCA">Mid RCA:</label></td>
+
+<td><input id="txtMIDRCA" type="text" class="site" onchange="updateSite('MIDRCA', this.value)" /></td>
+
+<td id="MIDRCAMean" class="results">&nbsp;</td>
+
+<td id="MIDRCARange" class="results">&nbsp;</td>
+
+<td id="MIDRCAZ" class="results">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td class="label"><label for="txtDISTRCA">Distal RCA:</label></td>
+
+<td><input id="txtDISTRCA" type="text" class="site" onchange="updateSite('DISTRCA', this.value)" /></td>
+
+<td id="DISTRCAMean" class="results">&nbsp;</td>
+
+<td id="DISTRCARange" class="results">&nbsp;</td>
+
+<td id="DISTRCAZ" class="results">&nbsp;</td>
+
+</tr>
+
+
+
+<tr>
+<td>&nbsp;</td>
+
+<td><input id="btnCalculateZ" type="button" value="Update" onclick="CalculateZScores()"
+class="button" /></td>
+    <td>
+        <input id="Reset1" type="reset" value="reset" onclick="resetForm()" /></td>
+</tr>
+</table>
+</form>
+<div id="references" class="references">
+<h3>References:</h3>
+    <p>
+        <span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/21074965">New Equations and a Critical Appraisal of Coronary Artery Z Scores in Healthy Children</a>
+</span>
+<span class="authors">Dallaire F, Dahdah&nbsp;&nbsp;&nbsp;&nbsp; N.</span>        
+            <span class="journal">J Am Soc Echocardiogr. 2010 Nov 12. [Epub ahead of print]</span>    </p>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
