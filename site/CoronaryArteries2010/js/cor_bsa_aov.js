@@ -63,7 +63,7 @@ function CalculateZScores() {
         case "bsa":
             //alter input functionality:
             $('.aov_row input').attr('disabled', true);
-            $('.bsa_row input').attr('disabled', false);
+            $('.bsa_row input, .bsa_row select').attr('disabled', false);
             var ht, wt, method;
             ht = parseFloat($('#txtHT').val());
             wt = parseFloat($('#txtWT').val());
@@ -84,8 +84,8 @@ function CalculateZScores() {
             }
             break;
         case "aov":
-            $('.bsa_row input').attr('disabled', true);
-            $('.aov_row input').attr('disabled', false)
+            $('.bsa_row input, .bsa_row select').attr('disabled', true);
+            $('.aov_row input').attr('disabled', false);
             aov = parseFloat($('#txtAOV').val());
             sites = sites_a;
             if (!isNaN(aov)) {
@@ -127,8 +127,8 @@ function resetForm() {
     $('.results').text('').removeClass('normal borderline mild moderate severe').attr('title', '');
     bsa = null;
     aov = null;
-    $('.bsa_row input').removeAttr('disabled')
-    $('.aov_row input').removeAttr('disabled')
+    $('.bsa_row input, .bsa_row select').removeAttr('disabled');
+    $('.aov_row input').attr('disabled', true);
 
 }
 
