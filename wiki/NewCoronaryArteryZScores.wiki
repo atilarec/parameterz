@@ -7,7 +7,7 @@ In an effort to remain transparent about the nature of the calculations, this su
 
 This calculator builds on some of the techniques from other calculators and also introduces a new (for me!), more contemporary, approach to my use of JavaScript objects: prototypes. 
 
-There are two basic approaches to the new z-score equations: bsa-adjusted and aortic valve-adjusted z-scores. The bsa-adjusted calculations are based on slope and intercepts working with the square root of bsa. The basic form I designed for these objects is:
+There are two basic approaches to the new z-score equations: bsa-adjusted and aortic valve-adjusted z-scores. The bsa-adjusted calculations are based on slope and intercepts working with the square root of bsa. The constructor function I designed for these basic objects is:
 
 {{{
 //these are bsa-adjusted coronaries
@@ -17,4 +17,34 @@ function Cor_b(o) {
     this.a2 = o.a2;
     this.b2 = o.b2;
 }
+}}}
+
+Since all of the coronary arteries of this type have the same pattern for the mean, standard deviation, and z-score, they all share the same prototype:
+
+{{{
+Cor_b.prototype.mean = function() {
+    return this.a1 + this.b1 * Math.sqrt(bsa);
+};
+Cor_b.prototype.sd = function() {
+    return Math.sqrt(bsa) * this.b2 + this.a2;
+};
+Cor_b.prototype.zscore = function(score) {
+    return (score - this.mean(bsa)) / this.sd(bsa);
+};
+Cor_b.prototype.limit = function(z) {
+    return z * this.sd(bsa) + this.mean(bsa);
+};
+}}}
+
+The individual coronary artery objects are then built- using the values published in the paper- and collected in a larger object, _sites_b_:
+
+{{{
+var sites_b = {
+    'LMCA': { label: 'LMCA', cor: new Cor_b({ a1: -0.1817, b1: 2.9238, a2: 0.1801, b2: 0.2530 }) },
+    'LAD': { label: 'LAD', cor: new Cor_b({ a1: -0.1502, b1: 2.2672, a2: 0.1709, b2: 0.2293 }) },
+    'CIRC': { label: 'CIRC', cor: new Cor_b({ a1: -0.2716, b1: 2.3458, a2: 0.1142, b2: 0.3423 }) },
+    'PROXRCA': { label: 'PROXRCA', cor: new Cor_b({ a1: -0.3039, b1: 2.7521, a2: 0.1626, b2: 0.2881 }) },
+    'MIDRCA': { label: 'MIDRCA', cor: new Cor_b({ a1: -0.3060, b1: 2.4078, a2: 0.1324, b2: 0.3259 }) },
+    'DISTRCA': { label: 'DISTRCA', cor: new Cor_b({ a1: -0.3185, b1: 2.3295, a2: 0.1099, b2: 0.3198 }) }
+};
 }}}
