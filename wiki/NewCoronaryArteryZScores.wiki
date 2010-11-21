@@ -3,7 +3,7 @@
 
 In an effort to remain transparent about the nature of the calculations, this summary is provided.  
 
-== Details ==
+
 === BSA-adjusted calculations ===
 This calculator builds on some of the techniques from other calculators and also introduces a new (for me!), more contemporary, approach to my use of JavaScript objects: prototypes. 
 
@@ -50,3 +50,38 @@ var sites_b = {
 }}}
 
 The properties(_methods_, really) of the coronary objects are then accessed using jQuery to iterate across the _sites_ objects.
+
+=== AOV-adjusted calculations ===
+
+The same approach is used for these objects/calculations, but they are somewhat simpler due to the fact that the standard deviation (_standard error_ in the publication) is fixed, i.e., not calculated:
+
+{{{
+//these are aov-adjusted coronaries
+function Cor_a(o) {
+    this.a1 = o.a1;
+    this.b1 = o.b1;
+    this.sd = o.sd;
+}
+Cor_a.prototype.mean = function() {
+    return this.a1 + this.b1 * aov;
+};
+Cor_a.prototype.zscore = function(score) {
+    return (score - this.mean(aov)) / this.sd;
+};
+Cor_a.prototype.limit = function(z) {
+    return z * this.sd + this.mean(aov);
+};
+
+var sites_a = {
+    'LMCA': { label: 'LMCA', cor: new Cor_a({ a1: 0.3593, b1: 0.1398, sd: 0.3507 }) },
+    'LAD': { label: 'LAD', cor: new Cor_a({ a1: 0.2364, b1: 0.1109, sd: 0.3409 }) },
+    'CIRC': { label: 'CIRC', cor: new Cor_a({ a1: 0.1940, b1: 0.1081, sd: 0.3673 }) },
+    'PROXRCA': { label: 'PROXRCA', cor: new Cor_a({ a1: 0.1812, b1: 0.1320, sd: 0.3579 }) },
+    'MIDRCA': { label: 'MIDRCA', cor: new Cor_a({ a1: 0.1827, b1: 0.1104, sd: 0.3748 }) },
+    'DISTRCA': { label: 'DISTRCA', cor: new Cor_a({ a1: 0.2191, b1: 0.1003, sd: 0.3627 }) }
+};
+
+}}}
+
+
+The uncompressed js file can be found [http://assets.parameterz.com/js/cor_bsa_ao.js here]; the actual calculator uses a minified version.
