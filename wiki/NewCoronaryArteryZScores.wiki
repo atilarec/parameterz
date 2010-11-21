@@ -90,7 +90,7 @@ var sites_a = {
 }}}
 
 
-The uncompressed js file can be found [http://assets.parameterz.com/js/cor_bsa_aov.js here]; the actual calculator uses a [http://assets.parameterz.com/js/cor_bsa_aov.min.js minified] version.
+The uncompressed version-controlled js file can be found [http://code.google.com/p/parameterz/source/browse/trunk/site/CoronaryArteries2010/js/cor_bsa_aov.js?r=442 here]; the actual calculator uses a [http://assets.parameterz.com/js/cor_bsa_aov.min.js minified] version.
 
 ----
 [Disclaimer]
