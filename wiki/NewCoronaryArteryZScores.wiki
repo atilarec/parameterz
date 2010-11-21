@@ -1,12 +1,20 @@
 #summary About the new (JASE 2010) coronary artery z-score calculator.
-= Introduction =
+== Introduction ==
 
-Add your content here.
+In an effort to remain transparent about the nature of the calculations, this summary is provided.  
 
+== Details ==
 
-= Details =
+This calculator builds on some of the techniques from other calculators and also introduces a new (for me!), more contemporary, approach to my use of JavaScript objects: prototypes. 
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+There are two basic approaches to the new z-score equations: bsa-adjusted and aortic valve-adjusted z-scores. The bsa-adjusted calculations are based on slope and intercepts working with the square root of bsa. The basic form I designed for these objects is:
+
+{{{
+//these are bsa-adjusted coronaries
+function Cor_b(o) {
+    this.a1 = o.a1;
+    this.b1 = o.b1;
+    this.a2 = o.a2;
+    this.b2 = o.b2;
+}
+}}}
