@@ -84,4 +84,4 @@ var sites_a = {
 }}}
 
 
-The uncompressed js file can be found [http://assets.parameterz.com/js/cor_bsa_ao.js here]; the actual calculator uses a minified version.
+The uncompressed js file can be found [http://assets.parameterz.com/js/cor_bsa_aov.js here]; the actual calculator uses a [http://assets.parameterz.com/js/cor_bsa_aov.min.js minified] version.
