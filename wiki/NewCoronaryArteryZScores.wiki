@@ -1,6 +1,10 @@
 #summary About the new (JASE 2010) coronary artery z-score calculator.
 == Introduction ==
 
+Concerning the new coronary artery z-score calculator on [http://parameterz.blogspot.com/2010/11/montreal-coronary-artery-z-scores.html ParameterZ.com], based on the article
+
+[http://www.ncbi.nlm.nih.gov/pubmed/21074965 New Equations and a Critical Appraisal of Coronary Artery Z Scores in Healthy Children.]
+
 In an effort to remain transparent about the nature of the calculations, this summary is provided.  
 
 
