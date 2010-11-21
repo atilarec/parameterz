@@ -4,7 +4,7 @@
 In an effort to remain transparent about the nature of the calculations, this summary is provided.  
 
 == Details ==
-
+=== BSA-adjusted calculations ===
 This calculator builds on some of the techniques from other calculators and also introduces a new (for me!), more contemporary, approach to my use of JavaScript objects: prototypes. 
 
 There are two basic approaches to the new z-score equations: bsa-adjusted and aortic valve-adjusted z-scores. The bsa-adjusted calculations are based on slope and intercepts working with the square root of bsa. The constructor function I designed for these basic objects is:
@@ -19,7 +19,7 @@ function Cor_b(o) {
 }
 }}}
 
-Since all of the coronary arteries of this type have the same pattern for the mean, standard deviation, and z-score, they all share the same prototype:
+Since all of the coronary arteries of this type have the same pattern for calculating the mean, standard deviation, and z-score, they all share the same prototype:
 
 {{{
 Cor_b.prototype.mean = function() {
@@ -48,3 +48,5 @@ var sites_b = {
     'DISTRCA': { label: 'DISTRCA', cor: new Cor_b({ a1: -0.3185, b1: 2.3295, a2: 0.1099, b2: 0.3198 }) }
 };
 }}}
+
+The properties(_methods_, really) of the coronary objects are then accessed using jQuery to iterate across the _sites_ objects.
