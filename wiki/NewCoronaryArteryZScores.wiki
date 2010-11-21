@@ -36,6 +36,8 @@ Cor_b.prototype.limit = function(z) {
 };
 }}}
 
+*NOTE:* The methods have access to global variables _bsa_ and _aov_ (A bit sloppy, I know, but the chance of colliding with other similarly named global variables in this context, is _remote_).
+
 The individual coronary artery objects are then built- using the values published in the paper- and collected in a larger object, _sites_b_:
 
 {{{
