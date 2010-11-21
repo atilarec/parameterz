@@ -1,4 +1,4 @@
-#About the new (JASE 2010) coronary artery z-score calculator.
+#summary About the new (JASE 2010) coronary artery z-score calculator.
 = Introduction =
 
 Add your content here.
