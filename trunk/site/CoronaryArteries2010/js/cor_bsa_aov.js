@@ -16,10 +16,10 @@ Cor_b.prototype.sd = function() {
     return Math.sqrt(bsa) * this.b2 + this.a2;
 };
 Cor_b.prototype.zscore = function(score) {
-    return (score - this.mean(bsa)) / this.sd(bsa);
+    return (score - this.mean()) / this.sd();
 };
 Cor_b.prototype.limit = function(z) {
-    return z * this.sd(bsa) + this.mean(bsa);
+    return z * this.sd() + this.mean();
 };
 var sites_b = {
     'LMCA': { label: 'LMCA', cor: new Cor_b({ a1: -0.1817, b1: 2.9238, a2: 0.1801, b2: 0.2530 }) },
@@ -40,10 +40,10 @@ Cor_a.prototype.mean = function() {
     return this.a1 + this.b1 * aov;
 };
 Cor_a.prototype.zscore = function(score) {
-    return (score - this.mean(aov)) / this.sd;
+    return (score - this.mean()) / this.sd;
 };
 Cor_a.prototype.limit = function(z) {
-    return z * this.sd + this.mean(aov);
+    return z * this.sd + this.mean();
 };
 
 var sites_a = {
