@@ -9,7 +9,7 @@ In an effort to remain transparent about the nature of the calculations, this su
 
 
 === BSA-adjusted calculations ===
-This calculator builds on some of the techniques from other calculators and also introduces a new (for me!), more contemporary approach to my use of !JavaScript objects: prototypes. 
+This calculator builds on some of the techniques from other calculators and also introduces a new, more contemporary approach to my use of !JavaScript objects: prototypes. 
 
 There are two basic approaches to the new z-score equations: bsa-adjusted and aortic valve-adjusted z-scores. The bsa-adjusted calculations are based on slope and intercepts working with the square root of bsa. The constructor function I designed for these basic objects is:
 
@@ -40,7 +40,7 @@ Cor_b.prototype.limit = function(z) {
 };
 }}}
 
-*NOTE:* The methods have access to global variables _bsa_ and _aov_ (A bit sloppy, I know, but the chance of colliding with other similarly named global variables in this context, is _remote_).
+*NOTE:* The methods have access to global variables _bsa_ and _aov_ (A bit sloppy, I know, but the chance of colliding with other similarly named global variables in this context is _remote_).
 
 The individual coronary artery objects are then built- using the values published in the paper- and collected in a larger object, _sites_b_:
 
