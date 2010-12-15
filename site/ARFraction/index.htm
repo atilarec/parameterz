@@ -86,7 +86,7 @@ Weight ONLY
 </option>
 </select></td>
 
-<td id="BSA" colspan="3"></td>
+<td id="BSA" class="results" colspan="3"></td>
 </tr>
 <tr>
 <td class="label">
@@ -122,7 +122,7 @@ Weight ONLY
 <td class="label">
 <label>Estimated RF:</label>
 </td>
-<td id="RF" class="rf results"></td>
+<td id="RF" class="results rf"></td>
 </tr>
 <tr>
 <td>&nbsp;</td>
@@ -134,33 +134,16 @@ class="button" /></td>
 </tr>
 </table>
 </form>
-<div>
-<h4>Click to show/hide work</h4>
-<div id="show_work">
-<p>Vena contracta area: <span id="show_vca"></span></p>
-<p>Vena contracta area &divide; BSA: <span id="show_vca_ratio"></span></p>
-<p>Retrograde &divide; Antegrade VTI: <span id="show_vti_ratio"></span></p>
-<p>Formula for exponent (y): <span id="show_exponent_formula"></span></p>
-<p>Substitute values: <span id="show_exponent_values"></span></p>
-<p>Exponent, solved: <span id="show_exponent_solved"></span></p>
-<p>RF prediction formula: 0.6 / (1 + e<sup>-y</sup>)</p>
-<p>Substitute values: 0.6 / (1 + 2.718<sup>-<span id="show_exponent">y</span></sup>)</p>
-<p>RF: <span id ="show_rf"></span></p>
-</div>
-</div>
 <div id="references" class="references">
 <h3>References:</h3>
     <p>
+    <span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/20581048">An echocardiographic model predicting severity of aortic regurgitation in congenital heart disease.</a></span>
+    <span class="authors">Beroukhim RS, Graham DA, Margossian R, Brown DW, Geva T, Colan SD.</span>
+    <span class="journal">Circ Cardiovasc Imaging. 2010 Sep 1;3(5):542-9. Epub 2010 Jun 25.</span>
     </p>
 </div>
 
 </div>
 </div>
-<script type="text/javascript">
-    $('#show_work>p').hide();
-    $('h4').click(function() {
-        $('#show_work>p').toggle();
-    });
-</script>
 </body>
 </html>

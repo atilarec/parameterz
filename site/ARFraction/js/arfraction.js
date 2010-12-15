@@ -1,11 +1,11 @@
 ﻿function GetExponent(pvca_bsa, vti_ratio) {
     if (pvca_bsa <= 0.05) {
         return -2.62 + (31.42 * pvca_bsa) + (2.33 * vti_ratio);
-    } 
+    }
     else if (pvca_bsa > 0.05) {
         return -1.18 + (2.66 * pvca_bsa) + (2.33 * vti_ratio);
     }
-}//end GetExponent fx
+} //end GetExponent fx
 
 function CalculateRF() {
     var bsa, ht, wt, method, pvc, pvca, pvca_bsa, vti_a, vti_r, vti_ratio, exponent, rf;
@@ -20,7 +20,7 @@ function CalculateRF() {
     else {
         return false;
     }
-    $('#BSA').text(bsa.toFixed(2))
+    $('#BSA').text(bsa.toFixed(2));
     pvc = parseFloat($('#txtPVC').val());
     vti_a = parseFloat($('#txtVTI-antegrade').val());
     vti_r = parseFloat($('#txtVTI-retro').val());
@@ -31,8 +31,12 @@ function CalculateRF() {
         vti_ratio = vti_r / vti_a;
         exponent = GetExponent(pvca_bsa, vti_ratio);
         rf = 0.6 / (1 + Math.exp(-exponent));
-        $('#RF').text(rf.toFixed(2))
+        $('#RF').text(rf.toFixed(2));
     }
 
 
-}// end calcRF fx
+} // end calcRF fx
+
+function resetForm() {
+    $('.results').text('');
+}
