@@ -29,9 +29,6 @@ tr:hover {
 h3, h4 {
     color: #0066cc;
 }
-.radio_label {
-    padding-left: 2em;
-}
 .rf { 
     font-size: 1.2em; 
     font-weight: bold;
@@ -43,6 +40,8 @@ h3, h4 {
 <div class="container">
 <div class="span-20 last">
 <h2 id="title">Estimating Aortic Regurgitant Fraction</h2>
+<hr />
+<hr class="space" />
 <form action="" method="">
 <table class="zTable" summary="AR Fraction calculator">
 <tr>
@@ -55,45 +54,15 @@ h3, h4 {
 <td class="label"><label for="txtWT">Weight (kg):</label></td>
 
 <td><input id="txtWT" type="text" onchange="CalculateRF()" /></td>
-</tr>
-
-<tr>
-<td class="label"><label for="cmbBSA">BSA formula:</label></td>
-
-<td><select id="cmbBSA" onchange="CalculateRF()">
-<option value="Boyd">
-Boyd
-</option>
-
-<option value="DuBois">
-DuBois
-</option>
-
-<option value="Gehan">
-Gehan &amp; George
-</option>
-
-<option value="Haycock" selected="selected">
-Haycock
-</option>
-
-<option value="Mosteller">
-Mosteller
-</option>
-
-<option value="Dreyer">
-Weight ONLY
-</option>
-</select></td>
-
 <td id="BSA" class="results" colspan="3"></td>
+
 </tr>
+
 <tr>
 <td class="label">
-    <label for="txtPVC">PVC (cm):</label></td>
+    <label for="txtPVC" title="Parasternal Vena Contracta">PVC (cm):</label></td>
 
 <td><input id="txtPVC" type="text" onchange="CalculateRF()" /></td>
-<td id="PVCArea" class="results"></td>
 </tr>
 
 <tr>
@@ -111,7 +80,7 @@ Weight ONLY
 <td>
 <input id="txtVTI-antegrade" type="text" onchange="CalculateRF()" />
 </td>
-<td id="VTIratio" class="results"></td>
+
 </tr>
 
 <tr>
@@ -134,6 +103,9 @@ class="button" /></td>
 </tr>
 </table>
 </form>
+<hr class="space" />
+<hr />
+<hr class="space" />
 <div id="references" class="references">
 <h3>References:</h3>
     <p>
