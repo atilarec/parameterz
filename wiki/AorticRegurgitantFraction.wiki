@@ -1,6 +1,6 @@
 #summary Calculator for estimating aortic reguritant fraction from echo (jet width, DAO flow VTI's)
 
-= Introduction =
+== Introduction ==
 
 This is a !JavaScript calculator based on the work presented in
 
@@ -12,7 +12,7 @@ Circ Cardiovasc Imaging. 2010 Sep 1;3(5):542-9. Epub 2010 Jun 25.
 
 
 
-= Details =
+== Details ==
 
 AR fraction is estimated using two variables:
 
@@ -26,6 +26,6 @@ http://parameterz.googlecode.com/svn-history/r461/trunk/site/ARFraction/index.ht
 The version-controlled js file is here:
 http://code.google.com/p/parameterz/source/browse/trunk/site/ARFraction/js/arfraction.js?r=461
 
-
+I need to think about how to optionally add multiple jet widths (we are to sum their areas), possibly by entering them as a comma separated list.
 ----
 [Disclaimer]
