@@ -11,13 +11,22 @@
         return false;
     }
     $('#BSA').html(bsa.toFixed(2) + '&nbsp;m<sup>2</sup>').attr('title', 'BSA');
-    pvc = parseFloat($('#txtPVC').val());
+    pvc = $('#txtPVC').val();
+    //split the string into an array
+    pvc = pvc.split(","); //pvc is now an array of strings
+    
     vti_a = parseFloat($('#txtVTI-antegrade').val());
     vti_r = parseFloat($('#txtVTI-retro').val());
 
     if (bsa && pvc && vti_a && vti_r) {
-        //calculate the vena contracta area
-        pvca = Math.PI * Math.pow((pvc / 2), 2);
+        //calculate the combined vena contracta area
+        //by looping through the pvc array
+        pvca = 0;
+        for (var i = 0; i <= pvc.length - 1; i++) {
+            pvca += Math.PI * Math.pow((parseFloat(pvc[i]) / 2), 2);
+
+        }
+        
         //calculate the ratios
         pvca_bsa = pvca / bsa;
         vti_ratio = vti_r / vti_a;
