@@ -24,8 +24,9 @@ The calculator can be found here:
 http://parameterz.googlecode.com/svn-history/r469/trunk/site/ARFraction/index.htm
 
 The version-controlled js file is here:
-http://code.google.com/p/parameterz/source/browse/trunk/site/ARFraction/js/arfraction.js?r=461
+http://code.google.com/p/parameterz/source/browse/trunk/site/ARFraction/js/arfraction.js?r=470
 
-_I need to think about how to optionally add multiple jet widths (we are to sum their areas), possibly by entering them as a comma separated list._
+
+
 ----
 [Disclaimer]
