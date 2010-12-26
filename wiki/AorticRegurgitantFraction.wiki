@@ -1,4 +1,5 @@
 #summary Calculator for estimating aortic reguritant fraction from echo (jet width, DAO flow VTI's)
+#labels Deprecated
 
 == Introduction ==
 
