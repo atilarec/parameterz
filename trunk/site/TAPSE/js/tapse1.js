@@ -72,7 +72,7 @@ function chartIt(age, score) {
     url += part3;
 
     $('#chart1').attr('src', url);
-    var link_url = url.replace('&chs=500x300', '&chs=600x400')
+    var link_url = url.replace('&chs=400x300', '&chs=600x400')
     $('#chart_link').attr('href', link_url);
     
 }//end chartIt fx
