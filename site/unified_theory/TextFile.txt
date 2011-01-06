@@ -1,0 +1,56 @@
+﻿***1/4/11:
+Now my thinking is to have a site that is generic ('site') and swap in each specific object- that way the logic/routine 
+for connecting to the html is the same: site.aov.zscore() vs. boston.aov.zscore() and then wessex.aov.zscore(), etc. 
+
+The 'boston' and 'wessex' etc. objects will get assigned to the generic site object:
+    site = boston;
+    
+*** example code ***
+var site = {}; //empty object
+var boston = {
+    aov: {
+        mean: function() { 
+            //do stuff here
+        },
+        zscore: function(score) {
+            //do stuff here
+        }
+    },
+    sov: {
+        mean: function(){
+            //do stuff here
+        },
+    },
+    //etc
+}
+
+*** end example ***
+
+This is different than having constructor functions that build a specific object. Here, I build each object,
+then "rebrand" it as the base object.
+
+I'll have to handle the Cincinnatti data differently- they have gender specific functions.
+
+var cincinnatti = {
+    aov: {
+        mean: function(){
+            if (gender == 'm') {
+                return //do stuff here
+            else if (gender == 'f')
+            }
+        }
+    }
+    
+}
+
+*** demo ***
+http://jsbin.com/unifed-theory/12/edit
+
+
+*** 1/5/11 :
+
+each 'reference' object will need the following properties:
+    requiresGender (boolean)
+    calcsAvail (list)?
+    each calc/site (aov,sov,stj,aao)
+    citation (title,authors,journal,linkUrl)
