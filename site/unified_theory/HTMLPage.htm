@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Unified theory | Parameterz.com</title>
@@ -17,174 +16,166 @@
 
 </head>
 <body>
-<div class="container">
+    <div class="container">
+        <h1>
+            Aortic Root Z-Score Calculator:</h1>
+        <h2>
+            Combined References</h2>
+        <form id="aortic-root-form" action="" method="">
+        <table class="zTable" summary="Z-Scores of Cardiac Structures">
+            <tr>
+                <td class="label">
+                    <label for="txtHT">
+                        Height (cm):</label>
+                </td>
+                <td>
+                    <input id="txtHT" type="text" onchange="calculateZScores()" title="cm" />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label for="txtWT">
+                        Weight (kg):</label>
+                </td>
+                <td>
+                    <input id="txtWT" type="text" onchange="calculateZScores()" title="kg" />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label for="cmbBSA">
+                        BSA formula:</label>
+                </td>
+                <td>
+                    <select id="cmbBSA" onchange="calculateZScores()">
+                        <option value="Boyd">Boyd </option>
+                        <option value="DuBois">DuBois </option>
+                        <option value="Gehan">Gehan &amp; George </option>
+                        <option value="Haycock" selected="selected">Haycock </option>
+                        <option value="Mosteller">Mosteller </option>
+                        <option value="Dreyer">Weight ONLY </option>
+                    </select>
+                </td>
+                <td id="BSA">
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label>
+                        Reference:</label>
+                </td>
+                <td>
+                    <select id="cmbUseRef" onchange="calculateZScores()">
+                        <option value="">-- Choose Reference --</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label for="cmbGender" class="gender">
+                        Gender:</label>
+                </td>
+                <td>
+                    <select id="cmbGender" class="gender" onchange="calculateZScores()">
+                        <option value="f" selected="selected">Female</option>
+                        <option value="m">Male</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td id="info" colspan="2">
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Site
+                </th>
+                <th>
+                    Measured (cm)
+                </th>
+                <th>
+                    Z-Score
+                </th>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label class="aov" for="txtAOV">
+                        Aortic Annulus:</label>
+                </td>
+                <td>
+                    <input id="txtAOV" type="text" class="site aov" onchange="updateSite('AOV', this.value)"
+                        title="" />
+                </td>
+                <td>
+                    <span id="AOVZ" class="results aov"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label class="sov" for="txtSinuses">
+                        Sinuses:</label>
+                </td>
+                <td>
+                    <input id="txtSOV" type="text" class="site sov" onchange="updateSite('Sinuses', this.value)" />
+                </td>
+                <td>
+                    <span id="SOVZ" class="results sov"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label class="stj" for="txtSTJ">
+                        ST Junction:</label>
+                </td>
+                <td>
+                    <input id="txtSTJ" type="text" class="site stj" onchange="updateSite('STJ', this.value)" />
+                </td>
+                <td>
+                    <span id="STJZ" class="results stj"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <label class="aao" for="txtAAO">
+                        Ascending Aorta:</label>
+                </td>
+                <td>
+                    <input id="txtAAO" type="text" class="site aao" onchange="updateSite('AAO', this.value)" />
+                </td>
+                <td>
+                    <span id="AAOZ" class="results aao"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input id="btnCalculateZ" type="button" value="Update" onclick="calculateZScores()"
+                        class="button" />
+                </td>
+                <td>
+                    <input id="Reset1" type="reset" value="reset" onclick="resetForm()" />
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+    <!--end container div -->
 
-<h1>Aortic Root Z-Score Calculator:</h1>
-<h2>Combined References</h2>
-
-    <form action="" method="">
-    <table class="zTable" summary="Z-Scores of Cardiac Structures">
-    <tr>
-    <td class="label"><label for="txtHT">Height (cm):</label></td>
-
-    <td><input id="txtHT" type="text" onchange="CalculateZScores()" title="cm" /></td>
-    </tr>
-
-    <tr>
-    <td class="label"><label for="txtWT">Weight (kg):</label></td>
-
-    <td><input id="txtWT" type="text" onchange="CalculateZScores()" title="kg" /></td>
-    </tr>
-    <tr>
-    <td class="label"><label for="cmbBSA">BSA formula:</label></td>
-
-    <td><select id="cmbBSA" onchange="CalculateZScores()">
-    <option value="Boyd">
-    Boyd
-    </option>
-
-    <option value="DuBois" selected="selected">
-    DuBois
-    </option>
-
-    <option value="Gehan">
-    Gehan &amp; George
-    </option>
-
-    <option value="Haycock">
-    Haycock
-    </option>
-
-    <option value="Mosteller">
-    Mosteller
-    </option>
-
-    <option value="Dreyer">
-    Weight ONLY
-    </option>
-    </select></td>
-
-    <td id="BSA" colspan="3"></td>
-    </tr>
-    <tr>
-    <td class="label">
-    <label>Reference:</label>
-    </td>
-    <td>
-    <select id="use_ref">
-        <option value="">-- Choose Reference --</option>
-    </select>
-    </td>
-    </tr>
-    <tr>
-    </tr>
-
-    <tr>
-    <td class="label"><label for="cmbGender">Gender:</label></td>
-
-    <td><select id="cmbGender" onchange="CalculateZScores()">
-    <option value="girls" selected="selected">Female</option>
-    <option value="boys">Male</option>
-    </select></td>
-    </tr>
-
-    <tr>
-    <td id="info" colspan="2">&nbsp;</td>
-    </tr>
-
-    <tr>
-    <th>Site</th>
-
-    <th>Measured (mm)</th>
-
-    <th>Mean</th>
-
-    <th>ULN</th>
-
-    <th>Z-Score</th>
-
-    </tr>
-
-    <tr>
-    <td class="label"><label for="txtAVA">Aortic Annulus:</label></td>
-
-    <td><input id="txtAVA" type="text" class="site" 
-            onchange="updateSite('AVA', this.value)" 
-            title="measured in SYSTOLE at leaflet hinge points" /></td>
-
-    <td id="AVAMean" class="results">&nbsp;</td>
-
-    <td id="AVAULN" class="results">&nbsp;</td>
-
-    <td id="AVAZ" class="results">&nbsp;</td>
-
-    </tr>
-
-    <tr>
-    <td class="label"><label for="txtSinuses">Sinuses:</label></td>
-
-    <td><input id="txtSinuses" type="text" class="site" 
-            onchange="updateSite('Sinuses', this.value)" /></td>
-
-    <td id="SinusesMean" class="results">&nbsp;</td>
-
-    <td id="SinusesULN" class="results">&nbsp;</td>
-
-    <td id="SinusesZ" class="results">&nbsp;</td>
-
-    </tr>
-
-    <tr>
-    <td class="label"><label for="txtSTJ">ST Junction:</label></td>
-
-    <td><input id="txtSTJ" type="text" class="site" 
-            onchange="updateSite('STJ', this.value)" /></td>
-
-    <td id="STJMean" class="results">&nbsp;</td>
-
-    <td id="STJULN" class="results">&nbsp;</td>
-
-    <td id="STJZ" class="results">&nbsp;</td>
-
-    </tr>
-
-    <tr>
-    <td class="label"><label for="txtTransv">Ascending Aorta:</label></td>
-
-    <td><input id="txtAAO" type="text" class="site" 
-            onchange="updateSite('AAO', this.value)" /></td>
-
-    <td id="AAOMean" class="results">&nbsp;</td>
-
-    <td id="AAOULN" class="results">&nbsp;</td>
-
-    <td id="AAOZ" class="results">&nbsp;</td>
-
-    </tr>
-
-    <tr>
-    <td>&nbsp;</td>
-
-    <td><input id="btnCalculateZ" type="button" value="Update" onclick="CalculateZScores()"
-    class="button" /></td>
-        <td>
-            <input id="Reset1" type="reset" value="reset" onclick="resetForm()" /></td>
-    </tr>
-    </table>
-    </form>
-
-</div> <!--end container div -->
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        //fill the 'use_ref' dropdown list
-        $.each(test, function(key, value) {
-            $('#use_ref').append($('<option></option>').
-            attr('value', value.label).
-            text(value.label));
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //fill the 'use_ref' dropdown list
+            $.each(REFS, function(key, value) {
+                $('#cmbUseRef').append($('<option></option>').
+            attr('value', key).
+            text(value.id));
+            });
+            $('#aortic-root-form').submit(function() { return false; });
         });
-    });
 
-</script>
+    </script>
+
 </body>
 </html>
