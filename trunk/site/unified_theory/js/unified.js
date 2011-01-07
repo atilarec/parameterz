@@ -27,7 +27,7 @@ sov: {} //etc...
 */
 
 // globals
-var REF = {},
+var REF,
     BSA = 0,
     GENDER = "f", //the html/form has this defaulting to 'f'...
     REFS, Bos, Cin, Det, Hal, Par, Wes;  // will become the Boston, Cincinnatti, etc. reference sites
@@ -47,13 +47,12 @@ function fnLogLinear(intercept, slope) {
     var bsa = Math.log(BSA);
     return intercept + slope * bsa;
 }
-function calculateZScores() {
-    // main function
+
+function updateBSA() {
     // if ht & wt exist, calculate the BSA
-    var ht, wt, method, use_ref;
+    var ht, wt, method;
     ht = parseFloat($('#txtHT').val());
     wt = parseFloat($('#txtWT').val());
-    GENDER = $('#cmbGender').val();
     method = $('#cmbBSA').val();
     if (ht && wt) {
         BSA = CalcBSA(ht, wt, method).toFixed(2);
@@ -61,11 +60,27 @@ function calculateZScores() {
     } else if (wt && method == 'Dreyer') {
         BSA = CalcBSA('', wt, method).toFixed(2);
         BSA = +BSA; //type converts back to 'number', see note above
-    }
-    else {
-        return false;
+    } else {
+        return;
     }
     $('#BSA').html(BSA.toFixed(2) + ' M<sup>2</sup>');
+    calculateZScores();
+
+} //end updateBSA
+
+function updateGender() {
+    GENDER = $('#cmbGender').val();
+    calculateZScores();
+} //end updateGender
+function displayRef() {
+    $('.title').text(REF.citation.title);
+    $('.linkUrl').attr('href', REF.citation.linkUrl);
+    $('.authors').text(REF.citation.authors);
+    $('.journal').text(REF.citation.journal);
+}//end displayRef fx
+
+function updateRef() {
+    var use_ref
     //determine which reference was selected
     use_ref = $('#cmbUseRef').val();
     if (use_ref !== '') {
@@ -76,30 +91,53 @@ function calculateZScores() {
         else {
             $('.gender').hide();
         }
-    }
-    else {
-        return false;
-    }
-    var allSites = ['aov', 'sov', 'stj', 'aao'];
-    var refSites = [];
-    $.each(allSites, function(key, val) {
-        if (val in REF) {
-            $('.' + val).show();
-            refSites.push(val);
-        }
-        else {
-            $('.' + val).hide();
-        }
-    });
-    //debug
-    alert(refSites.length)
+        calculateZScores();
+        displayRef();
 
+    } else {
+        return;
+    }
+} //end updateRef
+
+function calculateZScores() {
+    // main function
+    if (REF) {
+        var allSites = ['aov', 'sov', 'stj', 'aao'];
+        $.each(allSites, function(key, val) {
+            if (val in REF) {
+                $('.' + val).show();
+                if (BSA) {
+                    $('#txt' + val).change();
+                }
+            }
+            else {
+                $('.' + val).hide();
+                $('#' + val + 'z').text('').removeClass('normal borderline mild moderate severe').attr('title', '');
+            }
+        });
+    }
 } //end calculateScores
 
-function updateSite() {
-    return;
+function updateSite(site, score) {
+    if (score) {
+        //debug
+        //alert('in function "updateSite"')
+        var z = REF[site]['zscore'](score);
+        //debug
+        //alert(site + ': ' + z.toFixed(2))
+        $('#' + site + 'z').text(z.toFixed(2)).
+            removeClass('normal borderline mild moderate severe').
+            addClass(zscoreFlag(z)).attr('title', (poz(z) * 100).toFixed(2) + '%-ile');
+    }
 } //end updateSite
 
+function resetForm() {
+    $('.results').text('').
+    removeClass('normal borderline mild moderate severe');
+    $('.gender, .aov, .sov, .stj, .aao').show();
+    $('.title, .authors, .journal').text('');
+
+} //end resetForm
 
 Bos = {
     id: "Boston",
