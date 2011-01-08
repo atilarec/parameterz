@@ -1,5 +1,5 @@
 ﻿/*
-example site:
+example reference:
 test = {
 
 id: "Label",
