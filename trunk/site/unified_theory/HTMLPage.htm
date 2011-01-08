@@ -402,6 +402,15 @@ Paris = {
 
             </pre>
             </div>
+            <p>I think the latest arrangement is much tighter, and I feel like I can also now include
+            other properties like upperLimit(), lowerLimit(), etc. Before, I felt like it was too scrambled
+            and spaghetti-coded..
+            </p>
+            <p>
+            Also, since the basic scale of values is not dramatically different between each of the sites,
+            it might not be too hard to also add properties for generating a plot (using the google chart API).
+            I have a working chart example on the TAPSE calculator now running on parameterz (and in the svn).
+            </p>
         </div>
     </div>
     <!--end container div -->
@@ -415,7 +424,8 @@ Paris = {
             text(value.id));
             });
             $('#aortic-root-form').submit(function() { return false; });
-            prettyPrint()
+            //prettyfy the code samples
+            prettyPrint();
         });
 
     </script>
