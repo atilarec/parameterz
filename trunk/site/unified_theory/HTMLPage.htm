@@ -42,14 +42,22 @@
         {
             display: block;
         }
+        .label
+        {
+        text-align: right
+        }
+        th 
+        {
+        text-align: center
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>
-            Aortic Root Z-Score Calculator:</h1>
+            Aortic Root Z-Score Calculator</h1>
         <h2>
-            Combined References</h2>
+            Comparing References</h2>
         <form id="aortic-root-form" action="" method="">
         <table class="zTable" summary="Z-Scores of Cardiac Structures">
             <tr>
@@ -200,6 +208,7 @@
             </div>
         </div>
         <hr class="space" />
+        <div id="code_sample"></div>
     </div>
     <!--end container div -->
 
@@ -214,6 +223,20 @@
             $('#aortic-root-form').submit(function() { return false; });
         });
 
+    </script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $.ajax({
+        url: "http://code.google.com/p/parameterz/source/browse/trunk/site/unified_theory/js/unified.js?r=485#310",
+            cache: false,
+            success: function(html) {
+                $("#code_sample").append(html);
+            }
+        });
+        });
+    
+    
     </script>
 
 </body>
