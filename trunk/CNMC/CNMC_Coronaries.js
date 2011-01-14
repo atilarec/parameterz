@@ -71,8 +71,9 @@ function calcCNMCBSA()
         return 0.1 * Math.pow(MyPatient.weight, (2 / 3));
     }
     else
-    {    
-        return 0.024265 * Math.pow(MyPatient.height, 0.3964) * Math.pow(MyPatient.weight, 0.5378);
+    {
+        //return 0.024265 * Math.pow(MyPatient.height, 0.3964) * Math.pow(MyPatient.weight, 0.5378); //Haycock-- oops!
+        return 0.007184 * Math.pow(MyPatient.height, 0.725) * Math.pow(MyPatient.weight, 0.425); // DuBois
     }
 }
 function thinkAboutIt(form)
