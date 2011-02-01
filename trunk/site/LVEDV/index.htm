@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LV End-Diastolic Volume Z-Scores | ParameterZ.com</title>
+    <link href="../style/screen.css" rel="stylesheet" type="text/css" />
+    <link href="../style/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/ZUtils.js" type="text/javascript"></script>
+
+    <script src="js/lvedv.js" type="text/javascript"></script>
+    <style type="text/css">
+    .zTable {
+    border-collapse: collapse;
+}
+input[type=text] {
+    margin: 0;
+}
+td.label {
+    text-align: right;
+}
+th {
+    text-align: center;
+}
+tr:hover {
+    background-color: #F2F2F2;
+}
+.references h3 {
+    color: #0066cc;
+}
+.normal, .borderline, .mild, .moderate, .severe {
+    padding: 0.5em;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="span-20 last">
+<h2 id="title">LVEDV Z-Scores (JASE Feb. 2011)</h2>
+<form action="" method="">
+<table class="zTable" summary="Z-Scores of Coronary Arteries">
+<tr>
+<td class="label"><label for="txtHT">Height (cm):</label></td>
+
+<td><input id="txtHT" type="text" onchange="CalculateZScore()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtWT">Weight (kg):</label></td>
+
+<td><input id="txtWT" type="text" onchange="CalculateZScore()" /></td>
+</tr>
+
+<tr>
+<td class="label"><label for="cmbBSA">BSA:</label></td>
+
+<td>
+<span id="BSA"></span>
+</td>
+</tr>
+
+<tr>
+<td class="label"><label for="txtArea">Area:</label></td>
+
+<td><input id="txtArea" type="text" class="site" onchange="updateArea(this.value)" /></td>
+
+</tr>
+<tr>
+<td class="label"><label for="txtLength">Length:</label></td>
+<td><input id="txtLength" type="text" class="site" onchange="updateLength(this.value)" /></td>
+
+</tr>
+<tr>
+<td class="label">
+<label>LVEDV:</label>
+</td>
+<td>
+<span class="results" id="LVEDV"></span>
+</td>
+</tr>
+<tr>
+<td class="label">
+<label>LVEDVi:</label>
+</td>
+<td>
+<span class="results" id="LVEDVi"></span>
+</td>
+</tr>
+<tr>
+<td class="label">
+<label>Z-Score:</label>
+</td>
+<td>
+<span class="results" id="zscore"></span>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+
+<td><input id="btnCalculateZ" type="button" value="Update" onclick="CalculateZScore()"
+class="button" /></td>
+    <td>
+        <input id="Reset1" type="reset" value="reset" onclick="resetForm()" /></td>
+</tr>
+</table>
+</form>
+<div id="references" class="references">
+<h3>References:</h3>
+    <p>
+        <span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/">Normal Values for Left Ventricular Volume in Infants and Young Children by the Echocardiographic Subxiphoid Five-Sixth Area by Length (Bullet) Method.</a>
+        </span><span class="authors">Irene D. Lytrivi, Puneet Bhatla, H. Helen Ko, Jen Yau, Miwa K. Geiger, Rowan Walsh, Ira A. Parness, Shubhika Srivastava, James C. Nielsen</span>
+        <span class="journal">Journal of the American Society of Echocardiography - February 2011 (Vol. 24, Issue 2, Pages 214-218, DOI: 10.1016</span>
+    </p>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
