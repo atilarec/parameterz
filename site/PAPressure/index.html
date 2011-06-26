@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html lang="en"> 
+<head>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Pulmonary Artery Pressure Estimate from Acceleration Time</title>
+  <meta name="description" content="calculate pulmonary artery pressure from acceleration time">
+  <meta name="author" content="Dan Dyar, MA, RDCS">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS: implied media="all" -->
+    <link href="../style/screen.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.alt {
+  color: #666;
+  font-family: "Warnock Pro", "Goudy Old Style","Palatino","Book Antiqua", Georgia, serif;
+  font-style: italic;
+  font-weight: normal;
+}
+#result 
+{
+    font-size: 120%;
+    font-weight: bold;
+}
+footer
+{
+    height:3em;
+    position:absolute;
+    padding-left:10px;
+    bottom:0;
+}
+.title, .authors, .journal 
+{
+    display:block;
+}
+.buttons
+{
+    padding-top:10px;
+    padding-left:175px;
+}
+</style>
+
+</head>
+
+<body>
+
+  <div id="container" class="container">
+    <header>
+        <h2 id="title">Estimating Systolic Pulmonary Artery Pressure</h2>
+        <h3 class="alt prepend-2">from pulmonary artery acceleration time</h3>
+
+    </header>
+    <div id="main" role="main">
+        <form id="dataForm" target='' method=''>
+            <label for="paat">PA Acceleration Time (msec): </label>
+            <input id="paat" name="paat" type="text" />
+            <br />
+            <label>Estimated PA Pressure: </label>
+            <span id="result">&nbsp;</span>
+            <div class="buttons">
+            <input type="button" value="Update" />
+            <input type="reset" onclick="resetForm()" />
+            </div>
+        </form>
+    </div>
+    <hr />
+    <div id="references">
+        <span class="title"><a href="http://www.ncbi.nlm.nih.gov/pubmed/21511434">Pulmonary Artery Acceleration Time Provides an Accurate Estimate of Systolic Pulmonary Arterial Pressure during Transthoracic Echocardiography.</a></span>
+        <span class="authors">Yared K, Noseworthy P, Weyman AE, McCabe E, Picard MH, Baggish AL.</span>
+        <span class="journal">J Am Soc Echocardiogr. 2011 Jun;24(6):687-92.</span>
+    </div>
+
+
+  </div> <!--! end of #container -->
+        <footer class="container">
+        <p>Last updated 26 June 2011</p>
+    </footer>
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>
+      $('#paat').change(function () {
+          //alert(this.value);
+          //alert (calcPASP(this.value));
+          $('#result').text(calcPASP(this.value).toFixed(1) + ' mmHg')
+      });
+
+      function calcPASP(paat) {
+          paat = parseFloat(paat);
+          var pasp = -0.004 * paat + 2.1;
+          pasp = Math.pow(10, pasp);
+          return pasp;
+      }
+
+      function resetForm() {
+          $('#result').text(' ');
+      }
+  </script>
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <!-- end scripts-->
+
+
+
+
+  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+  </script>
+
+</body>
+</html>
