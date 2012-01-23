@@ -10,6 +10,9 @@ These are _works in progress_:
   * [http://parameterz.googlecode.com/svn/trunk/Rhodes/CHSS2-score.htm CHSS Calculator]
   * [http://parameterz.googlecode.com/svn/trunk/Rhodes/discriminant-score.htm Discriminant Score Calculator]
 
+=== UPDATE (Jan 2012) ===
+
+A worksheet that consolidates the reporting of these scores and the latest CHSS score can now be found at *[http://dev.parameterz.com/cas/ dev.parameterz.com]*
 
 == Notes: ==
 
