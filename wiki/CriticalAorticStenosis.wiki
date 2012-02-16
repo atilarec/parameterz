@@ -12,7 +12,7 @@ These are _works in progress_:
 
 === UPDATE (Jan 2012) ===
 
-A worksheet that consolidates the reporting of these scores and the latest CHSS score can now be found at *[http://dev.parameterz.com/cas/ dev.parameterz.com/cas/]*
+A worksheet that consolidates the reporting of these scores and the latest CHSS score can now be found at *[http://dev.parameterz.com/borderline/ dev.parameterz.com/borderline/]*
 
 == Notes: ==
 
